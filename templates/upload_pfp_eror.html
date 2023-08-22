@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | რეგისტრაცია</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            
+                #navbar{
+                    position:fixed;
+                    background-color:rgb(8, 130, 112);
+                    width:100%;
+                    height:14%;
+                }
+                #logo{
+                    position:absolute;
+                    width:12%;
+                    height:60%;
+                    top:20%;
+                    left:3%;
+
+                }
+                h2{
+                    position:relative;
+                    margin-top:20px;
+                }
+                #signup_div{
+                    background-color:	rgb(127, 123, 123);
+                    position:absolute;
+                    width:50%;
+                    height:75%;
+                    text-align:center;
+                    top:20%;
+                    left:25%;
+
+                }
+                #surati{
+                    position:absolute;
+
+                    width:35%;
+                    height:40%;
+                    left:50%;
+                    transform:translateX(-50%);
+                    margin-top:20px;
+                    border-radius: 50% 50%;
+
+                    background-image:url("{{src}}");
+                    background-size: {{imgsize}}% {{imgsize}}%;
+                    background-position: center;
+
+                    opacity:1;
+
+                    border:2px solid black;
+
+
+                }
+                #ranga{
+                    margin-top: 300px; 
+                    background-color:blue;
+                }
+                #choose{
+                    
+                    /* 230-220 */
+                }
+                #submit{
+                    background-color: rgb(80, 80, 174);
+                    border:none;
+                    border-radius:10px;
+                    width:25%;
+                    height:40px;
+                    font-size:16px;
+                    cursor:pointer;
+
+                }
+                #mog{
+                    background-color:aqua;
+                    margin-top:20px;
+                    width:20%;
+                    position: relative;
+                    border-radius: 4px;
+                    text-align:center;
+                    padding:2px;
+                    cursor:pointer;
+                }
+
+                #crop_div{
+                    position: absolute;
+                    left:50%;
+                    transform:translateX(-50%);
+                    top:50%;
+                    transform:translateX(-50%);
+                    width:30%;
+                    height: 40%;
+                    border-radius:5px;
+                    background-color: aqua;
+                }
+                #surati_out{
+                    position:absolute;
+
+                    width:35%;
+                    height:40%;
+                    left:50%;
+                    transform:translateX(-50%);
+                    margin-top:20px;
+                    opacity: 0.5;
+
+
+                    border:1px solid black;
+                }
+               #surati_back{
+                position:absolute;
+                background-color:blue;
+
+                width:35%;
+                height:40%;
+                left:50%;
+                transform:translateX(-50%);
+                margin-top:20px;
+
+
+
+                border:1px solid black;
+
+
+                
+                background-image:url("{{src}}");
+                background-size: {{imgsize}}% {{imgsize}}%;
+                background-position: center;
+               }
+                
+
+
+                
+        </style>
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            window.onload = function(){
+                erori("{{er}}") ;
+            }
+            
+        </script>
+
+       
+    </head>
+    <body>
+        <div id = "navbar">
+            <a href="http://localhost:5000/"><img  id = "logo" src = "static/logos.png"></a>
+        </div>
+        <div id = "signup_div">
+
+            <h2>აირჩიეთ პროფილის სურათი</h2>
+            <div id = "surati_back" ></div>
+            <div id = "surati_out"></div>
+            <div id = "surati"></div>
+            <form method = "POST" enctype="multipart/form-data">
+                <input type="range" id = "ranga" name = "zoma" min = "100" max = "300" value = "{{imgsize}}">
+                <center><input id = "choose" type = "file" name = "yile"></center><br>
+                <center><input id = "submit" type = "submit" value="დადასტურება"></center>
+            </form>
+            <!-- <button id = "mog">მოგვიანებით</button> -->
+            
+        </div>
+
+
+        <!-- <div id = "crop_div"></div> -->
+
+
+        <script>
+
+
+            var renegi = document.getElementById("ranga");
+
+
+            //setInterval(ranga_f);
+            /*
+            var suratij = $("#surati");
+
+            suratij.hover(function(){
+                console.log("shevediit")
+            },
+            function(){
+                console.log("gamovedit");
+            }
+            );
+
+            */
+            var surati = document.getElementById("surati");
+            var surati_back  = document.getElementById("surati_back");
+            //var surati_backj  = $("#surati_back");
+            var choosi = document.getElementById("choose");
+
+
+
+            function ranga_f(){
+                console.log(renegi.value);
+                surati.style.backgroundSize = renegi.value + "% " + renegi.value + "%";
+                surati_back.style.backgroundSize = renegi.value + "% " + renegi.value + "%";
+                console.log();
+                //surati.style.backgroundPosition = renegi.value/1.4 + "px " + renegi.value/1.4 + "px";
+                
+            }
+
+            renegi.oninput = ranga_f;
+
+            /*
+            surati_backj.mouseover(function(event){
+                console.log("zd");
+            });
+            */
+
+            choosi.onchange = function(){
+                //alert("fe");
+                console.log("changed");
+                const reader = new FileReader();
+                
+                reader.onload=  function(){
+                    console.log("loaded");
+                    saxeli = choosi.value
+                    datatipi = saxeli.split(".")[saxeli.split(".").length-1]
+
+                    
+                    //amoagde dasacropi
+                    //surati.style.backgroundImage = `url('${reader.result }')`; 
+                    if(datatipi == "png" || datatipi == "jpg" || datatipi == "jpeg"){
+
+                        surati.style.backgroundImage = `url(${reader.result})`;
+                        surati_back.style.backgroundImage = `url(${reader.result})`;
+                    }
+                    else{
+                        erori("არასწორი ფაილის ფორმატი, საჭიროა სურათი იყოს : .png, .jpg, .jpg");
+                    }
+                    
+                    
+                }
+                reader.readAsDataURL(this.files[0])
+            }
+
+
+ 
+        </script>
+    </body>
+</html>

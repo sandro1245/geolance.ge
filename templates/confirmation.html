@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>GeoLance | რეგისტრაცია</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            
+                #navbar{
+                    position:fixed;
+                    background-color:rgb(8, 130, 112);
+                    width:100%;
+                    height:14%;
+                }
+                #logo{
+                    position:absolute;
+                    width:12%;
+                    height:60%;
+                    top:20%;
+                    left:3%;
+
+                }
+                h2{
+                    position:relative;
+                    margin-top:30px;
+                }
+                #signup_div{
+                    background-color:	rgb(127, 123, 123);
+                    position:absolute;
+                    width:50%;
+                    height:65%;
+                    text-align:center;
+                    top:20%;
+                    left:25%;
+
+                }
+                #vcode_inp{
+                    position:relative;
+
+                    top:120px;
+
+                    width:70%;
+                    height:80px;
+                    
+                    border-radius:20px 20px;
+                    font-size:50px;
+                    text-align:center;
+                }
+                h4{
+                    position:relative;
+
+                    top:100px;
+                }
+                #main_btn{
+                    position:absolute;
+                    top:85%;
+                    background-color:rgb(90, 90, 246);
+                    width:20%;
+                    height:8%;
+                    cursor:pointer;
+                    border-radius : 8px 8px;
+                    border:none;
+                    font-size:17px;
+                    left:40%;
+                }
+                #coffer{
+                    position:relative;
+                    top:140px;
+                    left:25%;
+                }
+                #coffer_m{
+                    color:rgb(33, 33, 78);
+                    cursor:pointer;
+                }
+                
+
+
+                
+        </style>
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function func(){
+                $.ajax({
+                    data : {
+                        "vcode" : document.getElementById("vcode_inp").value
+
+                    },
+                    url: "/vcode_check",
+                    type : "POST",
+                    dataType : "text",
+
+                    success : function(data){
+                        
+                        if(data == "timeout"){
+                            erori("ბევრი მცდელობა, გთხოვთ ცადოთ მოგვიანებით")
+                        
+
+                        }
+                        else{
+                            if(data == "success"){
+                                window.location.href = "/upload_pfp";
+
+                            }
+                            else{
+                                erori("კოდი არასწორია");
+                            }
+                        }
+                    }
+                });
+            }
+            function resend(){
+                document.getElementById("coffer_m").innerHTML = "იგზავნება..."
+                $.ajax({
+                    data : {
+
+                    },
+                    url : "/vcode_resend",
+                    type : "POST",
+                    dataType : "text",
+                    success : function(data){
+                        document.getElementById("coffer_m").innerHTML = "თავიდან გაგზავნა"
+                        if(data == "timeout"){
+                            erori("ბევრი მოთხოვნა, გთხოვთ მოიცადოთ")
+                        }
+                    }
+                });
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id = "navbar">
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+        </div>
+        <div id = "signup_div">
+            <center>
+            <h2>
+                ვერიფიკაცია
+            </h2>
+        </center>
+                <center><h4>შეიყვანეთ {{mail}} - მეილზე გამოგზავნილი 6 ნიშნა კოდი</h4></center>
+                <center><input id = "vcode_inp" type ="number"></center>
+                <center><p id = "coffer">არ მოსულა კოდი? <span id = "coffer_m">თავიდან გაგზავნა</span></p></center>
+
+
+                <button type = "button" id = "main_btn">დადასტურება</button>
+            
+                <script>
+                    var btn = document.getElementById("main_btn");
+                    btn.onclick = func;
+
+                    var resendBTN = document.getElementById("coffer_m")
+                    resendBTN.onclick = resend;
+                </script>
+            
+        </div>
+        
+    </body>
+</html>

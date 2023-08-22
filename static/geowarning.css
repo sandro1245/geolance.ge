@@ -1,0 +1,81 @@
+.rec_washla_gafrtxileba_div{
+    position:fixed;
+    left:50%;
+    top:50%;
+
+    transform: translate(-50%,-50%);
+    background-color:rgb(224, 64, 64);
+    width:50%;
+    height:50%;
+    opacity:1;
+    border:5px solid white;
+    border-radius:15px;
+}
+.rec_washla_gafrtxileba_shekitxva{
+    position:relative;
+    width:100%;
+    height:auto;
+    margin-top:15px;
+    font-size:20px;
+    text-align: center;
+}
+.rec_washla_gafrtxileba_buttonsdiv{
+    position:relative;
+    top:45%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:60%;
+    height:30%;
+    background-color: white;
+    border-radius:5px;
+    display: flex;
+    justify-content: space-around;
+}
+.rec_washla_button{
+    position:absolute;
+    top:40%;
+    cursor:pointer;
+    width:10%;
+    height:auto;
+    padding:2px 4px 2px 5px;
+    text-align:center;
+    transform: translate(-50%,-50%);
+    
+    
+    
+
+    
+
+}
+.rec_washla_arabutton{
+    border:1px solid blue;
+    color:blue;
+    left:33.3%;
+    box-shadow:5px 5px 5px blue;
+    transition:background-color 0.3s,color 0.3s,top 0.3s, blue 0.3s;
+
+
+}
+.rec_washla_arabutton:hover{
+    background-color: blue;
+    color:white;
+    top:41%;
+    box-shadow:5px 5px 10px blue;
+    
+
+}
+
+
+.rec_washla_kibutton{
+    background-color:red;
+    color:white;
+    left:66.6%;
+    box-shadow:5px 5px 5px red;
+    transition: top 0.3s,box-shadow 0.3s;
+
+}
+.rec_washla_kibutton:hover{
+    top:41%;
+    box-shadow:5px 5px 10px red;
+
+}

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | ფაილები</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+        </style>
+        <link rel="stylesheet" href = "static/creating_new_service.css">
+        <style>
+            body{
+                height: 1100px;
+            }
+            #main{
+                height:900px;
+            }
+            #sheqmna{
+                top:94%;
+            }
+            #profile_label{
+                position:relative;
+                
+                
+                text-align: center;
+            }
+            #profile_upload{
+                position:relative;
+                top:20%;
+                left:50%;
+
+                width:25%;
+                height:250px;
+
+                
+                background-image:url("{{service_pfp_link}}");
+                border:1px  solid black;
+                background-repeat:no-repeat;
+                background-position:center;
+                background-size: 100% 100%;
+                cursor:pointer;
+                
+
+
+
+                transform: translate(-50%,-50%);
+                transition: opacity 0.3s;
+            }
+            #profile_upload:hover{
+                opacity:0.8;
+            }
+
+            .photo_div{
+                position:relative;
+                top:50%;
+                
+
+                width:20%;
+                height:200px;
+
+                
+                border:1px  solid black;
+                background-repeat:no-repeat;
+                background-position:center;
+                cursor:pointer;
+                background-size:100% 100%;
+                
+
+
+
+                transform: translate(0,-50%);
+                transition: opacity 0.3s;
+            }
+            .photo_div:hover{
+                opacity:0.8;
+            }
+
+            hr{
+                position:relative;
+                margin-top:70px;
+            }
+
+            #photos_label{
+                position:relative;
+                margin-left:10px;
+            }
+            #photos_outer_div{
+                position:relative;
+                margin-top:20px;
+                width:100%;
+                height:300px;
+                /* border:1px solid black; */
+                display: flex;
+                justify-content: space-around;
+            }
+        </style>
+        <script>
+
+        </script>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="static/style.css"> pointebis css -->
+        <link href="static/points.css" rel="stylesheet"> <!-- pointebis css -->
+
+
+
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function sheqmna(){
+                $.ajax({
+                    // data : {
+                    //     "satauri" : document.getElementById("satauri_input").value,
+                    //     "sfero" : sfero.value,
+                    //     "subsfero" : subsfero.value,
+                    //     "tags" : JSON.stringify(tags),
+                    //     "service_id" : '{{service_id}}'
+                    // },
+                    data : {
+                        "thedata" : JSON.stringify(record_list_array),
+                        "service_description" : document.getElementById("agwera_input").value,
+                        "service_id" : '{{service_id}}'
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/save_new_service_2_ajax",
+                    success : function(data){
+                        
+                        if(data == "success"){
+                            window.location.href = "/create_new_service?num=3&service={{service_id}}" ;
+                        }
+                        
+                        
+                    }
+                });
+
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+ 
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li class = "menu_lis" id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li class = "menu_lis" id = "prom_li">პრომოკოდი</li></a>
+                    <li  class = "menu_lis" id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+            <div id = "main">
+                
+                <div id = "tab_parent">
+                    <div id = "general" class = "nav_tab">ძირითადი</div>
+                    <div id = "desc_and_exp"  class = "nav_tab">აღწწერა და  გამოცდილება</div>
+                    <!-- <div id = "packets" class = "nav_tab">პაკეტები</div> -->
+                    <div id = "points" class = "nav_tab">ფოინთები</div>
+                    <div id = "files" class = "nav_tab">ფაილები</div>
+
+                    
+                </div>
+
+                <h2 id = "profile_label">პროფილი : </h2>
+                <div id = "profile_upload" >
+
+                </div>
+
+
+                <hr/>
+                <h2 id = "photos_label">ფოტოები(მაქსიმალური რაოდენობა არის 4)</h2>
+
+                <div id = "photos_outer_div">
+                    <!-- <div id = "pu_1" class = "photo_div"></div>
+                    <div  id = "pu_2" class = "photo_div"></div>
+                    <div  id = "pu_3"class = "photo_div"></div>
+                    <div id = "pu_4" class = "photo_div"></div> -->
+
+                </div>
+
+
+
+                <form id = "profile_photo_form">
+
+                    <input name ="faili" type = "file"  style="display:none" id = "profile_photo_input">
+
+                </form>
+
+
+
+
+                <!-- <form id = "profile_photo_form_1">
+
+                    <input name ="faili1" type = "file"  style="display:none" id = "profile_photo_input1">
+
+                </form>
+                
+                <form id = "profile_photo_form_2">
+
+                    <input name ="faili2" type = "file"  style="display:none" id = "profile_photo_input2">
+
+                </form>
+
+
+                <form id = "profile_photo_form_3">
+
+                    <input name ="faili3" type = "file"  style="display:none" id = "profile_photo_input3">
+
+                </form>
+
+
+                <form id = "profile_photo_form_4">
+
+                    <input name ="faili4" type = "file"  style="display:none" id = "profile_photo_input4">
+
+                </form> -->
+
+
+
+                
+
+                 <button id = "sheqmna">შენახვა</button>
+            </div>
+
+        
+        <script src = "static/MyDropdown.js"></script>
+
+
+        
+        <script src = "/static/socket.io.js"></script>
+            <script src = "/static/jquery.js"></script>
+            <script>
+                var straidi = "{{straidi}}";
+            </script>
+        <script>
+
+            // var profile_status = "false";
+
+            var profile_status = {{profile_status_boolean}};
+
+            var imgdata = {};
+           
+           var maindivi = document.getElementById("main");
+            
+            var profile_div = document.getElementById("profile_upload");
+
+            var profile_photo_form = document.getElementById("profile_photo_form");
+
+            var profile_photo_input = document.getElementById("profile_photo_input");
+
+
+            profile_div.onclick = function(){
+                profile_photo_input.click();
+                
+
+                
+            }
+            profile_photo_input.onchange = function(){
+                const rider = new FileReader();
+
+                rider.onload = function(){
+                    
+                    profile_div.style.backgroundImage =`url(${rider.result})`; //"url('static/arr.png')"; 
+                    profile_div.style.backgroundSize = "100% 100%";
+                    profile_status = "true";
+                }
+
+
+
+
+                rider.readAsDataURL(this.files[0])
+            }
+            
+            var photos_outer_div = document.getElementById("photos_outer_div");
+            //profile_photo_form
+            var mainform = document.getElementById("profile_photo_form");
+            var suratebi_dict = {{suratebi}};
+            for(i = 1;i <= 4;i++){
+                
+
+                
+
+                let divi = document.createElement("div");
+                divi.id = "pu_" + i;
+                divi.className = "photo_div";
+                // console.log(`url('static/services/${}')`);
+                if(suratebi_dict[i+""] != "none"){
+                    var linki = suratebi_dict[i+""];
+                }
+                else{
+                    var linki = "upload_image_symbol.png";
+                }
+                
+                divi.style.backgroundImage = `url('static/services/${linki}')`;
+                
+                photos_outer_div.append(divi);
+
+                //maindivi
+
+                // let forma = document.createElement("form");
+
+                // forma.id = "profile_photo_form_" + i;
+
+
+
+                let inpati = document.createElement("input");
+
+                inpati.setAttribute("name","" + i);
+                inpati.setAttribute("type","file");
+                inpati.id = "profile_photo_input" + i;
+
+                inpati.style.display = "none";
+
+                mainform.append(inpati);
+
+                // maindivi.append(forma);
+
+                divi.onclick = function(){
+                    inpati.click();
+                }
+                inpati.onchange = function(){
+                    const mkitxavi = new FileReader();
+                    
+
+
+                    mkitxavi.onload = function(){
+                        divi.style.backgroundImage = `url(${mkitxavi.result})`;
+
+                        imgdata[i] = mkitxavi.result.split(";")[0];
+                    }
+
+                    mkitxavi.readAsDataURL(this.files[0]);
+                }
+                
+
+                
+            }
+
+
+
+
+
+
+
+
+            
+            
+
+
+
+            
+
+
+
+            var general = document.getElementById("general");
+            var desc_and_exp = document.getElementById("desc_and_exp");
+            var points = document.getElementById("points");
+            var files = document.getElementById("files");
+
+
+
+            {{dziritadi_scr}}
+
+            {{agwera_da_gamocdileba_scr}}
+
+   
+
+            
+            {{pointebi_src}}
+
+
+            {{files_scr}}
+
+
+            
+
+            var sheqmna_btn = document.getElementById("sheqmna");
+
+            sheqmna_btn.onclick = function(){//$('#upload-file')[0]
+                // var profili = new FormData(profile_photo_form[0]);
+                if(profile_status == "true"){
+                    var profili = new FormData($("#profile_photo_form")[0]);
+                    $.ajax({
+                        data : profili,
+
+                        url : "/service_profileupload/{{service_id}}",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        type : "POST",
+                        success : function(data){
+                            if(data=="success"){
+                                // window.location.href = "/{{cuser}}";
+                                window.location.href = "/service/{{service_id}}";
+                            }
+                            
+                        }
+                        
+                        
+                        
+                    });
+                }
+                else{
+                    erori("გთხოვთ ატვირთოთ პროფილის სურათი")
+                }
+                
+            }
+
+            
+            
+            
+            // setInterval(function(){console.log(points_ls)},1) 
+            // consoleshi
+                        
+
+
+
+           
+        </script>
+       
+
+        <!-- <script src = "static/script.js"></script> tagebis js -->
+        <script src = "static/logged_navbar.js"></script>
+        <script src = "static/points.js"></script><!--  pointebis js  -->
+        
+    </body>
+</html>

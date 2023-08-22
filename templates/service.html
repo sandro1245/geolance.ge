@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | {{service_satauri}}</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <meta property="og:url"           content="https://sfero.ge/ka" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{servisebi_user_username}} : {{service_satauri}}" />
+        <meta property="og:description"   content="{{service_agwera}}" />
+        <meta property="og:image"         content="https://sfero.ge/assets/front/assets/img/fb_cover.png?v=1" />
+        <style>
+                #pfp{
+                    background-image:url('/{{imgsrc}}');
+                    background-size:{{imgsize}}% {{imgsize}}%;    
+                }
+        </style>
+        <style>
+            #service_head{
+                position: relative;
+                top:23%;
+
+                background-color: rgb(164, 202, 164);
+                width: 90%;
+                height: 30%;
+                border-radius: 0px 5px 5px 0px;
+            }
+            #service_head_img{
+                position: absolute;
+                width: 140px;
+                height: 140px;
+                top:50%;
+                left:10%;
+                transform: translate(0,-50%);
+
+                /* background-image: url("/static/services/{{service_profile}}"); */
+                background-size: 100% 100%;
+                background-position: center;
+                border-radius: 5% 5%;
+                overflow: hidden;
+
+
+
+            }
+
+            .img_slider_button{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                border-radius: 50% 50%;
+                top:50%;
+                transform: translate(-50%,-50%);
+                background-size: 100% 100%;
+                background-position: center;
+                cursor: pointer;
+                z-index: 4;
+
+            }
+            #left_img_slider{
+                /* left: 0%; */
+                left:10%;
+                background-image: url("/static/left_slide.png");
+                
+            }
+            #right_img_slider{
+                /* left: 100%; */
+                /* left: */
+                background-image: url("/static/right_slide.png");
+                
+            }
+
+            .service_head_img_child{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+                transform: translate(-50%,-50%);
+                top: 50%;
+                background-position: center;
+
+            }
+            #service_satauri{
+                position: relative;
+                left: 25%;
+                transform: translate(0, -50%);
+                top: 20%;
+                max-width: 60%;
+            }
+
+            #service_contact_btn{
+                position: absolute;
+                left: 70%;
+                top: 70%;
+                transform: translate(-50%, -50%);
+                background-color: rgb(64, 114, 179);
+                width: 16%;
+                text-align: center;
+                height: 20%;
+                border-radius: 10px;
+                cursor: pointer;
+                user-select: none;
+            }
+            #service_share_btn{
+                position: absolute;
+                background-image: url(/static/share_btn.png);
+                background-size: 85% 85%;
+                background-position: center;
+                width: 4%;
+                height: 20%;
+                left: 85%;
+                background-repeat: no-repeat;
+                top: 70%;
+                transform: translate(-50%, -50%);
+
+
+                background-color: white;
+                border-radius: 10px;
+                cursor: pointer;
+
+            }
+            #service_contact_p{
+                position: absolute;
+                top:50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            #user_info{
+                position:absolute;
+
+                left:25%;
+                top:50%;
+                display: flex;
+
+                cursor:pointer;
+
+            }
+            #user_info:hover{
+                text-decoration: underline;
+            }
+            #user_info_pfp{
+                position: relative;
+                width: 20px;
+                height: 20px;
+                border-radius: 50% 50%;
+                background-image:url("/{{servisebi_user_pfp}}");
+                background-size : {{servisebi_user_pfpsize}}% {{servisebi_user_pfpsize}}%;
+
+                
+                
+            }
+            #user_info_username{
+                margin-left: 5px;
+            }
+            #service_agwera{
+                position: relative;
+                top: 25%;
+                left: 5%;
+                width: 55%;
+                word-wrap: break-word;
+                min-height: 30%;
+
+            }
+            #service_agwera_main{
+                position: relative;
+                margin-top: 15px;
+            }
+            #experience_system{
+                position: absolute;
+                margin: 2%;
+                top: 55%;
+                margin-left: 10%;
+                width: 30%;
+                /* height: 500px; */
+                height: 30%;
+                font-size: 20px;
+                background-color: rgb(203, 193, 193);
+                left: 55%;
+                z-index: -20;
+
+                    }
+                    #gamocdileba_title{
+                        font-size:25px;
+                    }
+                    #create_new_record_btn{
+                        background-color:white;
+                        width:40%;
+                        height:auto;
+                        padding:5px;
+                        text-align:center;
+                        position:relative;
+                        
+                        left:50%;
+                        top:7%;
+                        transform:translate(-50%,0%);
+                        
+                        border-radius:15px;
+
+                        cursor:pointer;
+                        transition:opacity 0.3s,box-shadow 0.3s,top 0.3s;
+
+                    }
+                    #records_list{
+                        /* background-color: red; */
+                        position:absolute;
+                        top:100%;
+                        transform:translateY(-100%);
+                        width:100%;
+                        height:75%;
+                        bottom:0px;
+                        overflow-y:auto;
+
+                        
+                    }
+                    #cancel_button{
+                        background-image:url("static/cancell.png");
+                        background-size:100% 100%;
+                        background-position:center;
+                        position:absolute;
+                        left:100%;
+                        top:0%;
+                        width:5%;
+                        height:7%;
+                        transform:translate(-100%,0);
+                        border-radius:50% 50%;
+                        cursor: pointer;
+                        z-index:20;
+                        transition: opacity 0.3s,top 0.3s;
+                        
+
+                    }
+                    #cancel_button:hover{
+                        opacity:0.8;
+                        top:1%;
+                    }
+                    #create_new_record_btn:hover{
+                        opacity:0.7;
+                        box-shadow:5px 5px 5px;
+                        top:5%;
+                    }
+                    .unregistered_record{
+                        width:90%;
+                        background-color: rgb(57, 123, 123);
+                        /* height:340px; */
+                        height:70%;
+
+                        position:relative;
+                        left: 50%;
+                        margin-top:50px;
+                        transform:translate(-50%,0);
+                        border-radius:5px;
+                    }
+                    .unregistered_record_saxeli_input{
+                        position:absolute;
+                        top:5%;
+                        left:5%;
+                        
+
+                        width:25%;
+                        height:10%;
+                        font-size:20px;
+                        
+                        border-radius: 5px;
+                        padding-left:5px;
+                    }
+                    .record_agwera_input{
+                        position:absolute;
+                        resize:none;
+                        left:55%;
+                        padding-left:5px;
+                        border-radius: 5px;
+                        top:5%;
+                        height:40%;
+                        font-size:20px;
+                        width:40%;
+
+                        /* transform:translate(-50%,0); */
+
+                    }
+                    #tipi_mine_radio{
+                        position:relative;
+                        top:30%;
+                        left:5%;
+                    }
+                    .rec_t_input{
+                        position:relative;
+                        top:35%;
+                        margin-top:20px;
+                        left:5%;
+                        width:25%;
+                        border-radius:5px;
+                        width:30%;
+                        height:7%;
+                        padding-left:1%;
+                        z-index:5;
+                    }
+                    /* #money_input{
+                        background-image:url("https://www.stephenwadechryslerdodgejeep.com/wp-content/plugins/pm-motors-plugin/modules/vehicle_save/images/check.png") no-repeat scroll 7px 7px;
+                        background-position: 2px 2px;
+                        
+                    } */
+                    .rec_shenaxva_button{
+                        position:absolute;
+                        left:50%;
+                        top:80%;
+                        transform: translate(-50%,0);
+                        background:linear-gradient(rgb(180, 144, 35),yellow);
+                        height: auto;
+                        padding:2% 2% 2% 2%;
+                        border-radius:5px;
+                        cursor:pointer;
+                        transition: opacity 0.3s,box-shadow 0.5s;
+                    }
+                    .rec_shenaxva_button:hover{
+                        opacity: 0.7;
+                        box-shadow:inset 2px 2px 5px rgb(127, 98, 98),inset -2px -2px 5px rgb(127, 98, 98);
+                        
+
+
+
+                    }
+                    .mkwrivi{
+                        position:relative;
+                        left:50%;
+                        transform:translate(-50%,0);
+                        margin-top:10px;
+                        background-color: rgb(57, 123, 123);
+                        width:95%;
+                        height:50px;
+                        transition:left 0.3s;
+                       
+                    }
+                    .mkwrivi:hover{
+                        left:52%;
+                    }
+                    .record_mkwrivi_satauri{
+                        position: absolute;
+                        left: 7%;
+                        top: 50%;
+                        width: 30%;
+                        transform: translate(0%,-50%);
+                        font-size: 15px;
+                    }
+
+                    .ful_dro{
+                        position:absolute;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+                        left:60%;
+                    }
+                    .rec_options_btn{
+                        position:absolute;
+                        left:90%;
+                        top:50%;
+                        width:6%;
+                        height:50%;
+                        background-size:100% 100%;
+                        background-position:center;
+                        transform:translate(-50%,-50%);
+                        background-image:url("/static/edit_symbol.jpg");
+                        cursor:pointer;
+                        border-radius:50% 50%;
+                        transition: opacity 0.3s,top 0.3s;
+                        
+
+                    }
+                    .rec_options_btn:hover{
+                        opacity:0.8;
+                        top:44%;
+                    }
+                    .po_div{
+                        margin-top:5px;
+                        margin-right:5px;
+                        background-color: white;
+                    }
+                    .po_time{
+                        border:1px solid black;
+                        height:100%;
+                        width:60px;
+                        /* background-color: rgb(92, 196, 234); */
+                        background-color: white;
+                        text-align: center;
+                        line-height: 25px;
+                    }
+                    .unselected_points .po_div{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .selected_points .po_div{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .po_fasi{
+                        border:1px solid black;
+                        height:100%;
+                        width:60px;
+                        /* background-color: rgb(92, 196, 234); */
+                        background-color: white;
+                        text-align: center;
+                        line-height: 25px;
+                        color:green;
+                    }
+                    .po_points{
+                        border:1px solid black;
+                        height:100%;
+                        width:30px;
+                        /* background-color: rgb(92, 196, 234); */
+                        color: blue;
+                        background-color: white;
+                        text-align: center;
+                        line-height: 25px;
+                    }
+
+                    .po_name{
+                        border:1px solid black;
+                        border-width:1px 1px 1px 0px;
+                        height:100%;
+                        padding-left:5px;
+                        padding-right:5px;
+                        align-items: center;
+                        cursor:default;
+
+                    }
+                    .unselected_points .po_div{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .selected_points .po_div{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .select_point_button{
+                        border:1px solid black;
+                        height:100%;
+                        width:30px;
+                        /* background-color: rgb(92, 196, 234); */
+                        background-color: white;
+                        text-align: center;
+                        
+                        
+                    }
+                    .select_point_button_img{
+                        background-image: url("/static/plus.jpg");
+                        width: 100%;
+                        height: 100%;
+                        background-size: 100% 100%;
+                        border-radius:50% 50%;
+                        cursor:pointer;
+                        background-position: center;
+                    }
+                    #points_select_parent{
+                        position: relative;
+                        display: flex;
+                        /* top: 50%; */
+                        width: 100%;
+                        height: 900px;
+
+                    }
+                    #service_share_div{
+                        position: absolute;
+                        opacity: 0;
+                        z-index: 50;
+                        top: 130%;
+                        left: 50%;
+                        transform: translate(-50%,0%);
+                        background-color: white;
+                        width: 170px;
+                        height: 50px;
+                        border:1px solid black;
+                        cursor: default;
+                        
+                    }
+                    #share_btn_canvas{
+                        position: absolute;
+                        top: 0%;
+                        transform: translate(-50%, -100%);
+                        left: 50%;
+                    }
+                    #soc_media_btns_divlist{
+                        /* background-color: red; */
+                        position: absolute;
+                        width: 100%;
+                        height: 30px;
+                        top:50%;
+                        transform:translateY(-50%);
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                    .soc_media_sharebtn{
+                        position: relative;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50% 50%;
+                        cursor: pointer;
+                        background-size: 100% 100%;
+                        background-position: center;
+
+                    }
+                    .soc_media_sharebtn:hover{
+                        top:15%;
+                        opacity: 0.8;
+
+                    }
+
+
+
+                    #socmedia_copy{
+                        background-image: url("/static/copy_sym.png");
+                    }
+                    #socmedia_facebook{
+                        background-image: url("/static/facebook_logo.png");
+                    }
+                    #socmedia_twitter{
+                        background-image: url("/static/twitter_logo.png");
+                        background-size: 105% 105%;
+                    }
+                    #socmedia_linkedin{
+                        background-image: url("/static/linkeding_logo.png");
+                        background-size: 145% 145%;
+                    }
+
+
+
+                    #dakveta_info_div{
+                        position: relative;
+                        width: 400px;
+                        height: 200px;
+                        background-color: rgb(239, 232, 232);
+                        left: 50%;
+                        top: -240px;
+                        transform: translate(-50%,0);
+                        border: 1px solid black;
+                        border-radius: 20px;
+                    }
+
+
+                    #jamuri_info_pd{
+                        position: relative;
+                        display: flex;
+                        justify-content: space-around;
+                        margin-top: 20px;
+                    }
+                    #dakveta_btn{
+                        position: relative;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        top: 25%;
+                        background-color: rgb(8, 130, 112);
+                        width: 100px;
+                        height: 35px;
+                        cursor: pointer;
+                        border-radius: 10px;
+                    }
+                    #dakveta_btn_txtspan{
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        cursor: inherit;
+                        user-select: none;
+                    }
+                    #clientebi_label{
+                        position: absolute;
+                        left: 50%;
+                        top: 75%;
+                        transform: translate(-50%,-50%);
+                        z-index: -2;
+                    }
+                    .clientebi_label_sp_digit{
+                        background-color: white;
+                        border: 1px solid black;
+                        padding: 4px 14px;
+                        z-index: -2;
+                        position: relative;
+                    }
+        </style>
+        <link href="/static/points.css" rel="stylesheet">
+        <script src = "/static/jquery.js"></script>
+        <script src = "/static/eror.js"></script>
+        <script>
+
+
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "/static/logos.png"></a>
+
+
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "samushao_rad"> -->
+                    <!-- <label id = "samushao_lab" for ="samushao_rad">სამუშაო</label> -->
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "shemsrulebeli_rad" > -->
+                    <!-- <label id = "shemsrulebeli_lab" for = "shemsrulebeli_rad">შემსრულებელი</label> -->
+
+
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="/static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li id = "prom_li">პრომოკოდი</li></a>
+                    <li id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+            
+            <div id = "service_head">
+                {{img_sliders_markup}}
+                <div id = "service_head_img">
+                    <!-- {{img_sliders_markup}} -->
+                
+                </div>
+                <h2 id = "service_satauri">
+                    {{service_satauri}}
+                </h2>
+                <br>
+                <div id = "user_info">
+                    <div id  = "user_info_pfp">
+
+                    </div>
+                    <div id = "user_info_username">
+                        {{servisebi_user_username}}
+                    </div>
+                </div>
+                <div id = "service_contact_btn">
+                    <p id = "service_contact_p" >
+                       {{contact_innerText}}
+                    </p>
+
+                </div>
+                <div id = "service_share_btn">
+                    <div id = "service_share_div">
+                        <canvas id = "share_btn_canvas" ></canvas>
+                        <div id = "soc_media_btns_divlist">
+                            <div class = "soc_media_sharebtn" id = "socmedia_copy"></div>
+                            <div class = "soc_media_sharebtn" id = "socmedia_facebook"></div>
+                            <div class = "soc_media_sharebtn" id = "socmedia_twitter"></div>
+                            <div class = "soc_media_sharebtn" id = "socmedia_linkedin"></div>
+                        </div>
+                            
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div id = "service_agwera">
+                <h2>აღწერა</h2>
+                <p id = "service_agwera_main">
+                    {{service_agwera}}
+                </p>
+                
+            </div>
+            <div id = "experience_system">
+                <center><h3 id = "gamocdileba_title">გამოცდილება</h3></center>
+                
+                    
+                    <div id = "records_list">
+
+                        <!-- <div id = "47" class="mkwrivi"><p id = "record_mkwrivi_satauri_47" class="record_mkwrivi_satauri">chemi 1 wliani momzadeba</p> <p id = "ful_dro_47" class = "ful_dro">50<span style = 'color:lightgreen;'>$</span> - 13 თვე</p> <div id = "rec_opt_btn_47" class = "rec_options_btn"></div> </div> -->
+                        {{recordni}}
+
+                    </div>
+
+            </div>
+
+            <div id = "points_select_parent">
+                <div class = "selected_points" id = "selected_points">
+                        
+
+                </div>
+
+
+                <div id = "unselected_points" class = "unselected_points">
+                    <!-- <div id = 'po_divშფოთვის დისორდერი' class = 'po_div po_divშფოთვის დისორდერი'><input id = 'po_fasi_შფოთვის დისორდერი'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_შფოთვის დისორდერი'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_შფოთვის დისორდერი' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>შფოთვის დისორდერი</div><div class = 'select_point_button'><div id = 'select_point_button_img_შფოთვის დისორდერი' class = 'select_point_button_img select_point_button_img_შფოთვის დისორდერი'></div></div></div><div id = 'po_divდეპრესია' class = 'po_div po_divდეპრესია'><input id = 'po_fasi_დეპრესია'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_დეპრესია'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_დეპრესია' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>დეპრესია</div><div class = 'select_point_button'><div id = 'select_point_button_img_დეპრესია' class = 'select_point_button_img select_point_button_img_დეპრესია'></div></div></div><div id = 'po_divხასიათის დისორდერი' class = 'po_div po_divხასიათის დისორდერი'><input id = 'po_fasi_ხასიათის დისორდერი'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_ხასიათის დისორდერი'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_ხასიათის დისორდერი' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>ხასიათის დისორდერი</div><div class = 'select_point_button'><div id = 'select_point_button_img_ხასიათის დისორდერი' class = 'select_point_button_img select_point_button_img_ხასიათის დისორდერი'></div></div></div><div id = 'po_divსტრესის მართვა' class = 'po_div po_divსტრესის მართვა'><input id = 'po_fasi_სტრესის მართვა'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_სტრესის მართვა'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_სტრესის მართვა' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>სტრესის მართვა</div><div class = 'select_point_button'><div id = 'select_point_button_img_სტრესის მართვა' class = 'select_point_button_img select_point_button_img_სტრესის მართვა'></div></div></div><div id = 'po_divბიპოლარული დისორდერი' class = 'po_div po_divბიპოლარული დისორდერი'><input id = 'po_fasi_ბიპოლარული დისორდერი'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_ბიპოლარული დისორდერი'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_ბიპოლარული დისორდერი' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>ბიპოლარული დისორდერი</div><div class = 'select_point_button'><div id = 'select_point_button_img_ბიპოლარული დისორდერი' class = 'select_point_button_img select_point_button_img_ბიპოლარული დისორდერი'></div></div></div><div id = 'po_divტრამვული სტრესის დისორდერი' class = 'po_div po_divტრამვული სტრესის დისორდერი'><input id = 'po_fasi_ტრამვული სტრესის დისორდერი'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_ტრამვული სტრესის დისორდერი'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_ტრამვული სტრესის დისორდერი' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>ტრამვული სტრესის დისორდერი</div><div class = 'select_point_button'><div id = 'select_point_button_img_ტრამვული სტრესის დისორდერი' class = 'select_point_button_img select_point_button_img_ტრამვული სტრესის დისორდერი'></div></div></div><div id = 'po_divADHD' class = 'po_div po_divADHD'><input id = 'po_fasi_ADHD'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_ADHD'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_ADHD' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>ADHD</div><div class = 'select_point_button'><div id = 'select_point_button_img_ADHD' class = 'select_point_button_img select_point_button_img_ADHD'></div></div></div><div id = 'po_divანტისოციალური დისორდერი' class = 'po_div po_divანტისოციალური დისორდერი'><input id = 'po_fasi_ანტისოციალური დისორდერი'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_ანტისოციალური დისორდერი'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_ანტისოციალური დისორდერი' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>ანტისოციალური დისორდერი</div><div class = 'select_point_button'><div id = 'select_point_button_img_ანტისოციალური დისორდერი' class = 'select_point_button_img select_point_button_img_ანტისოციალური დისორდერი'></div></div></div><div id = 'po_divშიზოფრენია' class = 'po_div po_divშიზოფრენია'><input id = 'po_fasi_შიზოფრენია'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_შიზოფრენია'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_შიზოფრენია' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>შიზოფრენია</div><div class = 'select_point_button'><div id = 'select_point_button_img_შიზოფრენია' class = 'select_point_button_img select_point_button_img_შიზოფრენია'></div></div></div><div id = 'po_divდამოკიდებულებები' class = 'po_div po_divდამოკიდებულებები'><input id = 'po_fasi_დამოკიდებულებები'  maxlength='10' placeholder = 'თანხა($)' class = 'po_fasi'><input id = 'po_time_დამოკიდებულებები'  maxlength='3' placeholder = 'დღე' class = 'po_time' value = ''><input id = 'po_points_დამოკიდებულებები' class = 'po_points' maxlength='3' value = '10'><div class = 'po_name'>დამოკიდებულებები</div><div class = 'select_point_button'><div id = 'select_point_button_img_დამოკიდებულებები' class = 'select_point_button_img select_point_button_img_დამოკიდებულებები'></div></div></div> -->
+                    {{unselected_points_divs}}
+                </div>
+
+            </div>
+
+            <div id = "dakveta_info_div">
+                <div id = "jamuri_info_pd" >
+                    <div id = "service_jamfasi">ჯამური ფასი : <span id = "service_jamfasi_sp" style="color:green">$<span id = "service_fasi_val">{{service_minfasi}}</span></span></div>
+                    <div id = "service_jamdro">ჯამური დრო : <span id = "service_dro_val">{{service_dro}}</span> დღე</div>
+                </div>
+                
+                <div id = "dakveta_btn"><span id = "dakveta_btn_txtspan">დაკვეთა</span></div><br>
+
+                <div id = "clientebi_label"> {{ragaceebs}}   კლიენტები : <span id = "clientebi_label_sp">{{service_current_clients}}/{{service_max_clients}}</span></div>
+
+            </div>
+
+<!-- <div class = "soc_media_sharebtn" id = "socmedia_copy"></div>
+<div class = "soc_media_sharebtn" id = "socmedia_facebook"></div>
+<div class = "soc_media_sharebtn" id = "socmedia_twitter"></div>
+<div class = "soc_media_sharebtn" id = "socmedia_linkedin"></div> -->
+
+<!-- copy link -->
+<!-- https://www.facebook.com/sharer/sharer.php?u=https:// -->
+<!-- https://twitter.com/intent/tweet?url=https%3A%2F%2Fwrk.ge%2FygHsoJ&text=%E1%83%A4%E1%83%90%E1%83%A0%E1%83%9B%E1%83%90%E1%83%AA%E1%83%94%E1%83%95%E1%83%A2%E1%83%98%20-%20%E1%83%9B%E1%83%AA%E1%83%AE%E1%83%94%E1%83%97%E1%83%90%20-%20Awork.ge -->
+<!-- https://www.linkedin.com/sharing/share-offsite/?url=https://sfero.ge/ka/job/1721 -->
+
+            <script src = "/static/socket.io.js"></script>
+            <script src = "/static/jquery.js"></script>
+            
+            <script src = "/static/logged_navbar.js"></script>
+
+            <script>
+                var services_mine = "{{services_mine}}";
+
+                var straidi = "{{straidi}}";
+
+                var service_suratebi = {{service_suratebi_ls}};
+                var service_suratebi_els = [];
+            
+            var dakveta_btn_txtspan  = document.getElementById("dakveta_btn_txtspan");
+
+            function servisis_dakveta(){
+                status_update_socket.emit("notification",data={
+                    "type" : "notification",
+                    "type_type" : "dakveta",
+                    "user" : "{{servisebi_user_id}}",
+                    "ordered_service_id" : window.location.href.split("/")[4],
+                    "points_ls_names" : JSON.stringify(points_ls_names),
+                    "fasi" : document.getElementById("service_fasi_val").innerText,
+                    "dro" :  document.getElementById("service_dro_val").innerText
+
+
+                    // "not_surat_link" : document.getElementById("not_surat_link").value,
+                    // "not_text" : document.getElementById("not_text").value,
+                    // "not_link" : document.getElementById("not_link").value
+                
+                })
+            }
+
+            
+            var dakveta_info_div = document.getElementById("dakveta_info_div")
+            function chargrade(el,direction,bg="rgb(239, 232, 232)"){
+
+                let aidi = el.id.split("_")[4];
+                let cur_cifri = parseInt(el.getAttribute("value"));
+                // el.innerHTML = "";
+                // let mid = document.createElement("span");
+
+                let mid = document.getElementById(`mid_${aidi}`);
+                mid.innerText = cur_cifri;
+                console.log(mid)
+                mid.style.top = "50%";
+                mid.style.left = "50%";
+                
+                mid.style.transform = "translate(-50%,-50%)";
+
+
+
+
+                let zemota_p = document.createElement("span");
+                let qvemota_p =  document.createElement("span");
+
+                let zemota = document.createElement("span");
+                let qvemota =  document.createElement("span");
+
+                
+
+                zemota_p.style.position = "absolute";
+                qvemota_p.style.position = "absolute";
+                mid.style.position = "absolute";
+                
+                // zemota_p.style.zIndex = "3";
+                // qvemota_p.style.zIndex = "3";
+
+                zemota.style.zIndex = "-1";
+                qvemota.style.zIndex = "-1";
+                mid.style.zIndex = "3";
+                
+
+                zemota.style.position = "absolute";
+                qvemota.style.position = "absolute";
+
+                
+
+                zemota.style.top = "50%";
+
+                
+                
+                zemota.style.transform = "translate(-50%,-50%)";
+
+                qvemota.style.top = "50%";
+                
+                
+                qvemota.style.transform = "translate(-50%,-50%)";
+
+                let pleft = "0px";
+
+                zemota_p.style.top = "-50%";
+                zemota_p.style.left = pleft;
+                
+                // zemota_p.style.transform = "translate(-50%,-50%)";
+
+                qvemota_p.style.top = "150%";
+                qvemota_p.style.left =pleft;
+
+                
+                
+                // qvemota_p.style.transform = "translate(-50%,-50%)";
+
+
+                zemota_p.style.backgroundColor = "rgb(239, 232, 232)";
+                qvemota_p.style.backgroundColor = "rgb(239, 232, 232)";
+                
+
+                // zemota_p.style.padding = "padding: 2px 8px 2px 8px";
+                // qvemota_p.style.padding = "padding: 2px 8px 2px 8px";
+                
+                let psigan = dakveta_info_div.getBoundingClientRect().width-2 + "px";
+                zemota_p.style.width = psigan;
+                qvemota_p.style.width = psigan;
+
+                // zemota_p.style.width = "50px";
+                // qvemota_p.style.width = "50px";
+                
+
+                zemota_p.style.height = "20px";
+                qvemota_p.style.height = "20px";
+                
+
+                
+
+                // let midstailtopi = 50;
+                
+
+                dakveta_info_div.append(zemota_p)
+                // el.parentNode.append(zemota_p)
+                el.append(mid)
+                // el.parentNode.append(qvemota_p)
+                dakveta_info_div.append(qvemota_p)
+
+                zemota_p.append(zemota)
+                qvemota_p.append(qvemota)
+
+                zemota_p.style.top = (el.getBoundingClientRect().top- zemota_p.getBoundingClientRect().height -  dakveta_info_div.getBoundingClientRect().top -1) + "px";
+                qvemota_p.style.top = (el.getBoundingClientRect().top -  dakveta_info_div.getBoundingClientRect().top + document.getElementsByClassName("clientebi_label_sp_digit")[0].getBoundingClientRect().height-1) + "px";
+                
+                let cleft = el.getBoundingClientRect().left + (el.getBoundingClientRect().width/2) - dakveta_info_div.getBoundingClientRect().left + "px";
+                zemota.style.left = cleft;
+                qvemota.style.left = cleft;
+
+
+                // let midstailtopi =  el.getBoundingClientRect().height/2;
+                // let zesxvaoba = el.getBoundingClientRect().y - zemota.getBoundingClientRect().y;
+
+
+                
+
+                if(direction == "up"){
+                    let midstailtopi =  el.getBoundingClientRect().height/2;
+                    let midstailtopi_acc = 0.1; 
+                    
+                    
+                    
+                    let zesxvaoba = el.getBoundingClientRect().y - zemota.getBoundingClientRect().y;
+                    let last_cordmid = (zemota.getBoundingClientRect().top - zemota.parentNode.getBoundingClientRect().top ) + zesxvaoba + el.getBoundingClientRect().height/2; 
+                    if(cur_cifri == 9){
+                        zemota.innerText = 0;
+
+                    }
+                    else{
+                        zemota.innerText = parseInt(mid.innerText) + 1;
+
+                        
+
+                        
+                    }
+
+                    el.setAttribute("value",zemota.innerText);
+                    zemota.id = `mid_${aidi}`;
+                    mid.className = "qvemota";
+
+                    let qvemotebi = [];
+                    for(let i of document.getElementsByClassName("qvemota")){
+                        if(i.id.split("_")[1] == aidi){
+                            qvemotebi.push(i)
+                        }
+                        
+                    }
+                    for(let i of qvemotebi){
+                        i.id = ``;
+                    }
+                    
+                    if(qvemotebi.length > 0){
+                        qvemotebi[qvemotebi.length-1].id = `qvemota_${aidi}`
+                    }
+                    
+                    // chargrade_anim(mid,zemota,"up")
+                    let chargrade_inter = setInterval(function chargrade_anim(){
+                        if(mid.getBoundingClientRect().top <= (el.getBoundingClientRect().top + el.getBoundingClientRect().height)){
+
+                        
+                            midstailtopi+=midstailtopi_acc;
+                            midstailtopi_acc+=0.005;
+                            mid.style.top = midstailtopi + "px";
+
+                            zemota.style.top  = (midstailtopi - zesxvaoba + (zemota.getBoundingClientRect().height/2)) + "px";
+                        }
+                        else{
+                            zemota.style.top  = last_cordmid + "px";
+                            clearInterval(chargrade_inter);
+                        }
+                        
+
+                    }
+            ,1)
+                }
+                else if(direction = "down"){
+                    let midstailtopi =  el.getBoundingClientRect().height/2;
+                    let midstailtopi_acc = -0.1;
+
+
+
+                    let zesxvaoba =  qvemota.getBoundingClientRect().y - el.getBoundingClientRect().y;
+                    if(cur_cifri == 0){
+                        qvemota.innerText = 9;
+                    }
+                    else{
+                        qvemota.innerText = parseInt(mid.innerText)-1;
+                        
+                    }
+                    el.setAttribute("value",qvemota.innerText)
+
+                    qvemota.id = `mid_${aidi}`;
+                    mid.className = "zemota";
+
+                    let zv_midtop = mid.getBoundingClientRect().top;
+
+                    let zemotebi = [];
+                    for(let i of document.getElementsByClassName("zemota")){
+                        if(i.id.split("_")[1] == aidi){
+                            zemotebi.push(i)
+                        }
+                        
+                    }
+                    for(let i of zemotebi){
+                        i.id = ``;
+                    }
+                    
+                    if(zemotebi.length > 0){
+                        zemotebi[zemotebi.length-1].id = `zemota_${aidi}`
+                    }
+                    let chargrade_inter = setInterval(function chargrade_anim(){
+                        // if(true){
+                        // if(mid.getBoundingClientRect().top <= (el.getBoundingClientRect().top + el.getBoundingClientRect().height)){
+                        if(qvemota.getBoundingClientRect().top >= zv_midtop ){
+
+                        
+                            midstailtopi+=midstailtopi_acc;
+                            midstailtopi_acc+=-0.005;
+                            mid.style.top = midstailtopi + "px";
+
+                            // qvemota.style.top  = (midstailtopi + zesxvaoba + (qvemota.getBoundingClientRect().height/2)) + "px";
+                            qvemota.style.top  = (midstailtopi) + "px"
+                        }
+                        else{
+                            // zemota.style.top  = last_cordmid + "px";
+                            clearInterval(chargrade_inter);
+                        }
+                        
+
+                    }
+            ,1)
+                }
+
+                
+
+
+
+
+                // zemota_p.style.left = ((zemota_p.parentNode.getBoundingClientRect().width/2) - zemota_p.getBoundingClientRect().width/2) + "px"
+                // zemota_p.style.top = -zemota_p.getBoundingClientRect().height-1 + "px";
+
+                // qvemota_p.style.left = ((qvemota_p.parentNode.getBoundingClientRect().width/2) - qvemota_p.getBoundingClientRect().width/2) + "px"
+                // qvemota_p.style.top = qvemota_p.parentNode.getBoundingClientRect().height + "px";
+
+                
+                
+                
+                
+            }
+            function sreversed(ls){
+                let newls = "";
+                let x = ls.length-1;
+                while(x >= 0){
+                    newls+= ls[x]
+                    x+=-1;
+                }
+                return newls;
+            }
+            function lreversed(ls){
+                let newls = [];
+                let x = ls.length-1;
+                while(x >= 0){
+                    newls.push(ls[x])
+                    x+=-1;
+                }
+                return newls;
+            }
+
+            function CountGrade(dir){
+                let ls = lreversed(document.getElementsByClassName("clientebi_label_sp_digit"));
+                // for(let i of ls){
+                let x = ls.length-1;
+                
+                let i = document.getElementById(`clientebi_label_sp_digit_${x}`);
+
+                let yvela_nulia;
+                let yvela_cxraa;
+
+                yvela_nulia = true;
+                yvela_cxraa = true;
+                for(let i of ls){
+                    if(parseInt(i.getAttribute("value")) != 0 ){
+                        yvela_nulia = false;
+                    }
+                    if(parseInt(i.getAttribute("value")) != 9 ){
+                        yvela_cxraa = false;
+                    }   
+
+                }
+
+                if(dir == "up"){
+                    if(yvela_cxraa == false){
+                        while(parseInt(i.getAttribute("value")) == 9){
+                            chargrade(i,"up")
+
+
+
+                            x+=-1;
+
+                            i = document.getElementById(`clientebi_label_sp_digit_${x}`)
+                        }
+                        chargrade(i,"up")
+                    }
+                        
+                }
+                else if(dir == "down"){
+                    if(yvela_nulia == false){
+                       while(parseInt(i.getAttribute("value")) == 0){
+
+                            chargrade(i,"down")
+
+
+
+                            x+=-1;
+
+                            i = document.getElementById(`clientebi_label_sp_digit_${x}`)
+                        }
+                        chargrade(i,"down") 
+                    }
+                        
+                }
+                    
+            }
+
+            dakveta_btn.onclick = servisis_dakveta;
+            var angarishi =  document.getElementById("angarishi");
+            var angarishi_raod = parseFloat("{{fuli}}");
+
+            var clientebi_label_sp = document.getElementById("clientebi_label_sp");
+
+            var clientebi_label_cur = parseInt(clientebi_label_sp.innerText.split("/")[0]);
+
+            var clientebi_label_max = parseInt(clientebi_label_sp.innerText.split("/")[1]);
+
+            if(clientebi_label_cur >= clientebi_label_max){ //limit
+                clientebi_label_sp.style.color = "#FF0000";
+                dakveta_btn.style.opacity = "0.5"
+                dakveta_btn.onclick = function(){
+                    // erori
+                }
+            }
+            else if(angarishi_raod < parseFloat(document.getElementById("service_fasi_val").innerText) ){
+                dakveta_btn.style.opacity = "0.5"
+                dakveta_btn.onclick = function(){
+                    // erori
+                }
+
+            }
+            else if("{{servisebi_user_id}}" == straidi){
+                dakveta_btn.style.opacity = "0.5";
+                
+            }
+            
+
+            function servisis_dakvetabtn_intf(){
+                if(clientebi_label_cur >= clientebi_label_max){ //limit
+                    clientebi_label_sp.style.color = "#FF0000";
+                    dakveta_btn.style.opacity = "0.5";
+                    dakveta_btn.style.cursor = "default";
+                    
+                    dakveta_btn.onclick = function(){
+                        // erori
+                    }
+                }
+                else if(angarishi_raod < parseFloat(document.getElementById("service_fasi_val").innerText) ){
+                    dakveta_btn.style.opacity = "0.5";
+                    dakveta_btn.style.cursor = "default";
+                    dakveta_btn.onclick = function(){
+                        // erori
+                    }
+
+                }
+                else if("{{servisebi_user_id}}" == straidi){
+                    // alert("vendedu")
+                    dakveta_btn.style.opacity = "0.5";
+                    dakveta_btn.style.cursor = "default";
+                    dakveta_btn.onclick = function(){
+                        // erori
+                    }
+                
+                }
+                else{ //enable
+                    clientebi_label_sp.style.color = "#000000";
+                    dakveta_btn.style.opacity = "1"
+                    dakveta_btn.onclick = servisis_dakveta;
+
+
+                }
+            }
+            setInterval(servisis_dakvetabtn_intf,1)
+            
+
+            
+
+            
+
+
+            var socmedia_copy = document.getElementById("socmedia_copy");
+            var socmedia_facebook = document.getElementById("socmedia_facebook");
+            var socmedia_twitter = document.getElementById("socmedia_twitter");
+            var socmedia_linkedin = document.getElementById("socmedia_linkedin");
+
+            socmedia_copy.status = "ended";
+
+            
+
+
+            var sublink = "{{domen}}/service/{{service_id}}";
+
+
+            function gamotvla(){
+
+                let dawy_fasi = parseFloat("{{service_minfasi}}");
+
+                let dawy_dro = "{{service_dro}}";
+
+
+
+
+
+
+                if( dawy_fasi.split(" ").length  < 2 && dawy_fasi != ""){
+                    
+                    var jam_fasi = (parseFloat(dawy_fasi))+"";
+                }
+                else{
+                    
+                    var jam_fasi = "";
+                }
+
+                if( dawy_dro.split(" ").length  < 2 && dawy_dro != ""){
+                    var jam_dro= (parseFloat(dawy_dro)) + "";
+                }
+                else{
+                    var jam_dro = "";
+                }
+
+
+                for(let i of points_ls){
+                    jam_fasi = (parseFloat(jam_fasi) + parseFloat(i["fasi"].split("$")[0]))+"";
+                    jam_dro = (parseFloat(jam_dro) + parseFloat(i["dro"])) + "";
+                }
+
+
+
+                if( jam_fasi.split(" ").length > 1 || jam_fasi+"" == "Nan"){
+                    net_fasi_sp.innerHTML = "0$";
+                    net_fasi_vl = "0";
+                }
+                else{
+                    net_fasi_sp.innerHTML = jam_fasi + "$";
+
+                    net_fasi_vl = jam_fasi + "";
+                }
+
+                if(jam_dro == "" || jam_dro.split(" ").length > 1){
+                    net_dro_sp.innerHTML = "";
+                    net_dro_vl = "";
+                }
+                else{
+                    net_dro_sp.innerHTML = jam_dro + " დღე";
+                    net_dro_vl = jam_dro + "";
+                }
+
+
+                }
+
+                function chamochrili_fasi(){
+                //თქვენი თანხა : <span style="color:green;" id = "net_fee_fasi_sp"></span>
+                //net_fee_fasi
+                let fwval = net_fasi_sp.innerHTML.split("$")[0];
+
+                if(fwval != "0" && fwval != ""){
+                    let fval =  (fwval * 0.8) + "$" + "<span style='color:red; font-size:12px'>-20%</span>";
+                    net_fee_fasi.innerHTML = 'თქვენი თანხა : <span style="color:green;" id = "net_fee_fasi_sp">'+ fval +'</span>'
+                }
+                else{
+                    net_fee_fasi.innerHTML = "";
+                }
+                }
+            // setInterval(gamotvla,1);
+
+            socmedia_copy.onclick = function(){
+                navigator.clipboard.writeText(window.location.href)
+                socmedia_copy.style.backgroundColor = "#000000";
+                socmedia_copy.style.backgroundImage = `url("/static/copyed_sym.png")`;
+                
+            }
+            socmedia_facebook.onclick = function(){
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${sublink}`)
+                
+            }
+            socmedia_twitter.onclick = function(){
+                window.open(`https://twitter.com/intent/tweet?url=${sublink}`)
+            }
+            socmedia_linkedin.onclick = function(){
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${sublink}`)
+            }
+        
+            
+            
+            
+
+            var share_btn_canvas = document.getElementById("share_btn_canvas");
+
+            var service_share_btn = document.getElementById("service_share_btn");
+            service_share_btn.status = "closed"
+
+            var service_share_div = document.getElementById("service_share_div");
+            var soc_media_btns_divlist = document.getElementById("soc_media_btns_divlist")
+
+            
+
+            var share_divclose_ls = [service_share_btn,share_btn_canvas,service_share_div,soc_media_btns_divlist]
+
+            var close_sharediv_inter_opac;
+            var close_sharediv_inter;
+            function close_sharediv(){
+                console.log(close_sharediv_inter_opac)
+                if(close_sharediv_inter_opac > 0){
+                    close_sharediv_inter_opac+=-0.02;
+                    service_share_div.style.opacity =close_sharediv_inter_opac+"";
+                }
+                else{
+                    close_sharediv_inter_opac = "0";
+                    service_share_btn.status = "closed";
+                    socmedia_copy.style.backgroundImage = `url("/static/copy_sym.png")`;
+                    clearInterval(close_sharediv_inter);
+
+                }
+            }
+            function close_sharediv_intf(){
+                if(service_share_btn.status == "open"){
+                    close_sharediv_inter_opac = 1;
+                close_sharediv_inter = setInterval(close_sharediv,1);
+                }
+                
+                
+            }
+
+            service_share_btn.onclick = function(e){
+                if(service_share_btn.status == "closed"){
+
+                    service_share_div.style.opacity = "1";
+                    service_share_btn.status = "open";
+                }
+                else if(service_share_btn.status == "open"){
+                    if(share_divclose_ls.includes(e.target) == false || e.target == service_share_btn){
+                        // service_share_div.style.opacity = "0";
+                        close_sharediv_intf()
+                        service_share_btn.status = "closed";
+                    }
+                    
+                }
+                
+            }
+
+            document.body.addEventListener("click",function(e){
+
+                // if(e.target != service_share_btn && e.target != share_btn_canvas && e.target != service_share_div && e.target != soc_media_btns_divlist && e.target != share_btn_canvas){
+                
+                    if(share_divclose_ls.includes(e.target) == false){
+                        // service_share_div.style.opacity = "0";
+                        close_sharediv_intf()
+                        service_share_btn.status = "closed"; 
+                }
+                
+            })
+
+            share_btn_canvas.width = share_btn_canvas.parentNode.getBoundingClientRect().width * (20/100); //"20"
+            // share_btn_canvas.height = share_btn_canvas.parentNode.getBoundingClientRect().height * (20/100); //"20";
+            share_btn_canvas.height = share_btn_canvas.parentNode.getBoundingClientRect().top- (service_share_btn.getBoundingClientRect().top + service_share_btn.getBoundingClientRect().height) //"20";
+
+            var ctx = share_btn_canvas.getContext("2d");
+            
+            // ctx.moveTo(share_btn_canvas.getBoundingClientRect().width/2,0);
+            // ctx.lineTo(share_btn_canvas.getBoundingClientRect().width,share_btn_canvas.getBoundingClientRect().height);
+            // ctx.stroke();
+
+
+            // ctx.moveTo(share_btn_canvas.getBoundingClientRect().width/2,0);
+            // ctx.lineTo(0,share_btn_canvas.getBoundingClientRect().height);
+            // ctx.stroke();
+            ctx.fillStyle = "white"
+
+
+            ctx.moveTo(share_btn_canvas.getBoundingClientRect().width/2,0);
+            ctx.lineTo(share_btn_canvas.getBoundingClientRect().width,share_btn_canvas.getBoundingClientRect().height);
+            ctx.lineTo(0,share_btn_canvas.getBoundingClientRect().height)
+            ctx.lineTo(share_btn_canvas.getBoundingClientRect().width/2,0)
+
+
+            ctx.stroke();
+            ctx.fill()
+
+
+
+
+
+            var points_ls = [];
+            var points_ls_names = [];
+
+            
+            var unselected_points_data = [{"name": "\u10e8\u10e4\u10dd\u10d7\u10d5\u10d8\u10e1 \u10d3\u10d8\u10e1\u10dd\u10e0\u10d3\u10d4\u10e0\u10d8", "points": "10"}, {"name": "\u10d3\u10d4\u10de\u10e0\u10d4\u10e1\u10d8\u10d0", "points": "10"}, {"name": "\u10ee\u10d0\u10e1\u10d8\u10d0\u10d7\u10d8\u10e1 \u10d3\u10d8\u10e1\u10dd\u10e0\u10d3\u10d4\u10e0\u10d8", "points": "10"}, {"name": "\u10e1\u10e2\u10e0\u10d4\u10e1\u10d8\u10e1 \u10db\u10d0\u10e0\u10d7\u10d5\u10d0", "points": "10"}, {"name": "\u10d1\u10d8\u10de\u10dd\u10da\u10d0\u10e0\u10e3\u10da\u10d8 \u10d3\u10d8\u10e1\u10dd\u10e0\u10d3\u10d4\u10e0\u10d8", "points": "10"}, {"name": "\u10e2\u10e0\u10d0\u10db\u10d5\u10e3\u10da\u10d8 \u10e1\u10e2\u10e0\u10d4\u10e1\u10d8\u10e1 \u10d3\u10d8\u10e1\u10dd\u10e0\u10d3\u10d4\u10e0\u10d8", "points": "10"}, {"name": "ADHD", "points": "10"}, {"name": "\u10d0\u10dc\u10e2\u10d8\u10e1\u10dd\u10ea\u10d8\u10d0\u10da\u10e3\u10e0\u10d8 \u10d3\u10d8\u10e1\u10dd\u10e0\u10d3\u10d4\u10e0\u10d8", "points": "10"}, {"name": "\u10e8\u10d8\u10d6\u10dd\u10e4\u10e0\u10d4\u10dc\u10d8\u10d0", "points": "10"}, {"name": "\u10d3\u10d0\u10db\u10dd\u10d9\u10d8\u10d3\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d4\u10d1\u10d8", "points": "10"}];
+            
+            
+
+            var unselected_points = document.getElementById("unselected_points");
+            var selected_points = document.getElementById("selected_points");
+
+            var add_btns = document.getElementsByClassName("select_point_button_img");
+
+            
+
+            for(let i of add_btns){
+                let mtavari = i.parentNode.parentNode;
+                let saxeli = i.id.split("img_")[1];
+                let po_time = document.getElementById("po_time_" + saxeli);
+                let po_fasi = document.getElementById("po_fasi_" + saxeli);
+                // let po_points = document.getElementById("po_points_" + saxeli);
+
+                // po_points.setAttribute("disabled","");
+                function ireturn(){
+                    
+                    if(po_fasi.value != "0$"){
+                        po_fasi.value = po_fasi.value;
+                    }
+                    else{
+                        po_fasi.value = "";
+                    }
+                    if(po_time.value == "0"){
+                        po_time.value = "";
+                    }
+                    
+                    
+                    // po_time.setAttribute("disabled",false);
+                    // po_fasi.setAttribute("disabled",false);
+                    po_time.disabled = false;
+                    po_fasi.disabled = false;
+
+                    selected_points.removeChild(mtavari);
+
+                    
+                    
+                    unselected_points.append(mtavari);
+                    
+                    
+                    // points_ls.splice(points_ls.indexOf({"name" :saxeli,"points" : po_points.value,"dro" :po_time.value,"fasi" : po_fasi.value.split("$")[0] }),1)
+                    
+                    
+                    
+                    points_ls.splice(points_ls_names.indexOf(saxeli),1)
+                    points_ls_names.splice(points_ls_names.indexOf(saxeli),1)
+                    
+                    
+                    i.style.backgroundImage = "url('/static/plus.jpg')";
+                    i.removeEventListener("click",ireturn);
+                    i.addEventListener("click",iclick);
+                    
+                    
+
+
+                }
+                function iclick(){
+                    if(po_fasi.value != ""){
+                        po_fasi.value = po_fasi.value + "$";
+                    }
+                    else{
+                        po_fasi.value = "0$";
+                    }
+                    if(po_time.value == ""){
+                        po_time.value = "0";
+                    }
+                    
+                    po_time.setAttribute("disabled","");
+                    po_fasi.setAttribute("disabled","");
+
+                    
+
+                    
+                    
+                    unselected_points.removeChild(mtavari);
+                    
+                    i.style.backgroundImage = "url('/static/minus.jpg')";
+                    selected_points.append(mtavari);
+                    points_ls.push({"name" :saxeli,"dro" :po_time.value,"fasi" : po_fasi.value.split("$")[0] }); 
+                    points_ls_names.push(saxeli); 
+
+
+                    i.removeEventListener("click",iclick);
+                    
+                    i.addEventListener("click",ireturn)
+                
+                }
+                i.addEventListener("click",iclick);
+            }
+
+
+
+
+
+            status_update_socket.addEventListener("connect",function(){
+                status_update_socket.emit("join_serviceinfo_room",data={"c_user" : kuki.c_user, "xs" : kuki.xs ,"service_id" : window.location.href.split("/")[4]})
+            
+            })
+            status_update_socket.on("message",function(dat){
+                let data = JSON.parse(dat);
+
+                if(data["type"] == "service_count_update"){
+                    CountGrade(data["count_dir"])
+                }
+            })
+            
+
+                status_update_socket.on("message",function(dat){
+                    data = JSON.parse(dat);
+                    if(data["type"] == "start_chat"){
+                        if(data["starter_id"] == straidi){
+                            console.log("starting redirecting.....")
+                            window.location.href = "/messenger/" + data["chat_aidi"]
+                        }
+                    }
+                    else if(data["type"] == "orders_countgrade"){
+                        let orders_countgrade_type = data["orders_countgrade_type"];
+
+                    }
+                })
+
+                var service_head_img = document.getElementById("service_head_img");
+
+                for(let i of service_suratebi){
+                    let el = document.createElement("div");
+                    el.style.backgroundImage = `url(/static/services/${i})`;
+                    el.className = "service_head_img_child";
+                    service_head_img.append(el);
+                    service_suratebi_els.push(el);
+                }
+                var left_img_slider = document.getElementById("left_img_slider");
+                var right_img_slider = document.getElementById("right_img_slider");
+                service_suratebi_els[0].style.left = "50%";
+                if(left_img_slider != undefined && right_img_slider != undefined){
+                    service_suratebi_els[1].style.left = "150%";
+                    service_suratebi_els[service_suratebi_els.length-1].style.left = "-50%";
+
+                }
+                
+                if(services_mine == "true"){
+                    document.getElementById("service_contact_btn").onclick = function(){
+                        window.location.href = `/create_new_service?num=1&service=${window.location.href.split("/")[4]}`;
+                    }
+                }
+                else{
+                    document.getElementById("service_contact_btn").onclick = function(){
+                        status_update_socket.emit("start_chat",data={"c_user" : kuki.c_user, "xs" : kuki.xs ,"aidi" : "{{servisebi_user_id}}","name" : "{{servisebi_user_saxeli}}"})
+                    }
+                }
+                
+                var current_service_head_img_index = 0;
+                
+
+                
+                document.getElementById("user_info").onclick = function(){
+                    window.location.href = "/{{servisebi_user_username}}";
+                }
+
+                if(left_img_slider != undefined && right_img_slider != undefined){ //if more than one pictures
+                    document.getElementById("right_img_slider").style.left = document.getElementById("service_head_img").getBoundingClientRect().left + document.getElementById("service_head_img").getBoundingClientRect().width + "px";
+
+                    left_img_slider.onclick = function(){
+                        if(current_service_head_img_index <= 0){
+                            current_service_head_img_index = service_suratebi.length-1
+                        }   
+                        else{
+                            current_service_head_img_index+=-1;
+                        }
+                        
+                        // let wina_img  = current_service_head_img_index + 1;;
+                        let wina_img;
+                        if(current_service_head_img_index+1 >= service_suratebi_els.length){
+                            wina_img = 0;
+                        }
+                        else{
+                            wina_img  = current_service_head_img_index + 1;
+                        }
+                        // if(current_service_head_img_index+1 <= 0){
+                        //     wina_img = service_suratebi_els.length-1
+                        // }
+                        // else{
+                        //     wina_img = current_service_head_img_index+1
+                        // }
+                        // let current_img_x = 50;
+                        // let wina_img_x = 150;
+                        let current_img_x = -50;
+                        let wina_img_x = 50;
+
+                        let x_velo =2
+                        function img_slide_to_right(){
+                            
+                            if(current_img_x <= 50 && wina_img_x <= 150){
+                                service_suratebi_els[current_service_head_img_index].style.left=current_img_x+"%";
+                                service_suratebi_els[wina_img].style.left= wina_img_x+"%";
+
+                                current_img_x+=x_velo;
+                                wina_img_x+=x_velo;
+
+                                
+                            }
+                            else{
+                                service_suratebi_els[current_service_head_img_index].style.left=50+"%";
+                                service_suratebi_els[wina_img].style.left= 150+"%";
+                                clearInterval(img_slide_to_right_inte);
+                                
+                            }
+                                    
+
+
+                            
+                            }
+                        let img_slide_to_right_inte =  setInterval(img_slide_to_right,1)
+                        // service_head_img.style.backgroundImage = `url(/static/services/${service_suratebi[current_service_head_img_index]})`;
+                    }
+                    right_img_slider.onclick = function(){
+                        if(current_service_head_img_index >= service_suratebi.length-1){
+                            current_service_head_img_index = 0;
+                        }
+                        else{
+                            current_service_head_img_index+=1;
+                        }
+
+                        
+                        let ukana_img;
+                        // let ukana_img = current_service_head_img_index-1;
+                        if(current_service_head_img_index <= 0){
+                            ukana_img = service_suratebi.length-1
+                        }
+                        else{
+                            ukana_img = current_service_head_img_index-1;
+                        }
+                        
+                        // let current_img_x = 50;
+                        // let ukana_img_x = -50;
+                        let current_img_x = 150;
+                        let ukana_img_x = 50;
+
+                        let x_velo =-2
+                        function img_slide_to_left(){
+                            console.log(ukana_img_x +" , " + current_img_x)
+                            if(current_img_x >= 50 && ukana_img_x >= -50){
+                            // if(true){
+
+                                service_suratebi_els[ukana_img].style.left = ukana_img_x +"%";
+                                service_suratebi_els[current_service_head_img_index].style.left = current_img_x +"%";
+
+                                current_img_x+=x_velo;
+                                ukana_img_x+=x_velo
+
+                            }
+                            else{
+                                console.log("clearing..")
+                                service_suratebi_els[ukana_img].style.left="-50%";
+                                service_suratebi_els[current_service_head_img_index].style.left="50%";
+                                clearInterval(img_slide_to_left_inte);
+                            }
+                            
+                        }
+                        let img_slide_to_left_inte =  setInterval(img_slide_to_left,1)  
+                        
+                        
+
+                        
+                        
+                        // service_head_img.style.backgroundImage = `url(/static/services/${service_suratebi[current_service_head_img_index]})`;
+                    }
+
+
+                }           
+
+
+
+            </script>
+ 
+
+
+        
+            
+
+            
+
+        
+    </body>
+</html>

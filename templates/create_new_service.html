@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | სერვისის შექმნა</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+        </style>
+        <style>
+           
+                
+
+                    #main{
+                        position:absolute;
+                        width:70%;
+                        
+                        /* height: {{main_info_div_simagle}}%; */
+                        height:70%;
+                        top:20%;
+                        left:50%;
+                        transform:translateX(-50%);
+                        background-color:rgb(239, 232, 232);
+                        border:1px solid black;
+                        border-radius:5px;
+                    }
+                    .element_row{
+                        position:relative;
+                        width:100%;
+                        height:20%;
+                        /* display: flex;9 */
+                        justify-content: space-around;
+                        /* background-color: red; */
+                        display: -webkit-box;
+                        border:1px solid black;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: start;
+                        -ms-flex-align: start;
+                        align-items: flex-start;
+                        position: relative;
+                    }
+                    #satauri_input{
+                        resize:none;
+                        position:absolute;
+                        top:30%;
+                        left:45%;
+                        width:50%;
+                        height:16%;
+                        padding:4px;
+                        /* transform:translateX(-50%); */
+                        transform:translateY(-50%);
+                        font-size:30px;
+                        
+                    }
+                    #satauri_agwera{
+                        position:absolute;
+                        /* font-size:20px; */
+                        left:5%;
+                        top:30%;
+                        transform:translateY(-50%);
+                        
+                    }
+                    #sfero_agwera{
+                        position:absolute;
+                        top:50%;
+                        left:5%;
+                        transform:translate(0%,-25%);
+                    }
+
+
+                    #tab_parent{
+
+                        position:relative;
+                        left:0%;
+                        top:0%;
+                        width:100%;
+                        height:70px;
+                        margin:0;
+                        padding:0;
+                        background-color:rgb(40, 42, 42);
+                        border-radius:5px 5px 0px 0px;  
+                        display: flex;
+                        justify-content: space-around;
+                        
+                        border:none;
+
+                    }
+                    .nav_tab{
+                        background-color:rgb(70, 81, 81);;
+                        position:relative;
+                        height:70%;
+                        width:140px;
+                        text-align: center;
+                        line-height: 50px;
+                        top:100%;
+                        transform:translateY(-100%);
+                        /* border:none; */
+                        
+                        border-radius:10px 10px 0px 0px;
+                        color:white;
+                        cursor:default;
+                        /* transition:height 0.3s,opacity 0.3s; */
+                    }
+/*                     
+                    .nav_tab:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+                     */
+                    .nav_tab_anim{
+                        cursor:pointer;
+                        transition:height 0.3s,opacity 0.3s;
+                    }
+                    .nav_tab_anim:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+
+                    #desc_and_exp{
+                        line-height:22px;
+                    }
+                    #sheqmna{
+                        position:absolute;
+                        top:90%;
+                        left:90%;
+                        width:15%;
+                        height:6%;
+                        font-size:18px;
+                        border:none;
+                        border-radius:5px;
+                        color:white;
+                        transform:translateX(-50%);
+                        background:linear-gradient(rgb(115, 226, 115),rgb(31, 113, 57));
+                        cursor:pointer;
+                        transition:box-shadow 0.4s, margin-top 0.4s;
+                    }
+                    #sheqmna:hover{
+                        box-shadow:5px 5px 05px grey;
+                        margin-top:-10px;
+                    }
+                    #satauri_agwera{
+                        max-width:40%;
+                        list-style-image:url("static/description_sym.png");
+
+                    }
+                    #sfero_agwera{
+                        max-width:25%;
+                        list-style-image:url("static/bag.png");
+                    }
+                    #tags_agwera{
+                        max-width:40%;
+                        list-style-image: url("static/hash.png");
+                        position:absolute;
+                        left:5%;
+                        top:70%;
+                        transform:translateY(-30%);
+
+                    }
+                    .tag{
+                        transform:scale(0.8,0.8);
+                        
+
+                    }
+                    
+                    
+
+
+                    
+                    
+                    
+                    
+
+
+               
+                
+
+
+                
+        </style>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/style.css">
+
+
+
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function sheqmna(){
+                $.ajax({
+                    data : {
+                        "satauri" : document.getElementById("satauri_input").value,
+                        "sfero" : sfero.value,
+                        "subsfero" : subsfero.value,
+                        "tags" : JSON.stringify(tags)
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/create_new_service_ajax",
+                    success : function(data){
+                        if(data.split(" ").length > 1){
+                            if(data.split(" ")[0] == "success"){
+                                window.location.href = "/create_new_service?num=2&service="+data.split(" ")[1] ;
+                            }
+                        }
+                        
+                    }
+                });
+
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+                
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+ 
+
+                
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li class = "menu_lis" id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li class = "menu_lis" id = "prom_li">პრომოკოდი</li></a>
+                    <li  class = "menu_lis" id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+            <div id = "main">
+                
+                <div id = "tab_parent">
+                    <div id = "general" class = "nav_tab">ძირითადი</div>
+                    <div id = "desc_and_exp"  class = "nav_tab">აღწერა და  გამოცდილება</div>
+                    <!-- <div id = "packets" class = "nav_tab">პაკეტები</div> -->
+                    <div id = "points" class = "nav_tab">ფოინთები</div>
+                    <div id = "files" class = "nav_tab">ფაილები</div>
+
+                    
+                </div>
+                <textarea id = "satauri_input" placeholder="შევქმნი 2D ანიმაციებს"></textarea>
+                <!-- <div  id ="tags_input" ><div id = "submitted_tags"></div><input type="text"  id = "tags_the_input" ></div> -->
+                <div class="container">
+
+                    <div class="tag-container">
+                      <input placeholder="თაგები" id = "tagaidi" />  
+                    </div>
+                    
+                  </div>
+              
+                
+                <ul id = "general_infos_ul">
+                    <li id = "satauri_agwera">
+                        დაწერეთ საინტერესო,მოკლე და მიმზიდველი<br> სათაური(30-80)
+                    </li>
+                    <li id = "sfero_agwera">
+                        აირჩიეთ სერვისის შესაბამისი <br> სფერო და  სუბსფერო
+                    </li>
+                    <li id = "tags_agwera">
+                        შეიყვანეთ შესაფერისი თაგები რათა<br> კლიენტებს გაუმარტივდეთ თქვენი სერვისის პოვნა<br>თაგების მაქსიმალური რაოდენობა არის 5
+                    </li>
+                </ul>
+                <!--                 
+                <div class = "element_row" id = "title_row">
+                    
+
+                        <textarea id  ="satauri_input" type = "text" placeholder="სათაური"></textarea>
+                   
+                    
+                        <p id = "satauri_agwera">დაწერეთ საინტერესო,მოკლე და მიმზიდველი სათაური(30-80)</p>
+                   
+                </div>
+                 -->
+
+                 <button id = "sheqmna">შექმნა</button>
+            </div>
+
+            
+        <script src = "static/MyDropdown.js"></script>
+        <script src = "/static/socket.io.js"></script>
+            <script src = "/static/jquery.js"></script>
+
+        <!-- <script src="static/script.js"></script> -->
+        <script>
+            var straidi = "{{straidi}}";
+        </script>
+        
+        <script>
+                        var sheqmna_btn = document.getElementById("sheqmna");
+            sheqmna_btn.onclick = sheqmna;
+            
+
+            var maindivi = document.getElementById("main");
+
+            var sferoebi = ["მუსიკა/აუდიო","ცხოვრებისეული","წერა და თარგმანი","სოფთვერ დეველოპმენტი","ვიდეო და ანიმირება","ზოგადი ტექნოლოგია","მონაცემები","ციფრული მარკეტინგი","გრაპიკა და დიზაინი"];
+            
+
+
+
+
+
+
+
+
+            var musika_audio = ["პოდკასტის ედითორი","გამხმოვანებელი","პროდუსერი","მომღერალი / ვოკალისტი","აუდიო დიზაინი","სხვა"];
+
+
+            var cxovrebiseuli = ["ონლაინ ასისტენტი","მენტალური ჯანმრთელობა","კულინარიის სწავლება","მოგზაურობა","ფიტნეს მწვრთნელი","პირადი სტილისტი","ურთიერთობების მრჩეველი","სხვა"];
+
+            var wera_targmani = ["თარგმანი","პროდუქტის აღწერა","ტრანსკრიპცია","აუდიოს სუბტიტრირება","არტიკლები და ბლოგ პოსტები","სხვა"];
+
+            var software = ["ვებ დეველოპმენტი","Desktop App დეველოპმენტი","Mobile App დეველოპმენტი","კიბერ უსაფრთხოება","ფრონტ-ენდ დეველოპმენტი","ბექ-ენდ დეველოპმენტი","Quality Assurance","ბოტი/სკრეიპინგი","ვიდეო თამაშების","UI ტესტინგი","სხვა"];
+            
+            var video_da_animireba = ["თამაშის თრეილერი","ვიდეო ედითორი","Intro/Outro","3D ანიმაცია","ვიზუალური ეფქეტები","სხვა"];
+
+            var zogadi_teqnologia = ["სოციალური ქსელის მენეჯერი","Microsoft Excell","კრიპტოვალუტა","გეიმინგი","ელექტრო-ინჟინერი","სხვა"];
+
+            var monac = ["მონაცემთა ბაზები","მონაცემთა მეცნიერება","Machine Learning","A.I","მონაცემთა ანალიტიკა","მონაცემთა ვიზუალაზაცია","სხვა"];
+
+            var marketingi = ["Affiliate მარკეტინგი","სოციალური ქსელის მარკეტინგი","პოდკასტ მარკეტინგი","იმეილ მარკეტინგი","Community-ს მართვა","E-commerce მარკეტინგი","მუსიკის პიარი","სხვა"];
+
+            var graphich_design = ["ლოგო დიზაინი","ვებ დიზაინი","App დიზაინი","UX დიზაინი","NFT","ფოტოშოპი/სურათის ედითინგი","CV დიზაინი","სხვა"];
+
+            
+            var subsferos_arr = {
+                "მუსიკა/აუდიო" : musika_audio,
+                "ცხოვრებისეული" : cxovrebiseuli,
+                "წერა და თარგმანი" : wera_targmani,
+                "სოფთვერ დეველოპმენტი" : software,
+                "ვიდეო და ანიმირება" : video_da_animireba,
+                "ტექნოლოგია" : zogadi_teqnologia,
+                "მონაცემები" : monac,
+                "ციფრული მარკეტინგი" : marketingi,
+                "გრაპიკა და დიზაინი" : graphich_design
+
+
+            }
+
+            
+            sfero = new MyDropdown("აირჩიეთ სპერო",sferoebi,master=maindivi,width=30);
+
+            subsfero = new MyDropdown("აირჩიეთ სუბსფერო",sferoebi,master=maindivi,width=30);
+            // sfero = new MyDropdown("აირჩიეთ სპერო",sferoebi,master=maindivi);
+            
+            sfero.maini.style.transform = "translateX(0%)";
+            sfero.chamosashleli.style.transform = "translateX(0%)";
+
+            subsfero.maini.style.transform = "translateX(0%)";
+            subsfero.chamosashleli.style.transform = "translateX(0%)";
+            sfero.place(30,50);
+
+            // subsfero.place(60,50);
+            subsfero.place(65,50);
+
+
+            subsfero.disable();
+
+            for(let i of sfero.dilementebi){
+                i.addEventListener("click",function(){
+                    // alert(i.innerHTML);
+                    if(true){
+                        // subsfero.place(65,50);
+                        subsfero.enable();
+                    }
+
+                    var subsferos_els = subsferos_arr[i.innerHTML];
+
+                    subsfero.maini.innerHTML = "აირჩიეთ სუბსფერო";
+                    subsfero.setValues(subsferos_els);
+                    // subsfero.setValues(musika_audio);
+
+                });
+            }
+
+            var general = document.getElementById("general");
+            var desc_and_exp = document.getElementById("desc_and_exp");
+            var points = document.getElementById("points");
+            var files = document.getElementById("files");
+
+
+
+            {{dziritadi_scr}}
+
+            {{agwera_da_gamocdileba_scr}}
+
+   
+
+            
+            {{pointebi_src}}
+
+
+            {{files_scr}}
+
+            /*
+            var submitted_tags = document.getElementById("submitted_tags");
+
+            var tags_input = document.getElementById("tags_the_input");
+            tags_input.addEventListener("keyup",function(key){
+                if(key.keyCode == "13"){
+                    
+                    //alert(tags_input.value);
+                    var tagbuton = document.createElement("button");
+                    tagbuton.className = "tagbutton";
+                    console.log(tags_input.value.toUpperCase());
+                    tagbuton.innerHTML = tags_input.value.toUpperCase();
+                    tags_input.value = "";
+                    submitted_tags.append(tagbuton);
+                }
+            })
+            */
+            // tags_input.addEventListener("click",'')
+
+
+            
+
+                        
+
+
+
+           
+        </script>
+        <script src = "static/logged_navbar.js"></script>
+        <script src = "static/script.js"></script>
+
+
+        
+    </body>
+</html>

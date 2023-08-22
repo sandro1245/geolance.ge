@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | რეგისტრაცია</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            
+                #navbar{
+                    position:fixed;
+                    background-color:rgb(8, 130, 112);
+                    width:100%;
+                    height:14%;
+                }
+                #logo{
+                    position:absolute;
+                    width:12%;
+                    height:60%;
+                    top:20%;
+                    left:3%;
+
+                }
+                #signup_div{
+                    background-color:	rgb(127, 123, 123);
+                    position:absolute;
+                    width:50%;
+                    height:65%;
+                    text-align:center;
+                    top:20%;
+                    left:25%;
+                }
+                #tarig_selextebi{
+                    position:relative;
+                    top:10%;
+
+                    width:100%;
+                    display:flex;
+                    justify-content: space-around;
+                }
+                select{
+                    transform:scale(1.5,1.5);
+                    font-size:13px;
+                }
+                #main_btn{
+                    position:absolute;
+                    top:85%;
+                    background-color:rgb(90, 90, 246);
+                    width:20%;
+                    height:8%;
+                    cursor:pointer;
+                    border-radius : 8px 8px;
+                    border:none;
+                    font-size:17px;
+                    left:40%;
+                }
+                #rad_div{
+                    position: relative;
+                    top:50%;
+
+                }
+                #mamril{
+                    position:relative;
+                    margin-right: 200px;
+                    transform:scale(2,2)
+                }
+                #sqesi_heading{
+                    position:relative;
+                    top:37%;
+                }
+
+
+
+                #mdedri{
+                    transform:scale(2,2);
+                }
+                #mdedril{
+                    transform:scale(2,2)
+                }
+
+                #mamri{
+                    transform:scale(2,2);
+                }
+                
+
+
+
+
+        </style>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id = "navbar">
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+        </div>
+        <div id = "signup_div">
+            <h2>დაბადების თარიღი</h2>
+            <div id = "tarig_selextebi" >
+                <!--
+                <select id  = "weliwadi_select">
+                    <option>დაბადების წელი</option>
+                    
+                </select>
+                <select id = "ricxvi_select">
+                    <option>რიცხვი</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                </select>
+                <select id = "tve_select">
+                    <option>თვე</option>
+                    <option>იანვარი</option>
+                    <option>თებერვალი</option>
+                    <option>მარტი</option>
+                    <option>აპრილი</option>
+                    <option>მაისი</option>
+                    <option>ივნისი</option>
+                    <option>ივლისი</option>
+                    <option>აგვისტო</option>
+                    <option>სექტემბერი</option>
+                    <option>ოქტომბერი</option>
+                    <option>ნოემბერი</option>
+                    <option>დეკემბერი</option>
+                    
+                </select>
+                -->
+
+
+
+            </div>
+            <h2 id = "sqesi_heading">სქესი</h2>
+            <div id = "rad_div">
+              
+                <!-- <input style = "display:none" id = "welnpt" type="text" placeholder="weli">
+                <input style = "display:none" id = "ricxvnpt" type="text" placeholder="ricxvi">
+                <input style = "display:none" id = "tvinput" type="text" placeholder="tvee"> -->
+                <input type="radio" id="mamri"  name="sqesi" value="mamri">
+                <label id = "mamril" for="mamri">მამრობითი</label>
+
+                <input  type="radio" id="mdedri" name="sqesi" value="mdedri">
+                <label id = "mdedril" for="mdedri">მდედრობითი</label><br>  
+            
+
+            </div>
+
+            <center><button id ="main_btn">დადასტურება</button></center>
+
+        </div>
+        
+        
+        <script src = "static/eror.js"></script>
+        <script src = "static/MyDropdown.js"></script>
+        <script >
+
+            sxt = document.getElementById("tarig_selextebi");
+
+            var wlebi = ['2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998', '1997', '1996', '1995', '1994', '1993', '1992', '1991', '1990', '1989', '1988', '1987', '1986', '1985', '1984', '1983', '1982', '1981', '1980', '1979', '1978', '1977', '1976', '1975', '1974', '1973', '1972', '1971', '1970', '1969', '1968', '1967', '1966', '1965', '1964', '1963', '1962', '1961', '1960', '1959', '1958', '1957', '1956', '1955', '1954', '1953', '1952', '1951', '1950', '1949', '1948', '1947', '1946', '1945', '1944', '1943', '1942', '1941', '1940', '1939', '1938', '1937', '1936', '1935', '1934', '1933', '1932', '1931', '1930', '1929', '1928', '1927', '1926', '1925', '1924', '1923', '1922'];
+            var ricxvebi = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+            var tveebi = ["იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"];
+            
+            wlebi_dr = new MyDropdown("წელი",wlebi,master=sxt,20);
+            ricxvebi_dr = new MyDropdown("რიცხვი",ricxvebi,master=sxt,20);
+            //ricxvebi_dr.chamosashleli.style.width = "40px";
+            tveebi_dr = new MyDropdown("თვე",tveebi,master=sxt,25)
+
+
+
+            wlebi_dr.place(25.3,20);
+
+            
+            ricxvebi_dr.place(50.6,20);
+
+            tveebi_dr.place(75.9,20)
+
+            // var welnpt = document.getElementById("welnpt");
+            // var ricxvnpt = document.getElementById("ricxvnpt");
+            // var tvenpt = document.getElementById("tvinput");
+
+
+            // setInterval(function(){welnpt.value = wlebi_dr.value},100);
+
+            // setInterval(function(){ricxvnpt.value = ricxvebi_dr.value},100);
+
+            // setInterval(function(){tvenpt.value = tveebi_dr.value},100);
+            
+
+
+            //tves_dr = MyDropdown("თვე",tveebi,master=sxt);
+            
+            var btnt = document.getElementById("main_btn");
+
+            var weli = wlebi_dr;
+            var ricxvi = ricxvebi_dr;
+            var tve = tveebi_dr;
+
+            var mdedri = document.getElementById("mdedri")
+
+            var mamri = document.getElementById("mamri")
+            
+            var sqesi_val = null;
+            btnt.onclick = function(){
+
+                
+                
+                
+                if(weli.value == "none"){
+                    erori("გთხოვთ შეიყვანოთ წელი");    
+                }
+                else if(tve.value == "none"){
+                    erori("გთხოვთ შეიყვანოთ თვე");
+                }
+                else if(ricxvi.value == "none"){
+                    erori("გთხოვთ შეიყვანოთ რიცხვი");
+                }
+                else if(sqesi_val == null){
+                    erori("გთხოვთ აირჩიოთ სქესი")
+                }
+                else{
+                    //document.body.removeChild(erorbox);
+                    //alert(sqesi_val)
+                    document.cookie = "tve=" + tveebi_dr.value;
+                    
+                    document.cookie = "ricxvi="+ricxvebi_dr.value;
+
+                    document.cookie= "weli="+weli.value;
+
+
+                    document.cookie = "sqesi="+sqesi_val;
+
+                    window.location.href="/confirmation";
+                }
+            
+                
+            }
+
+            mdedri.onclick = function(){
+                sqesi_val = mdedri.value
+            }
+            
+            mamri.onclick = function(){
+                sqesi_val = mamri.value
+            }
+
+        </script>
+    </body>
+</html>

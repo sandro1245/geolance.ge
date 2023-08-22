@@ -1,0 +1,3007 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | ჩათი</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <link rel="stylesheet" href="/static/loader.css">
+        <link rel="stylesheet" href="/static/geowarning.css">
+
+        <style>
+                html {
+                    scroll-behavior: smooth;
+                }
+                #pfp{
+                    background-image:url('{{imgsrc}}');
+                    background-size:{{imgsize}}% {{imgsize}}%;    
+                }
+                #chats{
+                    /* #ECF3FF; */
+                    position: absolute;
+
+                    top:14%;
+                    height:86%;
+                    width:22%;
+                    /* background-color: #9da4af; */
+                    /* background-color: rgb(239, 232, 232); */
+                    background-color: rgb(164, 164, 186);
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+                #chats_heading{
+                    position: relative;
+                    margin-top:20px;
+                    font-size:25px;
+                    margin-left:4%;
+                    height:auto;
+                }
+                #chatebis_modzebna_input{
+                    position: relative;
+                    margin-top:6%;
+                    width:80%;
+                    font-size: 20px;
+                    border-radius: 8px;
+                    margin-left:4%;
+                    padding-left: 5px;
+                    padding-bottom: 4px;
+                    padding-top:4px;
+                }
+                .contact{
+                    position: relative;
+                    width:90%;
+                    height:60px;
+                    left:50%;
+                    transform: translate(-50%,0);
+                    margin-top:10px;
+                    /* border:1px solid black; */
+                    border-radius: 5px;
+                    cursor: pointer;
+                    /* transition: background-color 0.2s; */
+                    background-color: inherit;
+                    z-index: 4;
+                    
+
+                }
+                /* .contact:hover{
+                    background-color: grey;
+                } */
+                .contact_profile{
+                    position: absolute;
+                    width:50px;
+                    height:50px;
+                    border-radius:50% 50%;
+                    margin-left:5px;
+                    top:50%;
+                    transform: translate(0,-50%);
+                    background-position: center;
+                }
+                .contact_saxeli_gvari{
+                    position:relative;
+                    left:24%;
+                    top:15%;
+                    width:auto;
+                    font-size:20px;
+                    font-weight: 600;
+
+                    /* transform: translate(-50%,0);*/
+                }
+                .contact_last_message{
+                    position: relative;
+                    left:24%;
+                    top:20%;
+                    z-index: 30;
+                    opacity: 0.8;
+                    font-weight: 100;
+                    font-size:14px;
+                    
+                }
+                .status_div{
+                    position:absolute;
+                    left:95%;
+                    top:95%;
+                    transform: translate(-100%,-100%);
+                    
+                    width:14px;
+                    height:14px;
+                    border-radius: 50% 50%;
+                    z-index:5;
+
+                }
+                .type_signals{
+                    position:absolute;
+                    left:100%;
+                    top:95%;
+                    transform: translate(-100%,-100%);
+                    
+                    width:28px;
+                    height:14px;
+                    border-radius: 10% 10%;
+                    z-index:5;
+
+                }
+                #messages_outer_div{
+                    position: absolute;
+                    left:22%;
+                    top:14%;
+                    height:86%;
+                    width:78%;
+
+                }
+                .messages_div{
+                    
+                    background-color: rgb(164, 164, 186);
+                    width:100%;
+                    height:90%;
+                    overflow-y:scroll;
+                    overflow-x: hidden;
+                    border-radius: 2px;
+                }
+                .messages_pfp{
+                    position: relative;
+                    top:10px;
+                    left:50%;
+                    transform: translate(-50%,0);
+                    width:50px;
+                    height:50px;
+                    border-radius: 50% 50%;
+                    background-position: center;
+                }
+                .messages_viewpfp_btn{
+                    width:180px;
+                    height:auto;
+                    position: relative;
+                    text-align: center;
+                    left:50%;
+                    transform: translate(-50%,0);
+                    border-radius: 25px 25px;
+                    background-color: rgb(8, 130, 112);
+                    cursor: pointer;
+                    margin-top:20px;
+
+                    padding:4px 4px 4px 4px;
+                    color:black;
+                    transition: opacity 0.3s,box-shadow 0.3s;
+                    
+                }
+                .messages_viewpfp_btn:hover{
+                    opacity:0.8;
+                    box-shadow: inset 5px 5px 15px grey,inset -5px -5px 15px grey;
+                }
+                .messages_viewpfp_btn_a{
+                    color:black;
+                    /* width:180px;
+                    height:auto;
+                    position: relative;
+                    text-align: center;
+                    left:50%;
+                    transform: translate(-50%,0);
+                    border-radius: 25px 25px;
+                    background-color: rgb(8, 130, 112);
+                    cursor: pointer;
+                    margin-top:30px;
+
+                    padding:4px 4px 4px 4px;
+                     */
+                     /* position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 1; */
+                }
+                .msg_fullname_h3{
+                    text-align: center;
+                    margin-top:30px;
+                    font-size:25px;
+                    
+                }
+                .msg_start_hr{
+                    background-color: black;
+                    margin-top: 15px;
+                    width:95%;
+                    position: relative;
+                    left:50%;
+                    transform: translate(-50%,0);
+                }
+                .message_div{
+                    position: relative;
+                    width:auto;
+                    margin-top: 20px;
+                    left:2%;
+                    display: flex;
+                }
+                .net_message_div{
+                    /* max-width:90%; */
+                }
+                
+                .net_message_div:hover{
+                    /* background-color: rgb(164, 164, 186); */
+                    background-color: rgb(149, 149, 169);
+                }
+                .message_pfp_div{
+                    width:auto;
+                    height: auto;
+                }
+                .message_pfp{
+                    position: relative;
+                    
+                    left:2%;
+
+                    width:40px;
+                    height: 40px;
+                    border-radius: 50% 50%;
+                    background-position: center;
+                }
+                .message_content_div{
+                    margin-left: 10px;
+                }
+                .message_content_username{
+                    font-weight: 900;
+                    font-size:19px;
+                }
+                .message_content_msg{
+                    word-break: break-all;
+                }
+
+
+                .msgsend_input_box{
+                    position: relative;
+
+                    
+                    background-color: rgb(164, 164, 186);
+                    height:10%;
+                    width: 100%;
+
+                }
+                .msgsend_input{
+                    position: absolute;
+                    left:5%;
+                    top:10%;
+                    width:70%;
+                    height:70%;
+                    /* transform: translate(0%,-50%); */
+                    background-color: rgb(225, 225, 235);
+                    border-radius: 10px 10px;
+                    font-size: 20px;
+                    border:none;
+                    padding-left:50px;
+                    z-index: 4;
+                    outline: none;
+                }
+                .msgsend_btn{
+
+                }
+                .attach_send_btn{
+                    position: absolute;
+                    left:6%;
+                    width:30px;
+                    height:30px;
+                    top:20%;
+                    /* transform: translate(0%,-50%); */
+                    
+                    background-image: url("/static/file_attach_sym.png");
+                    background-size: 100% 100%;
+                    z-index: 5;
+                    cursor: pointer;
+                }
+                .files_form_btn{
+                    display: none;
+                }
+                .msg_img{
+                    max-width: 400px;
+                    width:100%;
+                    cursor: pointer;
+                    max-height: 400px;
+                }
+                .attachments_store{
+                    position: relative;
+                    left:5%;
+                    
+                    border-radius: 10px 10px 10px 10px;
+                    background-color: rgb(225, 225, 235);
+                    width: 90%;
+                    display: flex;
+                }
+                .msgsend_input_wide{
+                    position: absolute;
+                    left:5%;
+
+                    width:90%;
+                    height: 70%;
+                    border-radius: 10px 10px 10px 10px;
+                    top:10%;
+                    background-color: rgb(225, 225, 235);
+                    z-index: 3;
+                }
+
+
+                ::-webkit-scrollbar {
+                    width: 10px;
+                }
+
+                /* Track */
+                ::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px grey; 
+                    border-radius: 10px;
+                }
+                
+                /* Handle */
+                ::-webkit-scrollbar-thumb {
+                    background: rgb(8, 130, 112); 
+                    border-radius: 10px;
+                }
+
+                /* Handle on hover */
+                ::-webkit-scrollbar-thumb:hover {
+                    background: rgb(8, 130, 112);
+                }
+                .reader_img{
+                    height:55%;
+                    width: 5%;
+                    position: relative;
+                    top: 54%;
+                    transform: translate(0,-50%);
+                    z-index: 7;
+                    border-radius: 4px;
+                    margin-left: 3%;
+                    background-size: 100% 100%;
+
+                }
+                .reader_img_cancellBtn{
+                    position: relative;
+                    left:100%;
+                    top:0%;
+                    transform: translate(-100%,0);
+                    width: 30%;
+                    height: 45%;
+                    background-image: url("/static/cancell.png");
+                    background-size: 100% 100%;
+                    border-radius: 50% 50%;
+                    cursor: pointer;
+                }
+                .button_main_list{
+                    /* background-color: red; */
+                    position: absolute;
+                    width:8%;
+                    height:25px;
+                    /* left:60%; */
+                    top:0%;
+                    transform: translate(0,-50%);
+                    opacity: 0;
+                    display: flex;
+                    justify-content: space-around;
+                    border-radius: 3px;
+
+
+                }
+                .mod_btn{
+                    top:0%;
+                    position: relative;
+                    width:33.3333%;
+                    height:25px;
+                    background-position: center;
+                    background-size: 100% 100%;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    border:none;
+                    background-color: rgb(164, 164, 186);
+
+
+                    
+
+                }
+                .mod_btn:hover{
+                    opacity: 0.9;
+                    background-color: rgb(194, 194, 216);
+                    
+                }
+                .msg_reply_btn{
+                    background-image: url("/static/reply_btn.png");
+                }
+                .msg_edit_btn{
+                    background-image: url("/static/edit_btn.png");
+                }
+                .msg_delete_btn{
+                    background-image: url("/static/delete_btn.png");
+                }
+                .reply_info{
+                    position: absolute;
+                    background-color: grey;
+                    width:90%;
+                    height:30px;
+                    display: none;
+                    left:5%;
+                    z-index: 15;
+                    border-radius:5px 5px 0px 0px;
+                }
+                .reply_info_p{
+                    position:relative;
+                    top:50%;
+                    /* left:10%; */
+                    margin-left:10px;
+                    transform: translate(0%,-50%);
+                }
+                .reply_info_p_s{
+                    color:white;
+                }
+                .reply_cancell_btn{
+                    position: absolute;
+                    left:95%;
+                    top:50%;
+                    transform: translate(0,-50%);
+                    width:25px;
+                    height:25px;
+                    border-radius: 50% 50%;
+                    background-position: center;
+                    background-size: 100% 100%;
+                    background-image: url("/static/cancell_cp.png");
+                    cursor: pointer;
+                    
+                }
+                .reply_outer{
+                    position: relative;
+                    display:flex;
+                }
+                .replyed_to{
+                    /* background-color:red; */
+                    position:relative;
+                    height:20px;
+                    width:100%;
+                    cursor: pointer;
+                    
+                }
+                .reply_line{
+                    position:absolute;
+                    left:8%;
+                    top:40%;
+                    background-image:url("/static/reply_line.png");
+                    width:40px;
+                    height:20px;
+                    background-position: center;
+                    background-size: 100% 100%;
+                    transform: translateX(-100%);
+                }
+                .replyed_to_text{
+                    position: absolute;
+                    left:8%;
+                    top:60%;
+                    transform: translate(0,-50%);
+                }
+                .replyed_to_username{
+                    font-weight: 900;
+                }
+
+
+
+
+
+
+
+
+
+
+
+                .reply_file_icon{
+                    display:inline-block;
+                    width:14px;
+                    height:14px;
+                    background-size:100% 100%;
+                    background-position: center;
+                }
+
+                .reply_img_icon{
+                    background-image:url("/static/image_tp.png");
+                }
+                .reply_vid_icon{
+
+                }
+                .reply_fl_icon{
+
+                }
+                
+                .reply_file_label{
+                    color:white;
+                }
+
+
+
+
+
+
+
+
+
+                .wave {
+                
+                }
+                .wave .srname {
+                font-weight: bold;
+                color: #60f;
+                }
+                
+                .wave .srsend {
+                float: right;
+                cursor: pointer;
+                }
+                .wave .dot {
+                display: inline-block;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                margin-right: 0.5px;
+                background: #60f;
+                animation: wave 1s linear infinite;
+                animation-delay: -0.9s;
+                }
+                .wave .dot.two {
+                animation-delay: -0.7s;
+                }
+                .wave .dot:nth-child(3) {
+                animation-delay: -0.6s;
+                }
+
+                @keyframes wave {
+                0%,
+                    60%,
+                    100% {
+                    transform: initial;
+                }
+                30% {
+                    transform: translateY(-10px);
+                }
+                }
+
+
+
+                .message_content_msg {
+                    width:97%;
+                }
+
+
+
+                .msg_edit_input{
+                    position: relative;
+                    margin-top:3px;
+                    width: 280%;
+                    border-radius: 5px;
+                    padding-left:5px;
+                    height:30px;
+                    font-size:16px;
+                    
+                }
+                .message_edit_input_label{
+                    font-size:12px;
+                    margin-left:5%;
+                    /* height: 30px; */
+                    white-space: nowrap;
+                    position: relative;
+                    top:50%;
+                    transform: translateY(10px);
+                }
+
+
+                .edit_input_lb{
+                    color:rgb(8, 130, 112);
+                    cursor: pointer;
+                }
+
+                .edit_input_lb_escape{
+
+
+                }
+                .edit_input_lb_enter{
+
+                }
+                .redaqtirebuli_label{
+                    color:rgb(146, 208, 208);
+                    margin-left:5px;
+                    word-break: normal;
+                }
+                .burtula_outer{
+                    /* display: none; */
+                    position: absolute;
+                    left:50%;
+                    top:50%;
+                    transform: translate(-50%,-50%);
+                }
+                .contact_interaction{
+                    background-color: red;
+                    position: absolute;
+                    top:50%;
+                    left:85%;
+                    transform: translate(-50%,-50%);
+
+                    width:18px;
+                    height:18px;
+
+                    border-radius: 50% 50%;
+                    color:white;
+                    text-align:center;
+                    font-size:14px;
+                }
+                #notifications_div{
+                    position: absolute;
+                    display: none;
+                    width: 25%;
+                    height: 350px;
+                    left: 55%;
+                    top: 80%;
+                    /* background-color: red; */
+                    background-color: grey;
+                    /* background-color: #62646a;; */
+                    overflow-y: auto;
+                    transform: translateX(-50%);
+                    border-radius: 8px 8px;
+                }
+
+
+
+                
+
+                    
+        </style>
+
+
+        <style>
+            
+        </style>
+
+        <script src = "/static/jquery.js"></script>
+        <script src = "/static/eror.js"></script>
+        <script>
+
+
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "/static/logos.png"></a>
+
+                
+                    <input id = "search_input" type = "text" placeholder="სერვისები">
+
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "samushao_rad"> -->
+                    <!-- <label id = "samushao_lab" for ="samushao_rad">სამუშაო</label> -->
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "shemsrulebeli_rad" > -->
+                    <!-- <label id = "shemsrulebeli_lab" for = "shemsrulebeli_rad">შემსრულებელი</label> -->
+
+
+                
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="/static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <!-- <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p">3+</p>
+                </div>
+            </div></a> -->
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li id = "prom_li">პრომოკოდი</li></a>
+                    <li id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+            <div id = "virtual_el" style="display:none">
+
+            </div>
+            <div id = "chats">
+                <h3 id = "chats_heading">ჩათები</h3>
+                <input id = "chatebis_modzebna_input" type="text" placeholder="ჩათების მოძებნა">
+
+                <div id = "chats_inner">
+                    {{contacts}}
+                </div>
+                
+                
+
+            </div>
+            <div id = "messages_outer_div">
+                <center><h3 >შეარჩიეთ სამესიჯო ჩათი</h3></center>
+
+
+                
+
+
+            </div>
+
+            <script src = "/static/warning.js"></script>
+            <script src = "/static/socket.io.js"></script>
+            <script src = "/static/jquery.js"></script>
+            
+            <script>
+                // function hexi(r,g,b){
+                //     let number = 4579;
+                //     let hexStr = number.toString(16); 
+                //     let rc = r.toString(16)
+                //     let gc = g.toString(16)
+                //     let bc = b.toString(16)
+                //     return "#" + rc + gc + bc
+                // }
+            </script>
+            <script>
+                
+                var straidi = "{{straidi}}";
+                var kukis = document.cookie;
+                var kuki = {}
+
+                for(let i of kukis.split(";")){
+                    kuki[i.split("=")[0].trim()]  = i.split("=")[1].trim();
+
+                }
+            </script>
+
+            <script>
+                
+                var msg_count = 0;
+                var contacts_content = {{contacts_content}};
+
+                function lsdiv(ls,x){
+                    let left_ls = [];
+                    let right_ls = [];
+                    for(let i of ls){
+                        if(i != x){
+                            left_ls.push(i)
+                        }
+                        else{
+                            break;
+                        }
+                    
+                    }
+                    for(let i of ls){
+                        if(left_ls.includes(i) || i == x){
+                            
+                        }
+                        else{
+                            right_ls.push(i)
+                            
+                        }
+                        
+                    
+                    }
+                    
+                    return [left_ls,right_ls];
+                }
+                var unobserved_elids = {};
+
+                var file_inputs_ls = {};
+
+                var rpl_selected_msgs = [];
+                
+                var contacts = document.getElementsByClassName("contact");
+
+                function contact_set(i){
+
+                    
+                    let aidi = i.id.split("contact_")[1];
+                    unobserved_elids[aidi] = [];
+                    i.status = "unselected";
+
+                    i.onmouseenter = function(){
+                        i.style.backgroundColor ="grey";
+                    }
+                    i.onmouseleave = function(){
+                        if(i.status == "unselected"){
+                            i.style.backgroundColor ="inherit";
+                        }
+                        
+                    }
+                    i.addEventListener("click", async function(){
+
+                        if(file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] == undefined){
+                            file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] = [];
+                        }
+                        else{
+                            for(let i of file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]]){
+                                document.getElementsByClassName("files_form")[0].append(i);
+                            }
+                        }
+                        
+                        // window.location.href = "/" + aidi;
+                        for(let i of contacts){
+                            i.style.backgroundColor = "inherit";
+                            i.status = "unselected";
+                            // i.style.transition = "background-color 0.2s";
+                        }
+                        i.style.backgroundColor = "grey";
+                        i.className = "contact";
+                        
+                        window.history.pushState("","","/messenger/" + aidi);
+                        i.status = "selected";
+                        var file_input_index = 0;
+                        function file_upload_onclick(){
+
+                            file_input_index+=1;
+                            msg_count++;
+                            let files_form = document.getElementsByClassName("files_form")[0];
+                            let files_form_btn = document.createElement("input");
+                            if(file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] != undefined){
+                                file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]].push(files_form_btn);
+                            }
+                            else{
+                                file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] = [files_form_btn];
+                            }
+                            
+                            files_form_btn.type = "file";
+                            // files_form_btn.name = file_input_index+"";
+                            files_form_btn.name = msg_count
+                            files_form_btn.className = "files_form_btn";
+                            files_form_btn.id = file_input_index+"";
+                            files_form_btn.onchange = function(){
+
+                                // var sainpute_simgale = "83.2%"
+                                var sainpute_simgale = 50;
+                                document.getElementsByClassName("msgsend_input_box")[0].style.height = "30%";
+                                document.getElementsByClassName("messages_div")[0].style.height = "70%";
+                                document.getElementsByClassName("msgsend_input")[0].style.height= "23.2%";
+
+                                document.getElementsByClassName("msgsend_input")[0].style.top = sainpute_simgale + "%";
+                                document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "0px 0px 10px 10px";
+                                // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                document.getElementsByClassName("attach_send_btn")[0].style.top = (sainpute_simgale ) + "%";
+
+                                document.getElementsByClassName("attachments_store")[0].style.height = "40%";
+                                document.getElementsByClassName("attachments_store")[0].style.top = "10%";
+
+                                reader = new FileReader();
+
+                                reader.onload = function(e){
+                                    
+                                
+                                    let surati = reader.result;
+
+                                    let surati_fullname = files_form_btn.value;
+                                    let surati_fullname_ls = surati_fullname.split("\\")
+                                    let surati_name = surati_fullname_ls[surati_fullname_ls.length-1];
+
+                                    let surati_dtype = surati_fullname.split(".")[surati_fullname.split(".").length-1]
+                                    
+
+                                    
+                                    //reader.result.split(".");
+                                    // let surati_dtype = surati.split("/")[0].split(":")[1]
+                                    
+                                    let reader_img_id = files_form_btn.id;
+                                    // let reader_img = document.createElement("img");
+                                    let reader_img = document.createElement("div");
+                                    
+                                    let reader_img_cancellBtn = document.createElement("div");
+                                    reader_img_cancellBtn.className = "reader_img_cancellBtn";
+                                    reader_img.id = reader_img_id
+                                    reader_img.className = "reader_img";
+                                    // reader_img.src = surati;
+                                    let suratebi_ls = ["jpg","jpeg","png"]
+                                    if(suratebi_ls.includes(surati_dtype)){
+                                        reader_img.style.backgroundImage = `url(${surati})`;
+                                    }
+                                    else{
+                                        reader_img.style.backgroundImage = `url('/static/file_sym.png')`;
+                                    }
+                                    
+
+                                    reader_img.append(reader_img_cancellBtn);
+
+                                    document.getElementsByClassName("attachments_store")[0].append(reader_img);
+                                    document.getElementsByClassName("msgsend_input")[0].ats=true;
+
+                                    reader_img_cancellBtn.onclick = function(){
+                                        file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]].splice(files_form_btn,1);
+                                        files_form.removeChild(files_form_btn);
+                                        document.getElementsByClassName("attachments_store")[0].removeChild(reader_img);
+
+                                        if(file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]].length == 0){
+                                            if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id == "none"){
+
+                                            
+                                            document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                            document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                            document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                            document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+                                            document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+                                                
+                                            }
+                                            
+                                            document.getElementsByClassName("msgsend_input")[0].ats = false;
+                                        }
+
+                                        
+
+
+
+                                    }
+                                }
+
+                                reader.readAsDataURL(this.files[0]);
+
+
+
+
+
+
+                                // document.getElementsByClassName("attachments_store")[0].style.backgroundColor = "#E1E6EB";
+
+                                // attachments_stores
+                                
+                            }
+                            files_form.append(files_form_btn)
+                            files_form_btn.click();
+                            
+                        }
+                        let scroll_cord_pr = 0;
+                        function scrollfunc(e){
+                            
+
+                        }
+                        if(contacts_content[aidi]["markup"] == undefined){
+                            let messages_outer_div = document.getElementById("messages_outer_div");
+                            
+                            messages_outer_div.innerHTML = `
+                            <div class="messages_div" id="messages_div" style = "height:100%;">
+                                <div class = "burtula_outer">
+                                    <div class="lds-circle"><div class = "burtula"></div></div>
+                                </div>
+                            </div>
+                                `;
+                            document.getElementsByClassName("burtula_outer")[0].style.display = "block";
+
+                            // let visacpasuxob = contacts_content[aidi].saxeli;
+                            // let visacpasuxob = document.getElementsByClassName(`message_content_username_${aidi}`)[0].innerHTML;
+                            let visacpasuxob = "";
+                            await $.ajax({
+                            data : {
+                                    "dm_aidi" : aidi,
+                                    "from" : "15",
+                                    "type" : "open"
+                            },
+                            url : "/dmchat_query",
+                            type : "POST",
+                            dataType : "text",
+                            success : function(data){
+                                var file_input_index = 0;
+                                let markapi = `
+                                <div class = "messages_div" id = "messages_div"> 
+                                    <div class = "messages_start">
+                                        
+                                        <div class = "messages_pfp" style = "background-image:url('/${contacts_content[aidi].imgpfp}'); background-size: ${contacts_content[aidi].imgsize}% ${contacts_content[aidi].imgsize}%">
+                                        </div>
+
+                                        <h3 class = "msg_fullname_h3">${contacts_content[aidi].saxeli} ${contacts_content[aidi].gvari}</h3>
+                                        
+                                            
+
+                                        <div class = "messages_viewpfp_btn" id = "messages_viewpfp_btn_${aidi}">
+                                            
+                                            <a class = "messages_viewpfp_btn_a" href = "/${contacts_content[aidi].username}">
+                                                პროფილის ნახვა
+                                            </a>
+                                        </div>
+                                                            
+                                        
+
+                                        
+
+
+                                        
+                                    </div>
+                                    <hr class = "msg_start_hr">
+                                    <div class = "the_main_messages_div">
+                                    ${data}
+                                    </div>
+
+                                </div>
+                                <form class = "files_form" id = "files_form_${aidi}">
+                                </form>
+                                <div class = "msgsend_input_box">
+                                    <div style="display:none" class = "reply_info">
+                                        <p class = "reply_info_p">პასუხობ <span class = "reply_info_p_s">${visacpasuxob}</span>-ს</p> 
+                                        <div class = "reply_cancell_btn"></div>
+                                    </div>
+                                    <div class = "attachments_store"></div>
+                                    <div class = "attach_send_btn"></div>
+                                    <input placeholder = "შეტყობინება"  type = "text" class = "msgsend_input" id = "msgsend_input_${aidi}" onblur="this.focus()" autofocus>
+                                    <div class = "msgsend_input_wide"></div>
+                                    <div class = "msgsend_btn"></div>
+                                </div>
+
+                                `;
+                                // <input placeholder = "შეტყობინება"  type = "text" class = "msgsend_input" id = "msgsend_input_${aidi}" onblur="this.focus()" autofocus>
+                                
+                                document.getElementsByClassName("burtula_outer")[0].style.display = "none";
+
+                                messages_outer_div.innerHTML = markapi;
+                                let myDiv = document.getElementsByClassName("messages_div")[0];
+                        
+                                //jDiv.scrollHeight;
+                                contacts_content[aidi].markup = markapi;
+                                contacts_content[aidi]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+
+                                
+                                document.getElementsByClassName("attach_send_btn")[0].onclick = file_upload_onclick;
+                                let cnt = 0;
+                                var messages_div = document.getElementsByClassName("messages_div")[0];
+                                myDiv.scrollTop = myDiv.scrollHeight*100;
+                                if(document.getElementsByClassName("msg_img").length > 0){
+                                    for(let i of document.getElementsByClassName("msg_img")){
+                                        i.onload = function(){
+                                            cnt+=1;
+                                            if(cnt == document.getElementsByClassName("msg_img").length){
+                                                
+
+
+                                                // messages_div.onscroll = scrollfunc;
+
+                                                
+                                            }
+                                            
+                                            
+                                        }
+                                    
+                                    }   
+                                }
+                                else{
+                                    myDiv.scrollTop = myDiv.scrollHeight*100;
+
+                                    // messages_div.onscroll = scrollfunc;
+                                }
+                                
+                            
+                            
+                                
+
+                                
+                                
+                                
+                            } 
+                            
+                            });
+                            
+                            
+                        }
+                        else{
+
+                            soketi.emit("dasinva",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"dasinva_type" : "multi"})
+                            unobserved_elids[aidi] = [];
+                            messages_outer_div.innerHTML = contacts_content[aidi].markup;
+                            document.getElementsByClassName("the_main_messages_div")[0].innerHTML = contacts_content[aidi]["msgs_markup"];
+                                
+
+                                var file_input_index = 0;                 
+                            
+                                document.getElementsByClassName("attach_send_btn")[0].onclick = file_upload_onclick;
+                                //</axali>
+
+
+
+
+
+
+
+
+                                // messages_div.onscroll = scrollfunc;
+                                let myDiv = document.getElementsByClassName("messages_div")[0];
+                                myDiv.scrollTop = myDiv.scrollHeight*100;
+
+
+
+                            
+                            // let objDiv = document.getElementsByClassName("messages_div")[0];
+                            // objDiv.scrollTop = 1000**10 //jDiv.scrollHeight;
+                            // document.getElementsByClassName("messages_div")[0].scroll(0,200000000)
+                            // document.getElementsByClassName("messages_div")[0].scroll(0,20000)
+                            
+                        }
+                        document.getElementById(`contact_interaction_${aidi}`).innerHTML = "0";
+                        document.getElementById(`contact_interaction_${aidi}`).style.display = "none";
+                        document.getElementById(`contact_interaction_${aidi}`).setAttribute("value","0");
+
+                        document.getElementsByClassName("msgsend_input")[0].onkeyup = function(key){
+
+
+                                if(document.getElementsByClassName("msgsend_input")[0].value != "" && key.key != "Enter"){
+                                    soketi.emit("typing_ping",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi, "type_type" : "start"})
+                                }
+                                else{
+                                    soketi.emit("typing_ping",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi, "type_type" : "finish"})
+                                }
+                                if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                    
+                                    if(key.key == "Escape"){
+                                        if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                            var sainpute_simgale = 50;
+
+                                            document.getElementById(`netmessage_div_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}`).style.backgroundColor = "#A4A4BA";
+                                            document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                            document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                            document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                            // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                            document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+                                            document.getElementsByClassName("reply_info")[0].style.display = "none";
+                                        }
+                                        document.getElementsByClassName("msgsend_input")[0].reply_msg_id = "none";
+                                    }
+                                }
+                            
+                                if(key.key == "Enter"){
+
+                                    let reblition_id = document.getElementsByClassName("msgsend_input")[0].reply_msg_id;
+                                    
+                                    let shetyobineba_input = document.getElementsByClassName("msgsend_input")[0];
+                                    var attachments = new FormData($(".files_form")[0])
+                                    attachments.append("csrftk","{{csrftk}}")
+                                    var mesiji = shetyobineba_input.value;
+
+                                    shetyobineba_input.value = "";
+                                    let msg_id = ""; //dat["msg_id"]
+                                    let dmchat_id = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]; //dat["dmchat_id"]
+                                    let the_msg = mesiji; //dat["the_msg"]
+
+                                    let imgpfp = "{{imgsrc}}"; //contacts_content[dmchat_id].imgpfp;
+                                    let imgsize = "{{imgsize}}"; //contacts_content[dmchat_id].imgsize;
+
+                                    let msg_sender_nick = "მე" //contacts_content[dmchat_id].username;
+                                    let replyed_msg_owner;
+                                    let replyed_msg_content;
+                                    if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                        replyed_msg_owner =  document.getElementsByClassName(`message_content_username_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}`)[0].innerHTML; //"";
+                                        
+                                        if(document.getElementById(`netmessage_div_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}`).getAttribute("msg_dtype") == "None" ){
+                                            
+                                            replyed_msg_content = document.getElementsByClassName(`message_content_msg_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}`)[0].innerHTML;
+                                        }
+                                        else{
+                                            replyed_msg_content = `<span class = 'reply_file_label'>ფაილი</span><div class = 'reply_file_icon reply_img_icon' ></div>`;
+                                        }
+
+                                        
+                                    }
+                                    let files_form_btn_ls = [];
+                                    let files_form_btn_ls_loaded = []
+                                    for(let i of document.getElementsByClassName("files_form_btn")){
+                                        if(i.files[0] != undefined){
+                                            files_form_btn_ls.push(i)
+                                        }
+                                        
+                                        
+                                    }
+                                    if(mesiji.trim().length > 0){
+                                        msg_count++;
+                                        let button_list_v = `<div style="left:60%;" class = 'button_main_list button_main_list_locid_${msg_count}'>
+                                                                <div  class = 'msg_reply_btn mod_btn msg_reply_btn_locid_${msg_count}'></div> 
+                                                                <div class = 'msg_edit_btn mod_btn msg_edit_btn_locid_${msg_count}'></div> 
+                                                                <div  class = 'msg_delete_btn mod_btn msg_delete_btn_locid_${msg_count}'></div> 
+
+                                                            </div>`;
+
+                                        let reply_inform;
+                                        if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id == "none"){
+                                            reply_inform = ``;
+                                        }
+                                        else{
+                                            reply_inform = `
+                                            <div class = 'replyed_to replyed_locid_${msg_count}' id = 'replyed_to_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}'>
+                                                            <div class = "reply_line">
+                                                            </div>
+                                                            <div class = "replyed_to_text"> 
+                                                                <span class="replyed_to_username" >${replyed_msg_owner} : </span>
+                                                                ${replyed_msg_content}
+                                                            
+                                                            </div>
+
+                                                        </div>
+                                            `;
+                                        }
+                                        
+
+                                        let sapendi =  
+                                        
+                                                `
+                                                ${reply_inform}
+                                                <div  class = 'message_div' id = 'message_div_${msg_id}' >
+
+                                                    
+                                                    
+
+                                                    <div class = 'message_pfp_div'> 
+                                                        <div class = 'message_pfp' style= "background-image : url('${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div>
+                                                    </div>
+                                                    <div class = 'message_content_div'>
+                                                        <div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div>
+                                                        <div class = 'message_content_msg message_content_msg_${msg_id} message_content_msg_locid_${msg_count}'> ${the_msg}<span class = 'redaqtirebuli_label'></span> </div> 
+                                                        
+                                                    </div>
+                                                    ${button_list_v} 
+
+                                                
+                                            `;
+                                        
+                                        let sapendi_el = document.createElement("div");
+                                        sapendi_el.className = `net_message_div message_locid_${msg_count}`;
+                                        sapendi_el.style.opacity = "0.6";
+                                        sapendi_el.innerHTML = sapendi;
+                                        sapendi_el.setAttribute("msg_dtype","None")
+                                        sapendi_el.setAttribute("deliverd","false");
+                                        // document.getElementsByClassName("the_main_messages_div")[0].innerHTML+= sapendi;
+                                        document.getElementsByClassName("the_main_messages_div")[0].append(sapendi_el)
+
+                                        let breaki = document.createElement("br");
+                                        breaki.id = `breaki_locid_${msg_count}`;
+                                        document.getElementsByClassName("the_main_messages_div")[0].append(breaki)
+
+                                        // contacts_content[aidi]["markup"]+= sapendi;
+                                        contacts_content[aidi]["markup"] = document.getElementById("messages_outer_div").innerHTML
+                                        contacts_content[aidi]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+                                        if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                            document.getElementById("netmessage_div_"+document.getElementsByClassName("msgsend_input")[0].reply_msg_id).style.backgroundColor = "#A4A4BA";
+                                        }
+                                        if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                            var sainpute_simgale = 50;
+                                            document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                            document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                            document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                            // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                            document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+                                            document.getElementsByClassName("reply_info")[0].style.display = "none";
+                                        }
+                                        
+                                        // if(files_form_btn_ls.length == 0){
+                                        if(true){
+                                            console.log({"message" : mesiji ,"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi,"msg_locid" : msg_count,"msg_dtype" : "text","reply_to_msgid" : reblition_id})
+                                            soketi.emit("dmchat_message",data={"message" : mesiji ,"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi,"msg_locid" : msg_count,"msg_dtype" : "text","reply_to_msgid" : reblition_id})
+                                        }
+                                            
+                                    } //</if(mesiji.trim().length > 0){ onchange
+                                    
+                                        for(let i of document.getElementsByClassName("files_form_btn")){
+                                        if(i.files[0] != undefined){
+                                        let mkitxavi  =  new FileReader();
+                                        
+                                        let filename = i.value;
+                                        console.log("filenamee :  " + filename)
+                                        let file_dtype = i.value.split(".")[i.value.split(".").length-1]
+
+
+
+                                        // let the_msg = mkitxavi.result;
+                                        let img_sapendi_main;
+                                        let img_sapendi_main_source;
+                                        let img_sapendi_main_src;
+                                        let img_dtypes = ["jpg","jpeg","png"];
+                                        let video_dtypes=["mov","mp4","wav"];
+                                        let msg_dtype;
+
+                                        if(img_dtypes.includes(file_dtype)){
+                                            // img_sapendi_main = `<img class = "msg_img" src = '${the_msg}'>`;
+                                            // img_sapendi_main = `<img class = "msg_img source_srcc">`;
+                                            img_sapendi_main = document.createElement("img");
+                                            img_sapendi_main.className = "msg_img source_srcc";
+                                            msg_dtype = "img"
+
+                                            img_sapendi_main_src = img_sapendi_main
+                                        }
+                                        else if(video_dtypes.includes(file_dtype)){
+                                            // img_sapendi_main = `<video class = "msg_img"  controls> <source src = '${the_msg}' type='video/${file_dtype}'>  </video>`;
+                                            // img_sapendi_main = `<video class = "msg_img"  controls> <source class = "source_srcc" type='video/${file_dtype}'>  </video>`;
+                                            img_sapendi_main = document.createElement("video");
+                                            img_sapendi_main_source = document.createElement("source");
+                                            img_sapendi_main.setAttribute("controls","")
+                                            img_sapendi_main.append(img_sapendi_main_source)
+
+
+
+                                            img_sapendi_main.className = "msg_img";
+                                            img_sapendi_main_source.className = "source_srcc"
+                                            img_sapendi_main_source.type=`video/${file_dtype}`
+
+                                            img_sapendi_main_src = img_sapendi_main_source
+
+                                            msg_dtype = "vid"
+                                        }
+                                        else{
+                                            // img_sapendi_main = `<div class = "msg_img" src = '/static/'></div>`;
+                                            img_sapendi_main = document.createElement("div");
+                                            
+                                            img_sapendi_main.className = "msg_img"
+                                        }
+                                        let button_list_v = document.createElement("div")
+                                        button_list_v.className = `button_main_list button_main_list_locid_${i.name}`
+
+                                        let button_list_v_inner = `
+                                                            <div  class = 'msg_reply_btn mod_btn msg_reply_btn_locid_${i.name}'></div> 
+                                                            <div class = 'msg_edit_btn mod_btn msg_edit_btn_locid_${i.name}'></div> 
+                                                            <div  class = 'msg_delete_btn mod_btn msg_delete_btn_locid_${i.name}'></div>`;
+                                        button_list_v.innerHTML = button_list_v_inner;
+                                        // message_content_username_
+                                        
+                                        // let img_sapendi =  `<div style="opacity:0.6" class = 'message_div message_locid_${i.name}' id = 'message_div_${msg_id}' >   <div class = 'message_pfp_div'> <div class = 'message_pfp' style= "background-image : url('${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div> </div>   <div class = 'message_content_div'><div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div> ${img_sapendi_main} </div> </div> </div> <br>`;
+                                        // document.getElementsByClassName("the_main_messages_div")[0].innerHTML+= img_sapendi;
+                                        let reply_inform;
+                                        if(reblition_id== "none"){
+                                            reply_inform = ``;
+                                        }
+                                        else{
+                                            reply_inform = `
+                                            <div class = 'replyed_to replyed_locid_${i.name}' id = 'replyed_to_${reblition_id}'>
+                                                            <div class = "reply_line">
+                                                            </div>
+                                                            <div class = "replyed_to_text"> 
+                                                                <span class="replyed_to_username" >${replyed_msg_owner} : </span>
+                                                                ${replyed_msg_content}
+                                                            
+                                                            </div>
+
+                                                        </div>
+                                            `;
+                                        }
+                                        
+
+
+                                        
+                                        // let img_sapendi =  `
+                                        // ${reply_inform}
+                                        // <div class = 'message_div' id = 'message_div_${msg_id}'> 
+                                        //     <div class = 'message_pfp_div'> 
+                                        //         <div class = 'message_pfp' style= "background-image : url('${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div> 
+                                        //     </div>   
+                                        //     <div class = 'message_content_div'>
+                                        //         <div class = 'message_content_username message_content_username_locid_${i.name}'>${msg_sender_nick}</div> 
+                                        //         ${img_sapendi_main.outerHTML} 
+                                                
+                                        //     </div> 
+                                            
+                                        //     ${button_list_v} 
+                                        
+                                        // </div>`;
+                                        let img_sapendi_el = document.createElement("div");
+                                        img_sapendi_el.className = `net_message_div message_locid_${i.name}`;
+                                        img_sapendi_el.style.opacity = "0.6";
+                                        img_sapendi_el.id = `netmessage_div_${msg_id}`;
+
+                                        // img_sapendi_el.innerHTML = img_sapendi;
+                                        img_sapendi_el.innerHTML = reply_inform;
+                                        img_sapendi_el.setAttribute("msg_dtype",msg_dtype)
+                                        img_sapendi_el.setAttribute("deliverd","false");
+
+                                            let message_divi = document.createElement("div");
+                                            message_divi.className = "message_div";
+                                            message_divi.id = `message_div_${msg_id}`;
+
+                                                let message_pfp_div = document.createElement("div");
+                                                message_pfp_div.className = "message_pfp_div"
+                                                message_pfp_div.innerHTML = `<div class = 'message_pfp' style= "background-image : url('${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div> `;
+
+                                                let message_content_div = document.createElement("div");
+                                                message_content_div.innerHTML = `<div class = 'message_content_username message_content_username_locid_${i.name}'>${msg_sender_nick}</div>`
+                                                message_content_div.append(img_sapendi_main)
+
+                                                message_divi.append(message_pfp_div)
+                                                message_divi.append(message_content_div)
+                                                
+                                                message_divi.append(button_list_v)
+                                        img_sapendi_el.append(message_divi)
+
+                                        
+
+
+
+
+                                        let breaki = document.createElement("br");
+                                        breaki.id = `breaki_locid_${i.name}`;
+                                        document.getElementsByClassName("the_main_messages_div")[0].append(img_sapendi_el);
+                                        document.getElementsByClassName("the_main_messages_div")[0].append(breaki);
+
+
+                                        let objDiv = document.getElementsByClassName("messages_div")[0];
+                                        objDiv.scrollTop = 1000**10
+                                    
+
+                                        
+                                        // let pre_files_loaded = lsdiv(files_form_btn_ls_loaded,i);
+                                        // for(let i of )lsdiv
+                                        mkitxavi.onload = function(){
+
+                                            let the_msg = mkitxavi.result;
+                                            msg_count++;
+                                            // document.getElementsByClassName("the_main_messages_div")[0].getElementsByClassName("source_srcc")[0].src = `${the_msg}`
+                                            // document.getElementsByClassName("the_main_messages_div")[0].getElementsByClassName("source_srcc")[0].src = `${}`
+                                            if(msg_dtype == "img"){
+                                                img_sapendi_main_src.src = `${the_msg}`
+                                            }
+                                            else if(msg_dtype == "vid"){
+                                                // img_sapendi_main_src.src = `${the_msg}`
+                                                img_sapendi_main.innerHTML = `<source src = '${the_msg}' type='video/${file_dtype}'>`
+                                            }
+                                            
+                                    
+                                        
+                                        }
+                                        // if(i.files[0] != undefined){
+                                        mkitxavi.readAsDataURL(i.files[0])
+                                        // }
+                                        
+                                        if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                            var sainpute_simgale = 50;
+                                            document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                            document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                            document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                            // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                            document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+                                            document.getElementsByClassName("reply_info")[0].style.display = "none";
+                                            document.getElementById(`netmessage_div_${document.getElementsByClassName("msgsend_input")[0].reply_msg_id}`).style.backgroundColor = `#A4A4BA`;
+                                        }
+                                        document.getElementsByClassName("msgsend_input")[0].reply_msg_id = "none";
+                                        }
+                                    }
+                                    // for(let i of document.getElementsByClassName("files_form_btn")){ enddd
+                                    
+                                    
+
+                                    document.getElementsByClassName("attachments_store")[0].innerHTML = "";
+                                    document.getElementsByClassName("attachments_store")[0].style.height = "";
+                                    
+
+
+
+                                    
+                                    
+
+                                    // document.getElementsByClassName("attachments_store")[0].style.height = "40%";
+                                    // document.getElementsByClassName("attachments_store")[0].style.top = "10%";
+                                    document.getElementsByClassName("msgsend_input")[0].ats = false;
+
+                                    
+                                    let objDiv = document.getElementsByClassName("messages_div")[0];
+                                    objDiv.scrollTop = 1000**10 //jDiv.scrollHeight;
+
+                                        
+                                    if(files_form_btn_ls.length > 0){
+                                        $.ajax({
+                                        data : attachments,
+
+                                        url : "/dm_filesupload/" + aidi + "/" + straidi + "/" + reblition_id,
+                                        contentType: false,
+                                        cache: false,
+                                        processData: false,
+                                        type : "POST",
+                                        success : function(fl_data){
+
+                                            if(file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] != undefined){
+                                                for(let i of file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]]){
+                                                // document.getElementsByClassName("files_form")[0].removeChild(i);
+                                                document.getElementsByClassName("files_form")[0].innerHTML = "";
+                                                
+                                                }
+                                            }
+                                            
+                                            
+                                            file_inputs_ls[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]] = [];
+
+                                            // if(mesiji.trim().length > 0){
+                                                
+                                            //     soketi.emit("dmchat_message",data={"message" : mesiji ,"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi,"msg_locid" : msg_count,"msg_dtype" : "text","reply_to_msgid" : reblition_id})
+
+                                            // }
+                                            
+
+                                            for(let i of JSON.parse(fl_data)){
+
+                                                console.log("img : locid : "  + msg_count + "actual locid : " + i["msg_count"])
+                                                console.log({"message" : i["file_loc"] ,"msg_id" : i["msg_id"],"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi,"msg_locid" : i["msg_count"],"msg_dtype" : i["dttype"] , "reply_to_msgid" : reblition_id })
+                                                soketi.emit("dmchat_message",data={"message" : i["file_loc"] ,"msg_id" : i["msg_id"],"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi,"msg_locid" : i["msg_count"],"msg_dtype" : i["dttype"] , "reply_to_msgid" : reblition_id })
+                                            }
+                                            document.getElementsByClassName("msgsend_input")[0].reply_msg_id = "none";
+                                            
+                                            
+                                            // if(data=="success"){
+                                                // window.location.href = "/sandro4424";
+                                                
+                                                // }
+                                            
+                                            
+
+                                            // var chat_contacts_div = document.getElementById("chats_inner");
+                                            // let chamonaxsni = document.getElementById("contact_" + aidi);
+                                            // let chamonaxsni_breaki = document.getElementById(`contact_breaki_${aidi}`)
+
+                                            // // chamonaxsni_markup = chamonaxsni.innerHTML;
+
+                                            // chat_contacts_div.removeChild(chamonaxsni);
+                                            // chat_contacts_div.removeChild(chamonaxsni_breaki);
+                                            // // chat_contacts_div.innerHTML = chamonaxsni_markup + chat_contacts_div.innerHTML;
+
+                                            // chat_contacts_div.prepend(chamonaxsni_breaki)
+                                            // chat_contacts_div.prepend(chamonaxsni)
+                                            contacts_replace(aidi);
+                                            if(mesiji.trim().length > 0){
+                                                document.getElementById(`contact_last_message_p_${aidi}`).innerHTML = `<span><span  style="font-weight:600">შენ : </span>${mesiji}</span>`;
+                                            }
+                                            document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                            document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                            document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                            document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                            document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+                                            document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+
+                                            
+                                            }
+                                        });
+                                    }
+
+                                    
+                                    
+                                    objDiv.scrollTop = 1000**10
+
+                                    
+
+                                    // soketi.emit("dmchat_message",data={"message" : shetyobineba_input.value ,"c_user" : kuki.c_user, "xs" : kuki.xs})
+                                    
+                                    
+                                    
+                                }
+                                
+                            }
+                        
+                        // let messages_viewpfp_btn = document.getElementById("messages_viewpfp_btn_" + aidi);
+
+                        // messages_viewpfp_btn.onclick = function(){
+                        //     window.location.href = "/" + contacts_content[aidi].username;
+                        // }
+                    
+
+
+
+                        // var myDiv = document.getElementById("messages_div");
+                        // myDiv.scrollTop = myDiv.scrollHeight;
+                        // document.getElementsByClassName("messages_div")[0].scroll(0,200000000)
+
+                        
+                        // document.getElementsByClassName("messages_div")[0].scroll(0,200000000)
+                        message_get();
+                        document.getElementsByClassName("msgsend_input")[0].reply_msg_id = "none";
+                        document.getElementsByClassName("msgsend_input")[0].ats = false;
+                        console.log(document.getElementsByClassName("net_message_div")[0])
+                        let mslen = 0;
+                        for(let i of document.getElementsByClassName("net_message_div")){
+                            mslen++;
+                        }
+                        if(mslen > 0){
+                            msgload_observer.observe(document.getElementsByClassName("net_message_div")[0])
+                        }
+                        
+                    });
+                    document.getElementById(`contact_${aidi}`).typing_intervals = [];
+}
+                
+                
+                for(let i of contacts){
+                    contact_set(i)
+                    
+                }
+
+                // contacts[0].style.marginTop = "25px";
+            
+            // if(chat_aidi != "main"){
+            //     let zkontakt = document.getElementById("contact_" + chat_aidi)
+            //     zkontakt.style.backgroundColor = "grey";
+            //     zkontakt.status = "selected";
+            // }
+            window.addEventListener("popstate",function(event){
+                let lok = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]
+                if(lok != "main"){
+                    document.getElementById(`contact_${lok}`).click()
+                }
+                    
+            })
+
+
+
+
+
+
+            
+
+            </script>
+            <script>
+                var dm_idebi = {{dm_idebi}};
+            </script>
+            <script src = "/static/logged_navbar.js"></script>
+            <script>
+
+
+                // var soketi = io.connect("ws://localhost:5000");
+                
+                var soketi = status_update_socket;
+                
+
+                soketi.on("connect",function(){
+                    soketi.emit("join_dmchat_room",data={"dmchat_idebi" : JSON.stringify(dm_idebi),"c_user" : kuki.c_user,"xs" : kuki["xs"]})
+                    for(let i of contacts){
+
+                        let contact_last_message_sender_id = i.getAttribute("momxmarebeli")//i.className.split(" ")[1]
+                        let contact_dm_id = i.className.split(" ")[2]
+
+                        soketi.emit("show_status",data={"user_id" : contact_last_message_sender_id})
+
+                        
+                        
+                    }
+                })
+                soketi.on("message",function(data){
+
+
+                    dat = JSON.parse(data);
+
+
+
+                    // }
+                    if(dat["type"] == "status"){
+                        if(dat["user"].split("_")[2] != straidi){
+                            
+                            let activity_status_detected = dat["status_type"];
+                            let activity_status_user = dat["user"];
+
+                            let activity_status = document.getElementById("status_div_" + activity_status_user.split("_")[2])
+
+                            if(activity_status_detected == "activated"){
+                                activity_status.style.backgroundColor = "green";
+                            }
+                            else if(activity_status_detected == "offline"){
+                                activity_status.style.backgroundColor = "grey";
+
+                            }
+                        }
+                        else{
+
+                        }
+                        
+                    }
+                    else if(dat["type"] == "type_ping"){
+                        if(document.getElementById(`contact_${dat["otaxi"]}`).getAttribute("request_status") == "active" ){
+                            if((dat["sender_id"] + "") != (straidi + "")){
+
+                                type_hint(dat["otaxi"],dat["type_type"])
+                            } 
+                        }
+                        
+                    }
+
+
+                    
+                    else if(dat["type"] == "msg_edit"){
+                        if(straidi != dat["sender_id"]){
+                            if(window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] == dat["otaxi"]){
+                                // document.getElementById(`netmessage_div_${data["msg_id"]}`)
+                                document.getElementsByClassName(`message_content_msg_${dat["msg_id"]}`)[0].innerHTML = `${dat["new_text"]}<span class = 'redaqtirebuli_label'> (რედაქტირებული)</span>`;
+                            
+                            }
+                            else{
+                                // message_content_msg
+                                // let zblit = contacts_content[dat["otaxi"]]["msgs_markup"].split(`netmessage_div_${dat["msg_id"]}`);
+                            
+                                // let full_msgdiv_markup = "<" + zblit[0].split("<")[zblit[0].split("<").length-1] + `netmessage_div_${dat["msg_id"]}` +zblit[1].split("<br")[0]  + "<br" + zblit[1].split("<br")[1].split(">")[0] + ">";
+
+                                // // let saeditebeli = full_msgdiv_markup.split(`message_content_msg`)[0] +"message_content_msg";// + (full_msgdiv_markup.split(`message_content_msg`)[1].split(">")[0] + full_msgdiv_markup.split(`message_content_msg`)[1].split(">")[0] )
+                                // let virtual_el= document.getElementById("virtual_el");
+
+                                // virtual_el.innerHTML = full_msgdiv_markup;
+
+                                // virtual_el.getElementsByClassName(`message_content_msg_${dat["msg_id"]}`).innerHTML = `${dat["new_text"]}<span class = 'redaqtirebuli_label'> (რედაქტირებული)</span>`;
+
+                                // full_msgdiv_markup = virtual_el.innerHTML;
+
+                                // // contacts_content[dat["otaxi"]]["msgs_markup"] = contacts_content[dat["otaxi"]]["msgs_markup"].replace(full_msgdiv_markup,"")
+
+                                let thesacvleli = `${dat["new_text"]}<span class = 'redaqtirebuli_label'> (რედაქტირებული)</span>`;
+
+                                let zblit = contacts_content[dat["otaxi"]]["msgs_markup"].split(`message_content_msg_${dat["msg_id"]}`)[1]
+
+                                // zblit.split(">")[1].split("<")[0] + zblit.split(">")[1].split("<")[1]
+                                let saedit = ""+zblit.split(">")[1]+">" + zblit.split(">")[2] + ">";
+
+                                contacts_content[dat["otaxi"]]["msgs_markup"] = contacts_content[dat["otaxi"]]["msgs_markup"].replace(saedit,`${dat["new_text"]}<span class="redaqtirebuli_label"> (რედაქტირებული)</span>`)
+
+                            
+                            }
+                            let es_iyo_bolomesiji;
+                            es_iyo_bolomesiji = dat["es_iyo_bolomesiji"]
+                            if(es_iyo_bolomesiji == "true"){
+
+                            }
+                        }
+                            
+                        
+                    }
+                    else if(dat["type"] == "msg_delete"){
+                        let undeleted_last_msg_content;
+                        let undeleted_last_msg_sender_id;
+                        let es_iyo_bolomesiji;
+
+                        undeleted_last_msg_content = dat["undeleted_last_msg_content"]
+                        undeleted_last_msg_sender_id = dat["undeleted_last_msg_sender_id"]
+                        es_iyo_bolomesiji = dat["es_iyo_bolomesiji"]
+
+                        if(window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] == dat["otaxi"]){
+                            
+                            // document.getElementById(`netmessage_div_${data["msg_id"]}`)
+                            let the_main_messages_div = document.getElementsByClassName("the_main_messages_div")[0];
+                            
+                            the_main_messages_div.removeChild(
+                                document.getElementById(`netmessage_div_${dat["msg_id"]}`)
+                                
+                            )
+                            the_main_messages_div.removeChild(
+                                document.getElementById(`breaki_${dat["msg_id"]}`)
+                                
+                            )
+                        }
+                        else{
+                            let zblit = contacts_content[dat["otaxi"]]["msgs_markup"].split(`netmessage_div_${dat["msg_id"]}`);
+                            
+                            let sashleli = "<" + zblit[0].split("<")[zblit[0].split("<").length-1] + `netmessage_div_${dat["msg_id"]}` +zblit[1].split("<br")[0]  + "<br" + zblit[1].split("<br")[1].split(">")[0] + ">";
+                            contacts_content[dat["otaxi"]]["msgs_markup"] = contacts_content[dat["otaxi"]]["msgs_markup"].replace(sashleli,"");
+                            
+                        }
+                        //code here contact_lastmesijs change
+                        if(es_iyo_bolomesiji == "true"){
+                            let spanstaili = "";
+                            let machvenebeli;
+
+                            if((undeleted_last_msg_sender_id + "") == (straidi +"")){ //tu sachvenebeli mesiji chemia
+                                machvenebeli = "შენ : ";
+
+                            }
+                            else{
+                                machvenebeli = "";
+                            }
+                            
+                            // let spanstaili;
+                            // if(window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] == dat["otaxi"]){
+                            //     spanstaili = "";
+                            // }
+                            // else{
+                            //     spanstaili = "font-weight:600"; 
+                            // }
+                            document.getElementById(`contact_last_message_p_${dat["otaxi"]}`).innerHTML = `<span style="${spanstaili}">${machvenebeli} ${undeleted_last_msg_content}</span>`;
+                        }
+                        
+
+                    }
+
+
+                    else if(dat["type"] == "start_chat"){
+
+                        soketi.emit("join_dmchat_room",data={"dmchat_idebi" : JSON.stringify([dat["chat_aidi"]]),"c_user" : kuki.c_user,"xs" : kuki["xs"]})
+                        
+                        
+
+                        let chat_aidi = dat["chat_aidi"]
+                        let starter_id = dat["starter_id"]
+
+                        let contact_saxeli = dat["contact_saxeli"]
+                        let contact_gvari = dat["contact_gvari"]
+
+                        let contact_pfp = dat["contact_pfp"]
+                        let contact_pfp_size = dat["contact_pfp_size"]
+                        let contact_dasaxeleba = dat["contact_dasaxeleba"]
+
+                        soketi.emit("show_status",data={"user_id" : starter_id})
+
+
+
+                        let activity_status_color = "green";
+
+
+                        let last_mesiji_sender_id = "";
+
+                        let last_mesiji = "";
+
+                        let display_none_sty_val = "none";
+                        let display_none_sty = `display:${display_none_sty_val}`;
+
+                        // i[0] = dm aidi anu data["chat_aidi"]
+                        //i[9] = contacter user ID data["starter_id"]
+                        //i[2] = bolo mesijis gamomgzavnelis ID
+
+
+                        let contact_markup = `
+                            <div class = 'contact_profile' id = 'contact_profile_${chat_aidi}' style="background-image:url('/${contact_pfp}'); background-size : ${contact_pfp_size}% ${contact_pfp_size}% "><div class = 'status_div' style = 'background-color: ${activity_status_color};' id = 'status_div_${starter_id}' >  </div></div> <div class = 'contact_saxeli_gvari' >${contact_dasaxeleba}</div> <div class = 'contact_last_message' id = 'contact_last_message_${chat_aidi}' >
+                                
+
+                                <div class="wave" style = "display:none;" id = 'wave_${chat_aidi}'>
+
+                                    <span class="dot one"></span>
+                                    <span class="dot two"></span>
+                                    <span class="dot three"></span>
+                                    
+
+                                </div>
+
+
+                                <span class = "contact_last_message_p" id = 'contact_last_message_p_${chat_aidi}' >${last_mesiji}</span>
+
+                                <div style='display:none' value = '0' class = "contact_interaction" id = 'contact_interaction_${chat_aidi}'>0</div>
+                            </div> 
+                            `;
+                        let contact_el = document.createElement("div");
+                        let contact_el_breaki = document.createElement("br");
+                        contact_el_breaki.style.display = display_none_sty_val;
+                        contact_el_breaki.id = `contact_breaki_${chat_aidi}`;
+
+                        contact_el.setAttribute("request_status","inactive");
+                        contact_el.style.display = display_none_sty_val;
+                        contact_el.className = `contact ${starter_id} ${last_mesiji_sender_id}`;
+                        contact_el.id = `contact_${chat_aidi}`;
+                        contact_el.innerHTML = contact_markup;
+
+
+                        document.getElementById("chats_inner").append(contact_el);
+                        document.getElementById("chats_inner").append(contact_el_breaki);
+
+                        contacts_content[chat_aidi] = {"username" : contact_dasaxeleba, "imgpfp" : contact_pfp, "imgsize" : contact_pfp_size,"saxeli" : contact_saxeli,"gvari" : contact_gvari, "user_id" : starter_id};
+                        
+
+                        
+                        // document.getElementById("chats_inner").innerHTML+= contact_markup; 
+                        // let contact_markup = `
+                        // \n <div  status = 'inactive' style = '${display_none_sty}' class = 'contact ${starter_id} ${last_mesiji_sender_id}' id = 'contact_${chat_aidi}'> <div class = 'contact_profile' id = 'contact_profile_${chat_aidi}' style="background-image:url('/${contact_pfp}'); background-size : ${contact_pfp_size}% ${contact_pfp_size}% "><div class = 'status_div' style = 'background-color: ${activity_status_color};' id = 'status_div_${starter_id}' >  </div></div> <div class = 'contact_saxeli_gvari' >${contact_dasaxeleba}</div> <div class = 'contact_last_message' id = 'contact_last_message_${chat_aidi}' >
+                            
+
+                        //     <div class="wave" style = "display:none;" id = 'wave_${chat_aidi}'>
+
+                        //         <span class="dot one"></span>
+                        //         <span class="dot two"></span>
+                        //         <span class="dot three"></span>
+                                
+
+                        //     </div>
+
+
+                        //     <span class = "contact_last_message_p" id = 'contact_last_message_p_${chat_aidi}' >${last_mesiji}</span></div> </div>
+                        //     <br style = '${display_none_sty}' id = 'contact_breaki_${chat_aidi}'> \n
+                        //     `;
+                            
+                        //     document.getElementById("chats_inner").innerHTML+= contact_markup; 
+                            
+                            // contact_set(document.getElementById(`contact_${chat_aidi}`));
+                    
+                            
+                    }
+                    else if(dat["type"] == "dasinva"){
+                        
+                    }
+
+                    else if(dat["type"] == "dm_msg"){  //mesijebiiiiiiiiiiiiiiiiii
+
+
+
+
+                        contacts_replace(dat["dmchat_id"]);
+                        
+                            var recieved_msg_status = "seen";
+                            let sapendi_el;
+
+                            if((straidi+"")  == (dat["sender_id"]+"") ){ //tu me gavagzavne
+
+                                console.log(dat)
+                                let el = document.getElementsByClassName("message_locid_" + dat["msg_locid"])[0];
+
+                                let br_el =  document.getElementById("breaki_locid_" + dat["msg_locid"])
+                                el.setAttribute("deliverd","true")
+
+                                let el_optBtn_list = document.getElementsByClassName("button_main_list_locid_" +dat["msg_locid"] )[0];
+
+                                let replition_el = document.getElementsByClassName("replyed_locid_" + dat["msg_locid"])[0];
+                            
+
+                                
+
+                                let reply_btn_div =document.getElementsByClassName("msg_reply_btn_locid_" +dat["msg_locid"] )[0];
+                                let edit_btn_div =document.getElementsByClassName("msg_edit_btn_locid_" +dat["msg_locid"] )[0];
+                                let delete_btn_div =document.getElementsByClassName("msg_delete_btn_locid_" +dat["msg_locid"] )[0];
+
+                                let message_content_username_var = document.getElementsByClassName("message_content_username_locid_"+dat["msg_locid"])[0];
+                                let message_content_msg_var;
+                                
+
+
+                                
+
+                                el.id = "netmessage_div_"+dat["msg_id"];
+
+                                if(replition_el != undefined){
+                                    replition_el.className += " replyed_" + dat["msg_id"];
+                                }
+                                
+
+                                el_optBtn_list.id = "button_main_list_" + dat["msg_id"];
+
+                                reply_btn_div.id = "msg_reply_btn_" + dat["msg_id"];
+                                edit_btn_div.id = "msg_edit_btn_" + dat["msg_id"];
+                                delete_btn_div.id = "msg_delete_btn_" + dat["msg_id"];
+                                br_el.id = "breaki_" + dat["msg_id"]
+
+                                message_content_username_var.className+=" message_content_username_" + dat["msg_id"];
+
+                                if(dat["msg_dtype"] == "text"){
+                                    message_content_msg_var = document.getElementsByClassName("message_content_msg_locid_"+dat["msg_locid"])[0];
+                                    message_content_msg_var.className += " message_content_msg_" + dat["msg_id"];
+                                }
+                                
+
+
+
+                                
+
+                                if(dat["msg_dtype"] == "text"){
+                                    
+                                    
+                                    
+                                    
+                                }
+                                else{
+                                    
+                                    
+                                    
+                                }
+                                
+                                el.style.opacity = "1";
+
+
+
+                                contacts_content[window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]]["markup"] = document.getElementById("messages_outer_div").innerHTML
+                                
+
+                                contacts_content[dat["dmchat_id"]].markup = document.getElementById("messages_outer_div").innerHTML;
+                                contacts_content[dat["dmchat_id"]]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+
+                                // contacts_content[aidi]["markup"] = document.getElementById("messages_outer_div").innerHTML
+                                // contacts_content[aidi]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+                                
+                            }
+                            else{ //tu sxvisgan gamogzavnilia
+                                // if(dat["dmchat_id"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){//tu chati selectirebulia
+                                    
+                                
+                                let breaki;
+                                let msg_id = dat["msg_id"]
+                                if(dat["msg_dtype"] == "text"){
+                                    let msg_id = dat["msg_id"]
+                                    let dmchat_id = dat["dmchat_id"]
+                                    let the_msg = dat["the_msg"]
+                                    let reply_msg_id = dat["reply_to_msgid"];
+
+                                    let imgpfp = contacts_content[dmchat_id].imgpfp;
+                                    let imgsize = contacts_content[dmchat_id].imgsize;
+
+                                    
+                                    let msg_sender_nick = contacts_content[dmchat_id].username;
+
+                                    let button_list_v = `<div class = 'button_main_list' id = 'button_main_list_${msg_id}'>
+                                                                <div  class = 'msg_reply_btn mod_btn' id = 'msg_reply_btn_${msg_id}'></div> 
+                                                            </div>`;
+
+                                    let replyed_msg_owner;
+                                    let replyed_msg_content;
+                                    // if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != "none"){
+                                    if(reply_msg_id != "none"){
+                                        let msgcont_statement;
+                                        let msgcont_expression;
+                                        if(dat["dmchat_id"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){
+                                            replyed_msg_owner =  document.getElementsByClassName(`message_content_username_${reply_msg_id}`)[0].innerHTML; //"";
+                                            // msgcont_statement = document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0] != undefined
+                                            msgcont_statement = document.getElementById(`netmessage_div_${reply_msg_id}`).getAttribute("msg_dtype") == "None"; 
+                                            msgcont_expression = document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0].innerHTML;
+
+                                        }
+                                        else{
+                                            replyed_msg_owner = contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`message_content_username_${reply_msg_id}`)[1].split(`>`)[1].split("<")[0]
+                                            // msgcont_statement = contacts_content[dat["dmchat_id"]]["msgs_markup"].includes(`message_content_msg_${reply_msg_id}`)
+                                            let temp_statement = (contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[0].split("<")[contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[0].split("<").length-1] + contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[1].split(">")[0])
+                                            msgcont_statement = temp_statement.split("msg_dtype")[1].split(`"`)[1].split('"')[0] == "None";
+                                            if(msgcont_statement){
+                                                msgcont_expression = contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`message_content_msg_${reply_msg_id}`)[1].split(`>`)[1].split("<")[0]
+                                     
+                                            }
+
+                                            
+                                        }
+                                        
+
+                                        if(msgcont_statement){
+
+                                            replyed_msg_content = msgcont_expression; //document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0].innerHTML;
+                                        }
+                                        else{
+                                            replyed_msg_content = `<span class = 'reply_file_label'>ფაილი</span> <div class = 'reply_file_icon reply_img_icon' ></div>`;
+                                        }
+                                        
+
+                                    }
+                                        
+                                    let reply_inform;
+                                    if(reply_msg_id == "none"){
+                                        reply_inform = ``;
+                                    }
+                                    else{
+                                        reply_inform = `
+                                        <div class = 'replyed_to replyed_${msg_id}' id = 'replyed_to_${reply_msg_id}'>
+                                                        <div class = "reply_line">
+                                                        </div>
+                                                        <div class = "replyed_to_text"> 
+                                                            <span class="replyed_to_username" >${replyed_msg_owner} : </span>
+                                                            ${replyed_msg_content}
+                                                        
+                                                        </div>
+
+                                                    </div>
+                                        `;
+                                    }
+                                    let sapendi =  
+                                                `
+                                                ${reply_inform}
+                                                    <div  class = 'message_div' id = 'message_div_${msg_id}' >
+
+                                                        <div class = 'message_pfp_div'> 
+                                                            <div class = 'message_pfp' style= "background-image : url('/${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div>
+                                                        </div>
+                                                        <div class = 'message_content_div'>
+                                                            <div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div>
+                                                            <div class = 'message_content_msg message_content_msg_${msg_id} message_content_msg_locid_${msg_count}'> ${the_msg}<span class = 'redaqtirebuli_label'></span> </div> 
+                                                            
+                                                        </div>
+                                                        ${button_list_v} 
+                                                    
+
+                                                
+                                               `;
+                                    sapendi_el = document.createElement("div");
+                                    sapendi_el.className = "net_message_div";
+                                    sapendi_el.id = `netmessage_div_${msg_id}`;
+                                    sapendi_el.innerHTML = sapendi;
+                                    sapendi_el.setAttribute("msg_dtype","None")
+                                    sapendi_el.setAttribute("deliverd","true");
+
+                                    breaki = document.createElement("br");
+                                    breaki.id = `breaki_${msg_id}`;
+
+                                    //avon
+                                    //["markup"] = mtliani
+                                    // ["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0
+
+
+                                    
+                                    
+                            
+                                }
+                                else{
+                                    
+                                    
+                                    let dmchat_id = dat["dmchat_id"]
+                                    let img_path = "/" +  dat["the_msg"];
+
+                                    let reply_msg_id = dat["reply_to_msgid"];
+                                    
+                                    let filename = img_path.split("/")[img_path.split("/").length-1]
+                                    
+                                    let ext = filename.split(".")[filename.split(".").length-1]
+                                    let imgpfp = contacts_content[dmchat_id].imgpfp;
+                                    let imgsize = contacts_content[dmchat_id].imgsize;
+
+                                    let msg_sender_nick = contacts_content[dmchat_id].username;
+
+                                    let button_list_v = `<div class = 'button_main_list' id = 'button_main_list_${msg_id}'>
+                                                                <div  class = 'msg_reply_btn mod_btn' id = 'msg_reply_btn_${msg_id}'></div> 
+                                                                <div class = 'msg_edit_btn mod_btn' id = 'msg_edit_btn_${msg_id}'></div> 
+                                                                <div  class = 'msg_delete_btn mod_btn' id = 'msg_delete_btn_${msg_id}'></div> 
+
+                                                            </div>`;
+                                    
+                                    let kont;
+                                    let msg_dtype;
+                                    if(dat["msg_dtype"] == "img"){
+                                        img_path = "/" +  dat["the_msg"];
+                                        // sapendi =  `<div class = 'message_pfp_div'> <div class = 'message_pfp' style= "background-image : url('/${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div> </div>   <div class = 'message_content_div'><div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div><img class = "msg_img"  src="${img_path}"  ></div>`;    
+                                        kont =  `<img id = 'img_el_${msg_id}' class = "msg_img"  src="${img_path}">`;    
+                                        msg_dtype = "img"
+                                    }
+                                    else if(dat["msg_dtype"] == "vid"){
+                                        img_path =  dat["the_msg"];
+                                        // sapendi =  `<div class = 'message_pfp_div'> <div class = 'message_pfp' style= "background-image : url('/${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div> </div>   <div class = 'message_content_div'><div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div> <video class = "msg_img" controls> <source src = '/${img_path}' type = 'video/${ext}'> </video> </div>`; 
+
+                                        kont = `<video class = "msg_img" controls> <source src = '/${img_path}' type = 'video/${ext}'> </video>`;
+                                        msg_dtype = "vid"
+                                    }
+                                    sapendi_el = document.createElement("div");
+                                    sapendi_el.id = `netmessage_div_${msg_id}`;
+                                    sapendi_el.className = "net_message_div"
+                                    
+                                    // document.getElementsByClassName("the_main_messages_div")[0].innerHTML+= sapendi;
+                                    let replyed_msg_owner;
+                                    let replyed_msg_content;
+                                    if(reply_msg_id != "none"){
+                                        let msgcont_statement;
+                                        let msgcont_expression;
+                                        
+                                        if(dat["dmchat_id"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){
+                                            replyed_msg_owner =  document.getElementsByClassName(`message_content_username_${reply_msg_id}`)[0].innerHTML; //"";
+                                            msgcont_statement = document.getElementById(`netmessage_div_${reply_msg_id}`).getAttribute("msg_dtype") == "None"; 
+                                            msgcont_expression = document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0].innerHTML;
+                                        
+                                        }
+                                        else{
+                                            replyed_msg_owner = contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`message_content_username_${reply_msg_id}`)[1].split(`>`)[1].split("<")[0]
+                                            // msgcont_statement = contacts_content[dat["dmchat_id"]]["msgs_markup"].includes(`message_content_msg_${reply_msg_id}`) //contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`message_content_msg_${reply_msg_id}`)[1].split(`"`)[1].split("<")[0]
+                                            let temp_statement = (contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[0].split("<")[contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[0].split("<").length-1] + contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`netmessage_div_${reply_msg_id}`)[1].split(">")[0])
+                                            msgcont_statement = temp_statement.split("msg_dtype")[1].split(`"`)[1].split('"')[0] == "None";
+                                            if(msgcont_statement){
+                                                msgcont_expression = contacts_content[dat["dmchat_id"]]["msgs_markup"].split(`message_content_msg_${reply_msg_id}`)[1].split(`>`)[1].split("<")[0]
+                                            }
+                                            
+                                        }
+                                        
+                                        // if(document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0] != undefined){
+                                        if(msgcont_statement){
+                                            replyed_msg_content = msgcont_expression; //document.getElementsByClassName(`message_content_msg_${reply_msg_id}`)[0].innerHTML;
+                                        }
+                                        else{
+                                            replyed_msg_content = `<span class = 'reply_file_label'>ფაილი</span> <div class = 'reply_file_icon reply_img_icon' ></div>`;
+                                        }
+                                        
+
+                                    }
+                                    
+                                    let reply_inform;
+                                    if(reply_msg_id == "none"){
+                                        reply_inform = ``;
+                                    }
+                                    else{
+                                        reply_inform = `
+                                        <div class = 'replyed_to replyed_${msg_id}' id = 'replyed_to_${reply_msg_id}'>
+                                                        <div class = "reply_line">
+                                                        </div>
+                                                        <div class = "replyed_to_text"> 
+                                                            <span class="replyed_to_username" >${replyed_msg_owner} : </span>
+                                                            ${replyed_msg_content}
+                                                        
+                                                        </div>
+
+                                                    </div>
+                                        `;
+                                    }
+                                        
+
+                                    let sapendi =  
+                                    
+                                            `
+                                            ${reply_inform}
+                                                <div  class = 'message_div' id = 'message_div_${msg_id}' >
+
+                                                
+                                                
+
+                                                <div class = 'message_pfp_div'> 
+                                                    <div class = 'message_pfp' style= "background-image : url('/${imgpfp}'); background-size : ${imgsize}% ${imgsize}% "></div>
+                                                </div>
+                                                <div class = 'message_content_div'>
+                                                    <div class = 'message_content_username message_content_username_${msg_id} message_content_username_locid_${msg_count}'>${msg_sender_nick}</div>
+                                                    ${kont} 
+                                                    
+                                                </div>
+                                                ${button_list_v} 
+
+                                                
+                                            `;
+                                    sapendi_el.innerHTML = sapendi;
+                                    sapendi_el.setAttribute("msg_dtype",msg_dtype)
+                                    sapendi_el.setAttribute("deliverd","true");
+                                    breaki = document.createElement("br");
+                                    breaki.id = `breaki_${msg_id}`;
+
+
+                                }
+                                let scroll_distance_from_bottom;
+                                    
+
+                                if(dat["dmchat_id"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){
+                                    scroll_distance_from_bottom = document.getElementsByClassName("messages_div")[0].scrollHeight - document.getElementsByClassName("messages_div")[0].clientHeight - document.getElementsByClassName("messages_div")[0].scrollTop;
+                                    document.getElementsByClassName("the_main_messages_div")[0].append(sapendi_el);
+
+                                    
+                                    document.getElementsByClassName("the_main_messages_div")[0].append(breaki)
+
+                                    
+                                    contacts_content[dat["dmchat_id"]]["markup"] = document.getElementById("messages_outer_div").innerHTML
+                                    contacts_content[dat["dmchat_id"]]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+                                    
+                                    if(scroll_distance_from_bottom < 10){
+                                        if(dat["msg_dtype"] == "img"){
+                                            document.getElementById(`img_el_${msg_id}`).onload = function(){
+                                                document.getElementsByClassName("messages_div")[0].scroll(0,10**14);
+                                            }
+                                        }
+                                    
+                                        document.getElementsByClassName("messages_div")[0].scroll(0,10**14);
+                                    }
+
+
+                                }
+                                else{
+                                    contacts_content[dat["dmchat_id"]]["msgs_markup"]+= (sapendi_el.outerHTML + breaki.outerHTML);
+
+                                }
+
+                                //interaction observer obzervacia uqeni on sapendi_el;
+                                
+                                
+                                
+
+
+
+                                let cont_inter_el = document.getElementById(`contact_interaction_${dat["dmchat_id"]}`);
+                                
+                                if(dat["dmchat_id"] != window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){
+                                    cont_inter_el.setAttribute("value",(parseInt(cont_inter_el.getAttribute("value")) + 1 ) + "")
+                                    if(parseInt(cont_inter_el.getAttribute("value")) > 9){
+                                        cont_inter_el.innerHTML = "9+"
+                                    }
+                                    else{
+                                        cont_inter_el.innerHTML = cont_inter_el.getAttribute("value")
+                                    }
+                                    
+                                    cont_inter_el.style.display = "block";
+                                
+                                }
+                                
+                                
+                            } //finish
+                        
+
+                        recieved_msg_status = "seen"
+
+                        
+                        if(recieved_msg_status == "unseen"){
+                            var contact_last_msg_style = "font-weight:600"
+                        }
+                        else{
+                            var contact_last_msg_style = "";
+                        }
+
+
+                        if(document.getElementById(`contact_${dat["dmchat_id"]}`).getAttribute("request_status") == "inactive"){
+                            document.getElementById(`contact_${dat["dmchat_id"]}`).style.display = "block";
+                            contact_set(document.getElementById(`contact_${dat["dmchat_id"]}`));
+                            document.getElementById(`contact_${dat["dmchat_id"]}`).setAttribute("request_status","active");
+
+                            
+                        }
+                        
+                        if((straidi+"")  != (dat["sender_id"]+"") ){//tu iman gamomigzavna
+                            if(dat["dmchat_id"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] ){
+                                observer.observe(sapendi_el)
+
+                            }
+                            else{
+                                unobserved_elids[dat["dmchat_id"]].push(dat["msg_id"]);
+                            }
+                            if(dat["msg_dtype"] == "text"){
+                                
+                                // document.getElementById(`contact_last_message_${dat["dmchat_id"]}`).innerHTML = `<span style="font-weight:600"> ${dat["the_msg"]}</span>`;
+                                document.getElementById(`contact_last_message_p_${dat["dmchat_id"]}`).innerHTML = `<span style = "${contact_last_msg_style}"> ${dat["the_msg"]}</span>`;
+
+                            }
+                        }
+
+                        message_get()
+                        // let objDiv = document.getElementsByClassName("messages_div")[0];
+                        //             objDiv.scrollTop = 1000**10
+                        // document.getElementsByClassName("messages_div")[0].scroll(0,10**14)
+                        
+                                    
+                    }
+
+
+                
+
+                })
+                
+
+
+            
+            var messages_div = document.getElementsByClassName("messages_div")[0];
+            var chat_num = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0];
+            if(chat_num != "main"){
+                document.getElementById("contact_" + chat_num.split("#")[0]).click()
+            }
+            function message_get(){
+                for(let i of document.getElementsByClassName("net_message_div")){
+
+                    // try{
+                    // if(true){
+                    if(i.getAttribute("deliverd") == "true"){
+                        
+                        let aidi = i.id.split("_")[2];
+                        
+
+                        let replyed_to = document.getElementsByClassName("replyed_"+aidi)[0];
+
+
+                        if(replyed_to != null){
+                            replyed_to.onclick = function(){
+
+                                let messages_div = document.getElementsByClassName("messages_div")[0];
+
+                                let replition_id = replyed_to.id.split("replyed_to_")[1]
+                                window.location.href = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]+  "#netmessage_div_" + replition_id;
+                                messages_div.scroll(0,messages_div.scrollTop - 100);
+
+                                let is_mesiji = document.getElementById("netmessage_div_" + replition_id);
+                                
+                                var feri = "200,200,200"; //"8, 130, 112";
+                                is_mesiji.style.backgroundColor = "rgba("+feri+",0.9)";
+                                let ixi = 0.9;
+                                let iyi = 0.001;
+                                
+                                
+
+                                
+                                setTimeout(function(){
+                                    let reply_msg_int = setInterval(reply_anim,1);
+                                    function reply_anim(){
+                                        ixi+=-iyi;
+                                        iyi+=0.00005;
+                                        is_mesiji.style.backgroundColor = "rgba("+feri+","+ ixi +")";
+                                        if(ixi <=0){
+                                            clearInterval(reply_msg_int);
+                                        }
+                                    }
+                                },200)
+                            }
+                        }
+                        
+                        
+                        let button_main_list = document.getElementById("button_main_list_" +aidi )
+                        i.onmouseenter = function(){
+                            if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != aidi){
+                                i.style.backgroundColor = "#9595a9";
+                                
+                            }
+                            button_main_list.style.opacity = "1";
+                            
+                        }
+                        i.onmouseleave = function(){
+                            if(document.getElementsByClassName("msgsend_input")[0].reply_msg_id != aidi){
+                                i.style.backgroundColor = "#a4a4ba";
+                                
+                            }
+                            button_main_list.style.opacity = "0";
+                            
+                        }
+                        let msg_reply_btn = document.getElementById("msg_reply_btn_" + aidi);
+                        let msg_edit_btn = document.getElementById("msg_edit_btn_"+aidi);
+                        let msg_del_btn = document.getElementById("msg_delete_btn_" + aidi);
+
+
+                        if(msg_del_btn != null){
+                            msg_del_btn.onclick = function(){
+                                
+                                let msg_washla_warn = new GeoWarning("დარწმუნებული ხარ რომ გსურის მესიჯის წაშლა?",arastvis,kistvis,["chats","messages_outer_div"],"manual");
+                                function arastvis(){
+                                    msg_washla_warn.window_gauqmeba();
+                                }
+                                function kistvis(){
+                                    msg_washla_warn.rec_washla_gafrtxileba_buttonsdiv.style.display = "flex";
+                                    msg_washla_warn.rec_washla_gafrtxileba_buttonsdiv.style.height = "200px";
+                                    msg_washla_warn.rec_washla_gafrtxileba_buttonsdiv.innerHTML = ` <div style= "left:0;transform:translate(0,-50%)" class="lds-circle"><div style= "left:0;transform:translate(0,-50%)" id = "burtula"></div></div> `;
+
+                                    soketi.emit("dmchat_message_delete",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0],"sender_id" :straidi, "msg_id" : aidi})
+                                    
+                                    // soketi.on("message",function(dat){
+                                        // soketi.addEventListener("message",
+                                    function msg_delete_sockRecieve(dat){
+                                        data = JSON.parse(dat)
+
+                                        if(data["type"] == "msg_delete"){
+                                            if(data["sender_id"] == straidi){
+                                                if(data["otaxi"] == window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0]){
+                                                    msg_washla_warn.window_gauqmeba();
+
+                                                    soketi.removeEventListener("message",msg_delete_sockRecieve)
+
+                                                    
+                                                }
+                                            }
+                                        }
+                                    
+                                        
+                                    }
+                                    soketi.addEventListener("message",msg_delete_sockRecieve)
+                                }
+
+
+                                msg_washla_warn.rec_washla_arabutton.addEventListener("click",arastvis);
+                                msg_washla_warn.rec_washla_kibutton.addEventListener("click",kistvis);
+                                
+
+                                
+
+                                
+                            }
+                        }
+
+
+                        if(msg_edit_btn != null){
+                            msg_edit_btn.onclick = function(){
+                                if(i.getAttribute("msg_dtype") == "None"){
+                                    document.getElementsByClassName("msgsend_input")[0].onblur = function(){}
+                                    let message_content_msg = document.getElementsByClassName("message_content_msg_" + aidi)[0];
+                                    let message_edit_input = document.createElement("input");
+                                    
+                                    let message_edit_input_label = document.createElement("span")
+                                    message_edit_input_label.className = "message_edit_input_label";
+                                    // message_edit_input_label.innerHTML = `<span class = "edit_input_lb edit_input_lb_escape">Escape</span> გაუქმებისთვის, <span class = "edit_input_lb edit_input_lb_enter">Enter</span> დადასტურებისტვის`;
+                                    
+                                    let escape_lb = document.createElement("span")
+                                    escape_lb.innerHTML = "Escape"
+                                    escape_lb.className = "edit_input_lb edit_input_lb_escape"
+                                    let escape_lb_node = document.createTextNode(" გაუქმებისთვის, ")
+
+                                    let enter_lb = document.createElement("span")
+                                    enter_lb.innerHTML = "Enter"
+                                    enter_lb.className = "edit_input_lb edit_input_lb_enter"
+                                    let enter_lb_node = document.createTextNode(" დადასტურებისთვის")
+
+                                    message_edit_input_label.append(escape_lb)
+                                    message_edit_input_label.append(escape_lb_node)
+                                    message_edit_input_label.append(enter_lb)
+                                    message_edit_input_label.append(enter_lb_node)
+
+                                
+
+
+
+
+
+
+
+
+                                    
+                                    
+                                    message_edit_input_label.className = "message_edit_input_label"
+                                    let yofili_mesiji_value = message_content_msg.innerHTML;
+                                    // <span class="redaqtirebuli_label"></span>
+                                    message_edit_input.value = yofili_mesiji_value.replace(`<span class="redaqtirebuli_label"> (რედაქტირებული)</span>`,"").replace(`<span class="redaqtirebuli_label"></span>`,"").trim();
+
+                                    message_edit_input.className = "msg_edit_input"
+                                    
+                                    message_content_msg.innerHTML = "";
+
+                                    message_edit_input.type = "text"
+
+                                    message_content_msg.style.display = "flex";
+                                    message_content_msg.append(message_edit_input)
+                                    message_content_msg.append(message_edit_input_label)
+                                    message_edit_input.focus()
+
+
+                                    button_main_list.style.display = "none"
+
+
+
+                                    function daescapeba(key){
+
+                                        
+                                        if(key.key == undefined || key.key == "Escape"){
+                                        // if(true){
+                                            window.removeEventListener("keyup",daescapeba)
+                                            window.removeEventListener("keyup",daentereba)
+                                            button_main_list.style.display = "flex"
+
+                                            message_content_msg.removeChild(message_edit_input)
+                                            message_content_msg.removeChild(message_edit_input_label)
+
+                                            message_content_msg.innerHTML = yofili_mesiji_value;
+
+                                            
+                                        }
+
+                                        
+
+                                    }
+
+                                    function daentereba(key){
+
+                                        if(key.key == undefined || key.key == "Enter"){
+                                            
+                                            window.removeEventListener("keyup",daescapeba)
+                                            window.removeEventListener("keyup",daentereba)
+                                            button_main_list.style.display = "flex"
+
+                                            message_content_msg.removeChild(message_edit_input)
+                                            message_content_msg.removeChild(message_edit_input_label)
+
+                                            message_content_msg.innerHTML = yofili_mesiji_value;
+
+                                            //backend funcs
+
+                                            if(message_edit_input.value.trim() != yofili_mesiji_value.trim()){
+                                                soketi.emit("dmchat_message_edit",data={"new_text" : message_edit_input.value,"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0],"sender_id" :straidi, "msg_id" : aidi})
+                                                
+                                                message_content_msg.innerHTML = message_edit_input.value + "<span class = 'redaqtirebuli_label'> (რედაქტირებული)</span>";
+                                                i.style.opacity = "0.6";
+                                                soketi.on("message",function(dat){
+                                                    let data = JSON.parse(dat);
+                                                    if(data["type"] == "msg_edit"){
+                                                        if(window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] == data["otaxi"]){
+                                                            if(straidi == data["sender_id"]){
+                                                                i.style.opacity = "1";
+                                                            }
+                                                        }
+                                                    }
+
+                                                })
+                                                
+                                            }
+                                            
+                                            
+
+                                            
+
+                                            
+                                            
+                                        }
+                                        
+
+                                    }
+
+
+                                    // soketi.on("message",function(dat){
+                                    //     let data = JSON.parse(dat);
+                                    //     if(window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0] == data["otaxi"]){
+                                    //         if(straidi != data["sender_id"]){
+
+                                    //         }
+                                    //     }
+
+                                    // })
+                                    
+
+                                    escape_lb.addEventListener("click",daescapeba)
+                                    enter_lb.addEventListener("click",daentereba)
+
+
+                                    window.addEventListener("keyup",daescapeba)
+                                    window.addEventListener("keyup",daentereba)
+
+
+                                    
+                                }
+                                // else{
+                                //     let file_saxeli_ = i.getAttribute("msg_dtype")
+                                //     if()
+                                //     erori(`${file_saxeli_} რედაქტირება შეუძლებელია`)
+                                // }
+                                
+                            }
+                        }
+                        
+
+                        // message_content_msg_
+                        msg_reply_btn.onclick = function(){
+                            document.getElementsByClassName("msgsend_input")[0].focus()
+                            document.getElementsByClassName("msgsend_input")[0].reply_msg_id = aidi;
+                            for(let msg_div of rpl_selected_msgs){
+                                msg_div.style.backgroundColor = "#a4a4ba";
+                            }
+                            rpl_selected_msgs = [];
+
+
+                            i.style.backgroundColor = "#d8c2b6";
+
+                            var sainpute_simgale = 50;
+                            // document.getElementsByClassName("msgsend_input")[0].ats
+                            document.getElementsByClassName("reply_info")[0].style.display = "block";
+
+
+                            // if(document.getElementsByClassName("msgsend_input")[0].ats != true){
+                            if(true){
+                                document.getElementsByClassName("msgsend_input_box")[0].style.height = "30%";
+                                document.getElementsByClassName("messages_div")[0].style.height = "70%";
+                                document.getElementsByClassName("msgsend_input")[0].style.height= "23.2%";
+
+                                
+                                document.getElementsByClassName("msgsend_input")[0].style.top = sainpute_simgale + "%";
+                                document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "0px 0px 10px 10px";
+                                // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                document.getElementsByClassName("attach_send_btn")[0].style.top = (sainpute_simgale ) + "%";
+                            }
+                            // else{
+                            //     document.getElementsByClassName("msgsend_input_box")[0].style.height = "50%";
+                            //     document.getElementsByClassName("messages_div")[0].style.height = "50%";
+                            //     document.getElementsByClassName("msgsend_input")[0].style.height= "23.2%";
+
+                                
+                            //     document.getElementsByClassName("msgsend_input")[0].style.top = sainpute_simgale + "%";
+                            //     document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "0px 0px 10px 10px";
+                            //     // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                            //     document.getElementsByClassName("attach_send_btn")[0].style.top = (sainpute_simgale ) + "%";
+
+                            // }
+
+
+                            document.getElementsByClassName("reply_cancell_btn")[0].onclick = function(){
+                                i.style.backgroundColor = "#a4a4ba";
+                                document.getElementsByClassName("reply_info")[0].style.display = "none";
+
+
+                                if(document.getElementsByClassName("msgsend_input")[0].ats != true){
+
+                                    
+                                    document.getElementsByClassName("msgsend_input_box")[0].style.height = "10%";
+                                    document.getElementsByClassName("messages_div")[0].style.height = "90%";
+                                    document.getElementsByClassName("msgsend_input")[0].style.height= "70%";
+
+                                    document.getElementsByClassName("msgsend_input")[0].style.top = "10%";
+                                    document.getElementsByClassName("msgsend_input")[0].style.borderRadius  = "10px 10px 10px 10px";
+                                    // document.getElementsByClassName("msgsend_input_wide")[0].style.borderRadius  = "10px 0px 10px 10px";
+
+
+                                    document.getElementsByClassName("attach_send_btn")[0].style.top = "20%";
+                                }
+                                document.getElementsByClassName("msgsend_input")[0].reply_msg_id = "none";
+                                
+                            }
+                            
+                            let myDiv = document.getElementsByClassName("messages_div")[0];
+                            myDiv.scrollTop = myDiv.scrollHeight*100;
+
+                            rpl_selected_msgs.push(i)
+                            if(document.getElementsByClassName(`message_content_username_${aidi}`)[0].innerHTML.trim() == "მე"){
+                                document.getElementsByClassName("reply_info_p")[0].innerHTML = `პასუხობ შენ თავს`;
+                            }
+                            else{
+                                document.getElementsByClassName("reply_info_p")[0].innerHTML = `პასუხობ <span class = "reply_info_p_s">${document.getElementsByClassName(`message_content_username_${aidi}`)[0].innerHTML}</span>-ს`;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+            var chat_contacts_div = document.getElementById("chats_inner");
+
+            function contacts_replace(dmchat_id){
+                
+                let chamonaxsni = document.getElementById("contact_" + dmchat_id);
+                let chamonaxsni_breaki = document.getElementById(`contact_breaki_${dmchat_id}`)
+
+                // chamonaxsni_markup = chamonaxsni.innerHTML;
+
+                chat_contacts_div.removeChild(chamonaxsni);
+                chat_contacts_div.removeChild(chamonaxsni_breaki);
+                // chat_contacts_div.innerHTML = chamonaxsni_markup + chat_contacts_div.innerHTML;
+
+                chat_contacts_div.prepend(chamonaxsni_breaki)
+                chat_contacts_div.prepend(chamonaxsni)
+            }
+            function type_hint(dmchat_id,type_type){
+
+            
+                let contact_last_message_p = document.getElementById(`contact_last_message_p_${dmchat_id}`)
+
+                let contact_last_message = document.getElementById(`wave_${dmchat_id}`)
+                            
+
+                let status_div = document.getElementById(`wave_${dmchat_id}`);
+
+
+                if(type_type == "start"){
+                    let type_signals_interv = setInterval(function(){
+
+                        status_div.style.display = "inline";
+                        contact_last_message_p.style.display = "none";
+                    },10)
+
+                    document.getElementById(`contact_${dmchat_id}`).typing_intervals.push(type_signals_interv)
+
+
+                    status_div.style.display = "inline";
+                    contact_last_message_p.style.display = "none";
+
+                    setTimeout(function(){
+                        clearInterval(type_signals_interv);
+                        // document.getElementsByClassName("msgsend_input")[0].typing_intervals.splice(type_signals_interv,1)
+                        document.getElementById(`contact_${dmchat_id}`).typing_intervals.splice(type_signals_interv,1)
+                        status_div.style.display = "none";
+                        contact_last_message_p.style.display = "inline";
+                    },10000)
+                }
+                else if(type_type == "finish"){
+                    for(let i of document.getElementById(`contact_${dmchat_id}`).typing_intervals){
+                        clearInterval(i);
+                    }
+                    status_div.style.display = "none";
+                    contact_last_message_p.style.display = "inline";
+                }
+
+                
+                    
+                
+
+            }
+
+            function dasinva(dmchat_id){
+                soketi.emit("typing_ping",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : aidi,"sender_id" :straidi})
+            }
+
+            document.getElementById("search_input").onclick = function(){
+                
+                
+                document.getElementsByClassName("msgsend_input")[0].onblur = function(){}
+                this.focus()
+            }
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if(entries[0].isIntersecting === true){
+
+                    let otaxi_id  = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0];
+
+                    soketi.emit("dasinva",data={"c_user" : kuki.c_user, "xs" : kuki.xs,"otaxi" : otaxi_id,"dasinuli_mesiji_id" : entries[0].target.id.split("_")[2],"dasinva_type" : "solo"})
+
+                    observer.unobserve(entries[0].target);
+                }
+                else{
+                    //gauchinarda
+
+                }
+                    
+            }, { threshold: [0] });
+            var dmchatload_ind = 15;
+            var loading_html = document.createElement("div");
+            loading_html.className = "burtula_outer_nv";
+            loading_html.innerHTML = `<div class="lds-circle_nv"><div class = "burtula_nv"></div></div>`;
+            var msgload_observer = new IntersectionObserver(function(entries) {
+                if(entries[0].isIntersecting === true){
+                    let sapmshb =document.getElementsByClassName("the_main_messages_div")[0] 
+                    let msg_len = 0;
+                    for(let i of document.getElementsByClassName("net_message_div")){
+                        // netmesijebi.append(i)
+                        msg_len+=1;
+                    }
+                    dmchatload_ind+=15;
+                    // dmchatload_ind = dmchatload_ind;
+                    
+                    let load_el = document.createElement("div");
+                    // load_el.innerHTML = `
+                    // fef<br>
+                    // aef<br>
+                    // aefaef<br>
+                    // ae<br>
+                    // file_inputs_lsaef<br>
+                    // ae<br>
+                    // falseefa<br>
+                    // efa<br>
+                    // efaaefa<br>
+                    
+
+                    // `
+                    // sapmshb.prepend(load_el)
+                    sapmshb.prepend(loading_html)
+                     $.ajax({
+                            data : {
+                                    "dm_aidi" : window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0],
+                                    "from" : dmchatload_ind,
+                                    "type" : "add"
+                            },
+                            url : "/dmchat_query",
+                            type : "POST",
+                            dataType : "text",
+                            success : function(data){
+                                let aidi = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0];
+
+                                if(data != "false"){
+                                    // if)
+                                        var file_input_index = 0;
+                                        let dzveliscroltopi = document.getElementById("messages_div").scrollTop; 
+                                        // let markapi = `
+                                        // <div class = "messages_div" id = "messages_div"> 
+                                        //     <div class = "messages_start">
+                                                
+                                        //         <div class = "messages_pfp" style = "background-image:url('/${contacts_content[aidi].imgpfp}'); background-size: ${contacts_content[aidi].imgsize}% ${contacts_content[aidi].imgsize}%">
+                                        //         </div>
+
+                                        //         <h3 class = "msg_fullname_h3">${contacts_content[aidi].saxeli} ${contacts_content[aidi].gvari}</h3>
+                                                
+                                                    
+
+                                        //         <div class = "messages_viewpfp_btn" id = "messages_viewpfp_btn_${aidi}">
+                                                    
+                                        //             <a class = "messages_viewpfp_btn_a" href = "/${contacts_content[aidi].username}">
+                                        //                 პროფილის ნახვა
+                                        //             </a>
+                                        //         </div>
+                                                                    
+                                                
+
+                                                
+
+
+                                                
+                                        //     </div>
+                                        //     <hr class = "msg_start_hr">
+                                        //     <div class = "the_main_messages_div">
+                                        //     ${data}
+                                        //     </div>
+
+                                        // </div>
+                                        // <form class = "files_form" id = "files_form_${aidi}">
+                                        // </form>
+                                        // <div class = "msgsend_input_box">
+                                        //     <div style="display:none" class = "reply_info">
+                                        //         <p class = "reply_info_p">პასუხობ <span class = "reply_info_p_s">${visacpasuxob}</span>-ს</p> 
+                                        //         <div class = "reply_cancell_btn"></div>
+                                        //     </div>
+                                        //     <div class = "attachments_store"></div>
+                                        //     <div class = "attach_send_btn"></div>
+                                        //     <input placeholder = "შეტყობინება"  type = "text" class = "msgsend_input" id = "msgsend_input_${aidi}" onblur="this.focus()" autofocus>
+                                        //     <div class = "msgsend_input_wide"></div>
+                                        //     <div class = "msgsend_btn"></div>
+                                        // </div>
+
+                                        // `;
+                                        // <input placeholder = "შეტყობინება"  type = "text" class = "msgsend_input" id = "msgsend_input_${aidi}" onblur="this.focus()" autofocus>
+                                        
+                                        // document.getElementsByClassName("burtula_outer")[0].style.display = "none";
+
+                                        // messages_outer_div.innerHTML = markapi;
+                                        let myDiv = document.getElementsByClassName("messages_div")[0];
+
+                                        
+                                        let totalelsheight = 0;
+                                        for(let i of JSON.parse(data)){
+                                            let elem  = document.createElement("div");
+                                            
+                                            
+                                            // sapmshb.append(elem)
+                                            sapmshb.prepend(elem)
+                                            // sapmshb.innerHTML = i + sapmshb.innerHTML;
+                                            
+                                            elem.outerHTML = i;
+                                            console.log(elem)
+                                            // totalelsheight+= elem.getBoundingClientRect().height;
+                                            // sapmshb.innerHTML = i + sapmshb.innerHTML;
+                                            
+                                        }
+                                        let elcounti = 0;
+                                        while(elcounti < 15){
+                                            totalelsheight+= document.getElementsByClassName("net_message_div")[elcounti].getBoundingClientRect().height
+                                            elcounti+=1;
+                                        }
+                                        console.log(dzveliscroltopi)
+                                        console.log(totalelsheight)
+                                        // totalelsheight = 0;
+                                        
+                                        document.getElementById("messages_div").scrollTop = (dzveliscroltopi + totalelsheight );
+                                        // messages_outer_div
+                                        //jDiv.scrollHeight;
+                                        contacts_content[aidi]["msgs_markup"] = document.getElementsByClassName("the_main_messages_div")[0].innerHTML;
+                                        // contacts_content[aidi].markup  = document.getElementById("messages_div").outerHTML;
+                                        
+
+                                        
+                                        
+                                        
+                                    
+                                    
+                                        
+
+                                        
+                                        msgload_observer.unobserve(entries[0].target)
+                                        let saabzervori = document.getElementsByClassName("net_message_div")[0]
+                                        // let saabzervori = document.getElementsByClassName("net_message_div")[document.getElementsByClassName("net_message_div").length-1]
+                                        
+                                        msgload_observer.observe(saabzervori)
+                                }
+                                
+                            } 
+                            
+                            });
+                }
+                else{
+                    //gauchinarda
+
+                }
+                    
+            }, { threshold: [0] });
+
+            
+            
+            
+            </script>
+        
+            
+
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

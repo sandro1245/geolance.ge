@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | აღწერა და გამოცდილება</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+        </style>
+        <style>
+           
+                
+                    body{
+                        height:176%;
+                    }
+                    #main{
+                        position:absolute;
+                        width:70%;
+                        
+                        /* height: {{main_info_div_simagle}}%; */
+                        height:150%;
+                        top:20%;
+                        left:50%;
+                        transform:translateX(-50%);
+                        background-color:rgb(239, 232, 232);
+                        border:1px solid black;
+                        border-radius:5px;
+                    }
+                    .element_row{
+                        position:relative;
+                        width:100%;
+                        height:20%;
+                        /* display: flex;9 */
+                        justify-content: space-around;
+                        /* background-color: red; */
+                        display: -webkit-box;
+                        border:1px solid black;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: start;
+                        -ms-flex-align: start;
+                        align-items: flex-start;
+                        position: relative;
+                    }
+                    #satauri_input{
+                        resize:none;
+                        position:absolute;
+                        top:30%;
+                        left:45%;
+                        width:50%;
+                        height:16%;
+                        padding:4px;
+                        /* transform:translateX(-50%); */
+                        transform:translateY(-50%);
+                        font-size:30px;
+                        
+                    }
+                    #satauri_agwera{
+                        position:absolute;
+                        /* font-size:20px; */
+                        left:5%;
+                        top:30%;
+                        transform:translateY(-50%);
+                        
+                    }
+                    #sfero_agwera{
+                        position:absolute;
+                        top:50%;
+                        left:5%;
+                        transform:translate(0%,-25%);
+                    }
+
+
+                    #tab_parent{
+
+                        position:relative;
+                        left:0%;
+                        top:0%;
+                        width:100%;
+                        height:70px;
+                        margin:0;
+                        padding:0;
+                        background-color:rgb(40, 42, 42);
+                        border-radius:5px 5px 0px 0px;  
+                        display: flex;
+                        justify-content: space-around;
+                        
+                        border:none;
+
+                    }
+                    .nav_tab{
+                        background-color:rgb(70, 81, 81);;
+                        position:relative;
+                        height:70%;
+                        width:140px;
+                        text-align: center;
+                        line-height: 50px;
+                        top:100%;
+                        transform:translateY(-100%);
+                        /* border:none; */
+                        
+                        border-radius:10px 10px 0px 0px;
+                        color:white;
+                        cursor:default;
+                        /* transition:height 0.3s,opacity 0.3s; */
+                    }
+/*                     
+                    .nav_tab:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+                     */
+                    .nav_tab_anim{
+                        cursor:pointer;
+                        transition:height 0.3s,opacity 0.3s;
+                    }
+                    .nav_tab_anim:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+
+                    #desc_and_exp{
+                        line-height:22px;
+                    }
+                    #sheqmna{
+                        position:absolute;
+                        top:90%;
+                        left:90%;
+                        width:15%;
+                        height:3%;
+                        font-size:18px;
+                        border:none;
+                        border-radius:5px;
+                        color:white;
+                        transform:translateX(-50%);
+                        background:linear-gradient(rgb(115, 226, 115),rgb(31, 113, 57));
+                        cursor:pointer;
+                        transition:box-shadow 0.4s, margin-top 0.4s;
+                    }
+                    #sheqmna:hover{
+                        box-shadow:5px 5px 05px grey;
+                        margin-top:-10px;
+                    }
+
+
+
+                    #desc_and_exp{
+                        height:90%;
+                    }
+
+
+                    #agwera_heading{
+                        position:relative;
+                        margin-left:10%;
+                        margin-top:5%;
+                    }
+                    #agwera_input{
+                        position:relative;
+                        margin:2%;
+                        margin-left:10%;
+                        width:70%;
+                        height:300px;
+                        font-size:20px;
+                        overflow-y:scroll;
+
+                        padding:10px 10px 10px 10px;
+
+                    }
+                    #agwera_count{
+                        margin-left:10%;
+                        opacity: 0.7;
+                    }
+                    #experience_system{
+                        position:relative;
+                        margin:2%;
+                        margin-left:10%;
+                        width:70%;
+                        /* height:500px; */
+                        height:45%;
+                        font-size:20px;
+                        background-color: rgb(203, 193, 193);
+
+                    }
+                    #gamocdileba_title{
+                        font-size:25px;
+                    }
+                    #create_new_record_btn{
+                        background-color:white;
+                        width:40%;
+                        height:auto;
+                        padding:5px;
+                        text-align:center;
+                        position:relative;
+                        
+                        left:50%;
+                        top:7%;
+                        transform:translate(-50%,0%);
+                        
+                        border-radius:15px;
+
+                        cursor:pointer;
+                        transition:opacity 0.3s,box-shadow 0.3s,top 0.3s;
+
+                    }
+                    #records_list{
+                        /* background-color: red; */
+                        position:absolute;
+                        top:100%;
+                        transform:translateY(-100%);
+                        width:100%;
+                        height:75%;
+                        bottom:0px;
+                        overflow-y:auto;
+
+                        
+                    }
+                    #cancel_button{
+                        background-image:url("static/cancell.png");
+                        background-size:100% 100%;
+                        background-position:center;
+                        position:absolute;
+                        left:100%;
+                        top:0%;
+                        width:5%;
+                        height:7%;
+                        transform:translate(-100%,0);
+                        border-radius:50% 50%;
+                        cursor: pointer;
+                        z-index:20;
+                        transition: opacity 0.3s,top 0.3s;
+                        
+
+                    }
+                    #cancel_button:hover{
+                        opacity:0.8;
+                        top:1%;
+                    }
+                    #create_new_record_btn:hover{
+                        opacity:0.7;
+                        box-shadow:5px 5px 5px;
+                        top:5%;
+                    }
+                    .unregistered_record{
+                        width:90%;
+                        background-color: rgb(57, 123, 123);
+                        /* height:340px; */
+                        height:70%;
+
+                        position:relative;
+                        left: 50%;
+                        margin-top:50px;
+                        transform:translate(-50%,0);
+                        border-radius:5px;
+                    }
+                    .unregistered_record_saxeli_input{
+                        position:absolute;
+                        top:5%;
+                        left:5%;
+                        
+
+                        width:25%;
+                        height:10%;
+                        font-size:20px;
+                        
+                        border-radius: 5px;
+                        padding-left:5px;
+                    }
+                    .record_agwera_input{
+                        position:absolute;
+                        resize:none;
+                        left:55%;
+                        padding-left:5px;
+                        border-radius: 5px;
+                        top:5%;
+                        height:40%;
+                        font-size:20px;
+                        width:40%;
+
+                        /* transform:translate(-50%,0); */
+
+                    }
+                    #tipi_mine_radio{
+                        position:relative;
+                        top:30%;
+                        left:5%;
+                    }
+                    .rec_t_input{
+                        position:relative;
+                        top:35%;
+                        margin-top:20px;
+                        left:5%;
+                        width:25%;
+                        border-radius:5px;
+                        width:30%;
+                        height:7%;
+                        padding-left:1%;
+                        z-index:5;
+                    }
+                    /* #money_input{
+                        background-image:url("https://www.stephenwadechryslerdodgejeep.com/wp-content/plugins/pm-motors-plugin/modules/vehicle_save/images/check.png") no-repeat scroll 7px 7px;
+                        background-position: 2px 2px;
+                        
+                    } */
+                    .rec_shenaxva_button{
+                        position:absolute;
+                        left:50%;
+                        top:80%;
+                        transform: translate(-50%,0);
+                        background:linear-gradient(rgb(180, 144, 35),yellow);
+                        height: auto;
+                        padding:2% 2% 2% 2%;
+                        border-radius:5px;
+                        cursor:pointer;
+                        transition: opacity 0.3s,box-shadow 0.5s;
+                    }
+                    .rec_shenaxva_button:hover{
+                        opacity: 0.7;
+                        box-shadow:inset 2px 2px 5px rgb(127, 98, 98),inset -2px -2px 5px rgb(127, 98, 98);
+                        
+
+
+
+                    }
+                    .mkwrivi{
+                        position:relative;
+                        left:50%;
+                        transform:translate(-50%,0);
+                        margin-top:10px;
+                        background-color: rgb(57, 123, 123);
+                        width:95%;
+                        height:50px;
+                        transition:left 0.3s;
+                       
+                    }
+                    .mkwrivi:hover{
+                        left:52%;
+                    }
+                    .record_mkwrivi_satauri{
+                        position:absolute;
+                        left:7%;
+                        top:50%;
+                        width:30%;
+                        transform:translate(0%,-50%);
+                    }
+                    .ful_dro{
+                        position:absolute;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+                        left:60%;
+                        
+                    }
+                    .rec_options_btn{
+                        position:absolute;
+                        left:90%;
+                        top:50%;
+                        width:6%;
+                        height:50%;
+                        background-size:100% 100%;
+                        background-position:center;
+                        transform:translate(-50%,-50%);
+                        background-image:url("static/edit_symbol.jpg");
+                        cursor:pointer;
+                        border-radius:50% 50%;
+                        transition: opacity 0.3s,top 0.3s;
+                        
+
+                    }
+                    .rec_options_btn:hover{
+                        opacity:0.8;
+                        top:44%;
+                    }
+                    p{
+                        cursor: default;
+                    }
+                    h2,h3{
+                        cursor:default;
+                    }
+                    
+                    .rec_opt_bar{
+                        position:absolute;
+                        left:100%;
+                        z-index:20;
+                        top:0%;
+                        width:200px;
+                        height:50%;
+                        background-color: red;
+                        /* transform: translate(50%,50%); */
+                    }
+                    .rec_washlis_button{
+                        position:absolute;
+                        left:90%;
+                        transform:translate(-50%,-50%);
+                        top:90%;
+                        background-color:red;
+                        width:10%;
+                        height:auto;
+                        border-radius:4px;
+                        text-align:center;
+                        padding:5px;
+                        cursor:pointer;
+                        
+                    }
+                    .rec_washla_gafrtxileba_div{
+                        position:fixed;
+                        left:50%;
+                        top:50%;
+
+                        transform: translate(-50%,-50%);
+                        background-color:rgb(224, 64, 64);
+                        width:50%;
+                        height:50%;
+                        opacity:1;
+                        border:5px solid white;
+                        border-radius:15px;
+                    }
+                    .rec_washla_gafrtxileba_shekitxva{
+                        position:relative;
+                        width:100%;
+                        height:auto;
+                        margin-top:15px;
+                        font-size:20px;
+                        text-align: center;
+                    }
+                    .rec_washla_gafrtxileba_buttonsdiv{
+                        position:relative;
+                        top:45%;
+                        left:50%;
+                        transform:translate(-50%,-50%);
+                        width:60%;
+                        height:30%;
+                        background-color: white;
+                        border-radius:5px;
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                    .rec_washla_button{
+                        position:absolute;
+                        top:40%;
+                        cursor:pointer;
+                        width:10%;
+                        height:auto;
+                        padding:2px 4px 2px 5px;
+                        text-align:center;
+                        transform: translate(-50%,-50%);
+                        
+                        
+                        
+
+                        
+                    
+                    }
+                    .rec_washla_arabutton{
+                        border:1px solid blue;
+                        color:blue;
+                        left:33.3%;
+                        box-shadow:5px 5px 5px blue;
+                        transition:background-color 0.3s,color 0.3s,top 0.3s, blue 0.3s;
+
+
+                    }
+                    .rec_washla_arabutton:hover{
+                        background-color: blue;
+                        color:white;
+                        top:41%;
+                        box-shadow:5px 5px 10px blue;
+                        
+
+                    }
+
+
+                    .rec_washla_kibutton{
+                        background-color:red;
+                        color:white;
+                        left:66.6%;
+                        box-shadow:5px 5px 5px red;
+                        transition: top 0.3s,box-shadow 0.3s;
+
+                    }
+                    .rec_washla_kibutton:hover{
+                        top:41%;
+                        box-shadow:5px 5px 10px red;
+
+                    }
+                    
+                    
+                    
+                    
+
+
+               
+                
+
+
+                
+        </style>
+        <script>
+
+        </script>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/style.css">
+
+
+
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function sheqmna(){
+                $.ajax({
+                    // data : {
+                    //     "satauri" : document.getElementById("satauri_input").value,
+                    //     "sfero" : sfero.value,
+                    //     "subsfero" : subsfero.value,
+                    //     "tags" : JSON.stringify(tags),
+                    //     "service_id" : '{{service_id}}'
+                    // },
+                    data : {
+                        "thedata" : JSON.stringify(record_list_array),
+                        "service_description" : document.getElementById("agwera_input").value,
+                        "service_id" : '{{service_id}}'
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/save_new_service_2_ajax",
+                    success : function(data){
+                        
+                        if(data == "success"){
+                            window.location.href = "/create_new_service?num=3&service={{service_id}}" ;
+                        }
+                        
+                        
+                    }
+                });
+
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+ 
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li class = "menu_lis" id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li class = "menu_lis" id = "prom_li">პრომოკოდი</li></a>
+                    <li  class = "menu_lis" id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+            <div id = "main">
+                
+                <div id = "tab_parent">
+                    <div id = "general" class = "nav_tab">ძირითადი</div>
+                    <div id = "desc_and_exp"  class = "nav_tab">აღწერა და  გამოცდილება</div>
+                    <!-- <div id = "packets" class = "nav_tab">პაკეტები</div> -->
+                    <div id = "points" class = "nav_tab">ფოინთები</div>
+                    <div id = "files" class = "nav_tab">ფაილები</div>
+
+                    
+                </div>
+
+                <h2 id = "agwera_heading">
+                    აღწერა
+                </h2>
+
+                <textarea id = "agwera_input" style="resize:none">{{service_agwera}}</textarea>
+                <p id = "agwera_count">z/1000</p>
+                
+
+                <div id = "experience_system">
+                    <center><h3 id = "gamocdileba_title">გამოცდილება</h3></center>
+                    
+                        <div id = "create_new_record_btn">ახალი რექორდის შექმნა</div>
+
+
+                        <div id = "records_list">
+
+                            {{recordni}}
+                            
+
+                        </div>
+
+                </div>
+
+                 <button id = "sheqmna">შენახვა</button>
+            </div>
+
+            
+        <script src = "static/MyDropdown.js"></script>
+
+        <!-- <script src="static/script.js"></script> -->
+        <script src = "/static/socket.io.js"></script>
+        <script src = "/static/jquery.js"></script>
+        <script>
+            var straidi = "{{straidi}}";
+        </script>
+        
+        <script>
+            
+
+            var maindivi = document.getElementById("main");
+
+
+
+            var general = document.getElementById("general");
+            var desc_and_exp = document.getElementById("desc_and_exp");
+            var points = document.getElementById("points");
+            var files = document.getElementById("files");
+
+
+
+            {{dziritadi_scr}}
+
+            {{agwera_da_gamocdileba_scr}}
+
+   
+
+            
+            {{pointebi_src}}
+
+
+            {{files_scr}}
+
+
+            
+
+
+
+            var sheqmna_btn = document.getElementById("sheqmna");
+            sheqmna_btn.onclick = sheqmna;
+
+
+            var agwera_count = document.getElementById("agwera_count");
+            function agwera_zoma_t(){
+                var zoma = document.getElementById("agwera_input").value.length
+                agwera_count.innerHTML = zoma + "/1000";
+            }
+            setInterval(agwera_zoma_t,1);
+
+            var experience_system = document.getElementById("experience_system");
+            var create_new_record_btn = document.getElementById("create_new_record_btn");
+            
+            // var records_list = document.createElement("div");
+            // records_list.id = "records_list";
+            // experience_system.append(records_list);
+
+            var records_list = document.getElementById("records_list");
+
+
+
+            create_new_record_btn.sheqmna_started = "false";
+
+            var record_list_array = [];
+            
+            
+            create_new_record_btn.onclick = function(){
+                if(create_new_record_btn.sheqmna_started == "false"){
+                    experience_system.removeChild(records_list);
+                    
+                    
+
+                    let unregistered_record = document.createElement("div");
+                    unregistered_record.className = "unregistered_record";
+
+                    let saxeli = document.createElement("input");
+                    saxeli.placeholder = "სახელი";
+                    saxeli.className = "unregistered_record_saxeli_input";
+
+                    let agwera = document.createElement("textarea")
+                    agwera.className = "record_agwera_input";
+                    agwera.placeholder = "აღწერა";
+
+                    var record_tipi = new MyDropdown("ტიპი",["ჩემი პროექტი","Full-Time","Freelancing პროექტი","სხვა"],unregistered_record,width=30);
+
+                    record_tipi.rec_inputs = "closed";
+
+
+
+                    record_tipi.place(20,30);
+
+                    let fuli_input = document.createElement("input");
+                    fuli_input.style.color = "green";
+                    fuli_input.placeholder = "გამომუშავებული თანხა($)";
+                    fuli_input.type = "number";
+                    fuli_input.id = "money_input";
+                    fuli_input.className = "samushao_dro_input rec_t_input";
+
+                    let samushao_dro_input = document.createElement("input");
+                    samushao_dro_input.placeholder = "სამუშაო დრო(დღე)";
+                    samushao_dro_input.className = "samushao_dro_input rec_t_input";
+                    samushao_dro_input.type = "number";
+
+                    let rec_shenaxva_button = document.createElement("div");
+                    rec_shenaxva_button.className = "rec_shenaxva_button";
+                    rec_shenaxva_button.innerHTML = "დამატება";
+
+                    let cancell_button = document.createElement("div");
+                    cancell_button.id = "cancel_button";
+
+                    function record_creation_gauqmeba(){
+                        create_new_record_btn.sheqmna_started = "false";
+                        experience_system.append(records_list);
+                        experience_system.removeChild(unregistered_record); 
+
+                    }
+                    cancell_button.onclick = record_creation_gauqmeba;
+
+                    function fuli_input_con(){
+                        let fuli = fuli_input.value;
+                        let samushaos_dro = samushao_dro_input.value;
+
+                        if(fuli<0){
+                            fuli_input.value = fuli*-1;
+                        }
+                        if(samushaos_dro < 0){
+                            samushao_dro_input.value = samushaos_dro *-1;
+                        }
+                    }
+                    setInterval(fuli_input_con,1);
+
+                    function rec_saving(){
+
+                        if(saxeli.value.length < 1){
+                            erori("გთხოვთ მიუთითოთ სახელი",2,90);
+                        }
+                        else if(agwera.value.length < 1){
+                            erori("გთხოვთ მიუთითოთ აღწერა",2,90);
+                        }
+                        else if(record_tipi.value == "none"){
+                            erori("გთხოვთ მიუთითოთ პროექტის ტიპი",2,90);
+
+                        }
+                        
+                        
+                        else{
+                            record_creation_gauqmeba();
+                            let data = {
+                                    "saxeli" : saxeli.value,
+                                    "agwera" : agwera.value,
+                                    "tipi" : record_tipi.value,
+                                    "dro" : samushao_dro_input.value,
+                                    "fasi" : fuli_input.value,
+                                    "service_id" : '{{service_id}}'
+                                };
+                            
+                            
+                            record_list_array.push(data);
+                            let mkwrivi_id = record_list_array.indexOf(data);
+
+                            
+                            let mkwrivi = document.createElement("div");
+                            mkwrivi.id = mkwrivi_id;
+                            mkwrivi.className = "mkwrivi";
+
+                            mkwrivi.daha = data;
+
+                            let satauri = document.createElement("p");
+                            satauri.innerHTML = data["saxeli"];
+                            satauri.id = "record_mkwrivi_satauri_" + mkwrivi_id;
+                            satauri.className = "record_mkwrivi_satauri";
+
+                            let ful_dro = document.createElement("p");
+                            ful_dro.className = "ful_dro";
+                            ful_dro.id = "ful_dro_" + mkwrivi_id;
+
+                            if(data["fasi"] != ""){
+                                var fasi = data["fasi"];
+                            }
+                            else{
+                                var fasi = "0";
+                            }
+                            
+                            let fulnoudi = document.createTextNode(fasi);
+                            let fulnoudi_dola = document.createElement("span");
+                            fulnoudi_dola.innerHTML = "$";
+                            fulnoudi_dola.style.color = "lightgreen";
+                            
+                            let dro = data["dro"];
+                            if(dro != ""){
+                                var prefix = " - " ;
+
+                                let kvira = 7;
+                                if(dro > (kvira)){
+                                    let tve = kvira * 4
+                                            if(dro > tve){
+                                                dros = String(dro/(tve)).split(".")[0] + " თვე";
+                                            }
+                                                
+                                            else{
+                                                dros = String(dro/(kvira)).split(".")[0] + " კვირა";
+                                            }
+
+                                                
+                                        
+                                        
+                                }
+                                  
+                                
+                                        
+                            
+                                else{
+                                            dros = String(dro).split(".")[0] + "დღე";
+                                    }
+                                }
+                            else{
+                                var prefix = "" ;
+                                var dros = "";
+                            }
+                            
+ 
+                            let dronoudi_txt =prefix +dros;
+
+                            let dronoudi= document.createTextNode(dronoudi_txt);
+                            
+
+
+                            var rec_edit_btn = document.createElement("div");
+
+
+                            rec_edit_btn.className = "rec_options_btn";
+
+                            //aqari is editingis  onclick 
+                            rec_edit_btn.onclick = function(){
+
+                                experience_system.removeChild(records_list);
+            
+                                var saxeli = document.createElement("input");
+
+                                var unregistered_record = document.createElement("div");
+                                unregistered_record.className = "unregistered_record";
+
+                                
+                                saxeli.placeholder = "სახელი";
+                                saxeli.className = "unregistered_record_saxeli_input";
+
+                                //saxeli.value = record_list_array[mkwrivi.id].satauri;
+                                saxeli.value = record_list_array[mkwrivi.id].saxeli;
+
+                                var agwera = document.createElement("textarea")
+                                agwera.className = "record_agwera_input";
+                                agwera.placeholder = "აღწერა";
+                                agwera.value = record_list_array[mkwrivi.id].agwera;
+
+                                var record_tipi = new MyDropdown("ტიპი",["ჩემი პროექტი","Full-Time","Freelancing პროექტი"],unregistered_record,width=30);
+
+                                record_tipi.rec_inputs = "closed";
+
+
+
+                                record_tipi.place(20,30);
+                                
+                                record_tipi.setValue(record_list_array[mkwrivi.id].tipi);
+                                
+
+                                let fuli_input = document.createElement("input");
+                                fuli_input.style.color = "green";
+                                fuli_input.placeholder = "გამომუშავებული თანხა($)";
+                                fuli_input.type = "number";
+                                fuli_input.id = "money_input";
+                                fuli_input.className = "samushao_dro_input rec_t_input";
+                                fuli_input.value = record_list_array[mkwrivi.id].fasi;
+                                
+
+                                let samushao_dro_input = document.createElement("input");
+                                samushao_dro_input.placeholder = "სამუშაო დრო(დღე)";
+                                samushao_dro_input.className = "samushao_dro_input rec_t_input";
+                                samushao_dro_input.type = "number";
+                                samushao_dro_input.value = record_list_array[mkwrivi.id].dro;
+                                
+                                let rec_washlis_button = document.createElement("div");
+                                
+                                rec_washlis_button.className = "rec_washlis_button";
+                                rec_washlis_button.id = 'rec_washla_btn_"""+ str(record_id) + """';
+
+                                rec_washlis_button.innerHTML = "წაშლა";
+
+                                
+
+                                rec_washlis_button.onclick = function(){
+                                    
+                                    
+                                    record_list_array.splice(mkwrivi_id,1)
+                                    record_creation_gauqmeba();
+                                    records_list.removeChild(mkwrivi);
+
+                                    
+                                    //console.log(mkwrivi_id);
+                                    
+                                    
+                                    
+                                }
+                                
+
+                                let rec_shenaxva_button = document.createElement("div");
+                                rec_shenaxva_button.className = "rec_shenaxva_button";
+                                rec_shenaxva_button.innerHTML = "შენახვა";
+
+                                let cancell_button = document.createElement("div");
+                                cancell_button.id = "cancel_button";
+
+                                function record_creation_gauqmeba(){
+                                    create_new_record_btn.sheqmna_started = "false";
+                                    experience_system.append(records_list);
+                                    experience_system.removeChild(unregistered_record); 
+
+                                }
+                                cancell_button.onclick = record_creation_gauqmeba;
+
+                                function fuli_input_con(){
+                                    let fuli = fuli_input.value;
+                                    let samushaos_dro = samushao_dro_input.value;
+
+                                    if(fuli<0){
+                                        fuli_input.value = fuli*-1;
+                                    }
+                                    if(samushaos_dro < 0){
+                                        samushao_dro_input.value = samushaos_dro *-1;
+                                    }
+                                }
+                                setInterval(fuli_input_con,1);
+
+                                function rec_saving(){
+
+                                    if(saxeli.value.length < 1){
+                                        erori("გთხოვთ მიუთითოთ სახელი",2,90);
+                                    }
+                                    else if(agwera.value.length < 1){
+                                        erori("გთხოვთ მიუთითოთ აღწერა",2,90);
+                                    }
+                                    else if(record_tipi.value == "none"){
+                                        erori("გთხოვთ მიუთითოთ პროექტის ტიპი",2,90);
+
+                                    }
+                                    
+                                    
+                                    else{
+                                        record_creation_gauqmeba();
+                                        let data = {
+                                                "saxeli" : saxeli.value,
+                                                "agwera" : agwera.value,
+                                                "tipi" : record_tipi.value,
+                                                "dro" : samushao_dro_input.value,
+                                                "fasi" : fuli_input.value,
+                                                "service_id" : '{{service_id}}'
+                                            };
+                                        
+                                        
+                                        
+
+                                        
+                                        record_list_array[mkwrivi_id].saxeli = saxeli.value;
+                                        record_list_array[mkwrivi_id].agwera = agwera.value;
+                                        record_list_array[mkwrivi_id].tipi = record_tipi.value;
+                                        record_list_array[mkwrivi_id].fasi = fuli_input.value;
+                                        record_list_array[mkwrivi_id].dro = samushao_dro_input.value;
+
+                                        record_tipi.setValue(record_tipi.value);
+
+                                        let mkwrivi = document.getElementById(mkwrivi_id);
+
+                                        let ful_dro = document.createElement("p");
+                                        ful_dro.className = "ful_dro";
+
+                                        if(data["fasi"] != ""){
+                                            var fasi = fuli_input.value;
+                                        }
+                                        else{
+                                            var fasi = "0";
+                                        }
+                                        
+                                        let fulnoudi = document.createTextNode(fasi);
+                                        let fulnoudi_dola = document.createElement("span");
+                                        fulnoudi_dola.innerHTML = "$";
+                                        fulnoudi_dola.style.color = "lightgreen";
+                                        
+                                        let dro = samushao_dro_input.value;
+                                        if(dro != ""){
+                                            var prefix = " - " ;
+
+                                            let kvira = 7;
+                                            if(dro > (kvira)){
+                                                let tve = kvira * 4
+                                                        if(dro > tve){
+                                                            dros = String(dro/(tve)).split(".")[0] + " თვე";
+                                                        }
+                                                            
+                                                        else{
+                                                            dros = String(dro/(kvira)).split(".")[0] + " კვირა";
+                                                        }
+
+                                                            
+                                                    
+                                                    
+                                            }
+                                            
+                                            
+                                                    
+                                        
+                                            else{
+                                                        dros = String(dro).split(".")[0] + "დღე";
+                                                }
+                                            }
+                                        else{
+                                            var prefix = "" ;
+                                            var dros = "";
+                                        }
+                                        
+            
+                                        let dronoudi_txt =prefix +dros;
+
+                                        let dronoudi= document.createTextNode(dronoudi_txt);
+                                        
+
+
+                                        let rec_edit_btn = document.createElement("div");
+
+                                        rec_edit_btn.className = "rec_options_btn";
+
+
+                                        document.getElementById("record_mkwrivi_satauri_" + mkwrivi_id).innerHTML =saxeli.value;
+                                        document.getElementById("ful_dro_" + mkwrivi_id).innerHTML = fasi + "<span style = 'color:lightgreen;'>$</span>"+prefix + dros;
+
+
+                                      
+                                        
+
+                                    }
+
+
+                            }
+                                rec_shenaxva_button.onclick = rec_saving;
+
+
+                                
+                                unregistered_record.append(rec_shenaxva_button);
+                                unregistered_record.append(rec_washlis_button);
+
+
+                                
+                                
+
+                                for(let i of record_tipi.dilementebi){
+                                    i.addEventListener("click",function(){
+                                        console.log(i.innerHTML);
+                                        
+                                        
+
+                                        if(record_tipi.rec_inputs == "closed"){
+                                            unregistered_record.append(fuli_input);
+                                            unregistered_record.append(document.createElement("br"));
+                                            unregistered_record.append(samushao_dro_input);
+                                            
+
+
+                                        }
+
+
+
+                                        record_tipi.rec_inputs = "open";
+                                        
+
+
+                                        
+                                        
+
+                                    }
+                                        
+                                    
+                                    );
+                                }
+                                
+
+
+                                
+                                experience_system.append(unregistered_record); 
+                                
+                                
+                                
+                                unregistered_record.append(cancell_button);
+
+                                unregistered_record.append(saxeli);
+                                unregistered_record.append(agwera);
+
+
+
+                                // dagchirdeba parentElement.insertBefore(newElement, parentElement.children[2]); https://stackoverflow.com/questions/5882768/how-to-append-a-childnode-to-a-specific-position
+                                        
+                                create_new_record_btn.sheqmna_started = "true";
+                            }
+
+
+
+                            mkwrivi.append(satauri);
+
+
+                            mkwrivi.append(ful_dro);
+                            ful_dro.append(fulnoudi);
+                            ful_dro.append(fulnoudi_dola);
+
+                            ful_dro.append(dronoudi);
+
+                            mkwrivi.append(rec_edit_btn)
+                            records_list.append(mkwrivi);
+                            
+
+                            /*
+                            $.ajax({
+                                data : {
+                                    "saxeli" : saxeli.value,
+                                    "agwera" : agwera.value,
+                                    "tipi" : record_tipi.value,
+                                    "dro" : samushao_dro_input.value,
+                                    "fasi" : fuli_input.value,
+                                    "service_id" : '{{service_id}}'
+                                },
+                                type : "POST",
+                                dataType : "text",
+                                url : "/save_new_record",
+                                success : function(data){
+                                    
+                                }
+                            });
+                            */
+
+                        }
+
+
+                }
+                    rec_shenaxva_button.onclick = rec_saving;
+
+
+                    
+                    unregistered_record.append(rec_shenaxva_button);
+
+
+                    
+                    
+
+                    for(let i of record_tipi.dilementebi){
+                        i.addEventListener("click",function(){
+                            console.log(i.innerHTML);
+                            
+                            
+
+                            if(record_tipi.rec_inputs == "closed"){
+                                unregistered_record.append(fuli_input);
+                                unregistered_record.append(document.createElement("br"));
+                                unregistered_record.append(samushao_dro_input);
+                                
+
+
+                            }
+
+
+
+                            record_tipi.rec_inputs = "open";
+                            
+
+
+                            
+                            
+
+                        }
+                            
+                        
+                        );
+                    }
+                    
+
+
+                    
+                    experience_system.append(unregistered_record); 
+                    
+                    
+                    
+                    unregistered_record.append(cancell_button);
+
+                    unregistered_record.append(saxeli);
+                    unregistered_record.append(agwera);
+
+
+
+                    // dagchirdeba parentElement.insertBefore(newElement, parentElement.children[2]); https://stackoverflow.com/questions/5882768/how-to-append-a-childnode-to-a-specific-position
+                            
+                    create_new_record_btn.sheqmna_started = "true";
+                }
+
+            }
+        
+            {{excess_script}}
+
+
+            
+    
+
+                        
+
+
+
+           
+        </script>
+        <script src = "static/logged_navbar.js"></script>
+       
+
+
+        
+    </body>
+</html>

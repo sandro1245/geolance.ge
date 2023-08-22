@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | ავტორიზაცია</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            
+                #navbar{
+                    position:fixed;
+                    background-color:rgb(8, 130, 112);
+                    width:100%;
+                    height:14%;
+                }
+                
+                h2{
+                    position:relative;
+                    margin-top:20px;
+                }
+                #signup_div{
+                    background-color:	rgb(127, 123, 123);
+                    position:absolute;
+                    width:50%;
+                    height:75%;
+                    text-align:center;
+                    top:20%;
+                    left:25%;
+
+                }
+                
+                #submit{
+                    position:relative;
+                    top:60px;
+
+                    background-color: rgb(80, 80, 174);
+                    border:none;
+                    border-radius:10px;
+                    width:25%;
+                    height:40px;
+                    font-size:20px;
+                    cursor:pointer;
+
+                }
+                .txtinput{
+                    margin-top:80px;
+                    position: relative;
+                    width:80%;
+                    height:30%;
+                    font-size: 25px;
+                    border-radius:20px;
+                    padding:10px;
+                }
+               
+                
+
+
+                
+        </style>
+        
+        <script src = "static/jquery.js"></script>
+
+        <script src = "static/eror.js"></script>
+        <script>
+            function func(){
+                $.ajax({
+                data : {
+                    "c_user" : document.getElementById("mail").value,
+                    "xs" : document.getElementById("pass").value
+                },
+                type : "POST",
+                dataType : "text",
+                url: "/login_auth",
+                success : function(data){
+                    if(data == "timeout"){
+                        erori("ძალიან ბევრი მცდელობა, გთხოვთ ცადოთ მოგვიანებით");
+                    }
+                    else{
+                        if(data.split(" ")[0] == "success"){
+                            document.cookie= "c_user="+data.split(" ")[1];
+                            document.cookie="xs="+data.split(" ")[2];
+
+                            window.location.href = "{{redirect_link}}";
+
+
+                        }
+                        else{
+                            erori("მონაცემები არასწორია");
+                        }
+                    }
+                    
+                    
+                }
+
+            });
+            }
+            
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+        
+        </div>
+      
+        <div id = "signup_div">
+
+            <h2>
+                ავტორიზაცია
+            </h2>
+
+
+            <form>
+                <input class ="txtinput" id = "mail" type = "text" placeholder="მეილი ან მომხმარებლის სახელი"><br>
+                <input class ="txtinput" id = "pass" type="password" placeholder="პაროლი">
+            </form>
+                <button id = "submit">
+                    დადასტურება
+                </button>
+
+            
+            
+        </div> 
+        
+        
+            <script>
+                window.addEventListener("keyup",function(Key){
+                    if(Key.keyCode == "13"){
+                        func();
+                        }
+                    });
+                var btn = document.getElementById("submit");
+                btn.onclick = func;
+            </script>
+
+        
+    </body>
+</html>

@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | {{u_username}}</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <link rel="stylesheet" href = "static/geowarning.css">
+        <link rel="stylesheet" href = "static/loader.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+            .lds-circle {
+                left:0%;
+            }
+	</style>
+        <style>
+                #main_info{
+                    position:absolute;
+                    width:30%;
+                    height: {{main_info_div_simagle}}%;
+                    top:20%;
+                    left:5%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                    
+                }
+                #u_pfp{
+                    background-image:url("{{u_imgsrc}}");
+                    background-position: center;
+                    cursor:pointer;
+                    position:relative;
+                    left:10%;
+                    top:15%;
+                    width:25%;
+                    height:20%;
+                    transform:translateY(-50%);
+                    background-size:{{u_imgsize}}% {{u_imgsize}}%;
+
+
+                    border-radius:100% 100%;
+
+
+
+                }
+                #saxeli_gvari{
+                    position:relative;
+                    float:right;
+                    margin-left:5%;
+
+                    left:-20%;
+                    white-space: normal;
+                    top:-5%;
+                    max-width:50%;
+                    transform:translateY(-50%);
+                }
+                #asaki{
+                    margin-top:14%;
+
+                }
+                h4{
+                    margin-top:{{margacia}}%;
+                    margin-left:5%;
+                    font-size:20px;
+                }
+                #starati{
+                    width:5%;
+                }
+                #wide_agwera{
+                    padding:0;
+                    position:relative;
+                    width:50%;
+                    height: 15%;
+                    background-color: red;
+                    left:40%;
+                    top:20%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                }
+                #servisebi{
+                    padding:0;
+                    position:relative;
+                    width:50%;
+                    height: 50%;
+                    background-color: red;
+                    left:40%;
+                    top:30%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                    overflow-y:auto;
+                }
+                #selectors{
+                    width:100%;
+                    position:relative;
+
+
+                    justify-content: space-around;
+                    display:flex;
+                }
+                .selector{
+                    top:7%;
+                    margin-top:5%;
+                    cursor:pointer;
+                    transition:color 0.3s;
+                }
+                /*
+                .selector {
+                    display: inline-block;
+                    position: relative;
+
+                    }
+
+                    .selector:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    transform: scaleX(0);
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: rgb(8, 130, 112);
+                    transform-origin: bottom right;
+                    transition: transform 0.25s ease-out;
+                    }
+
+                    .selector:hover:after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                    }
+                */
+                .selector:hover{
+                    color:rgb(8, 130, 112);
+                }
+
+                    #selected_output{
+                        
+                        
+                        text-align: center;
+                        position:relative;
+                        height:60%;
+                        margin-top:3%;
+                        vertical-align: center;
+                        margin-bottom:0;
+
+                    }
+                    #selected_output_p{
+                        margin:4px;
+                        word-wrap:break-word;
+                    }
+                    #ganatleba_selector{
+                        text-align:center;
+                        word-wrap:break-word;
+
+                    }
+
+
+
+
+
+                    /* editing elements */
+                    .edit_symbol{
+                        position:absolute;
+                        width:8%;
+                        border-radius:50% 50%;
+                        cursor:pointer;
+                        top:0%;
+                        left:100%;
+                        transform:translateX(-100%);
+                        transition :opacity 0.3s;
+
+                    }
+                    .edit_symbol:hover{
+                        opacity:0.8;
+                    }
+
+
+                    #edit_symbol_main_info{
+                        
+                        
+                    }
+                        
+                    #message_user_btn{
+                        border-radius :50% 50%;
+                    }
+                    .editsave_bnt{
+                        position:absolute;
+                        left:50%;
+                        width:25%;
+                        height:5%;
+                        font-size:17px;
+                        border-radius: 7% 7%;
+                        cursor:pointer;
+                        border:None;
+                        background-color:cornflowerblue;
+                        transform:translateX(-50%);
+
+                        
+                        transition:opacity 0.3s;
+                        
+                    }
+                    .editsave_bnt:hover{
+                        opacity:0.8;
+                    }
+                    #u_pfp_a{
+                        /* cursor:default; */
+                    }
+                    .ident_input{
+                        position:absolute;
+                        border-radius: 4% 4%;
+                        border-width:1px;
+                        width:45%;
+                        height:5%;
+                        font-size: 15px;
+                        padding:3px;
+                        top:10%;
+                        left:44%;
+                    }
+                    .gvari_input{
+                        top:18%;
+
+                    }
+                    #sfero_select{
+                        position:relative;
+                        left:35%;
+                        top:35%;
+                        font-size: 20px;
+                        transform:translateX(-50%);
+                    }
+                    #edit_symbol_wide_agwera{
+                        width:5%;
+                        z-index:4;
+                        cursor:pointer;
+                    }
+                    .agwera_input{
+                        position:relative;
+                        width:75%;
+                        height:50%;
+                    }   
+                    #shenaxva_main_info_button{
+                        top:90%;
+                    }
+                    #shenaxva_wide_agwera_button{
+
+                        bottom:2%;
+                        height:20%;
+                    }
+                    #comments_heading{
+                        position: relative;
+
+                        margin-left:10%;
+                    }
+                    #servisebi_heading{
+                        margin-top:2%;
+                        font-size:25px;
+                        padding:20px;
+                    }
+                    .service_row{
+                        display:flex;
+                        
+                        margin-top:2%;
+                        margin-bottom: 2%;
+                        justify-content: space-around;
+                        height:75%;
+                        /* background-color:red;  */
+                        
+                    }
+                    .servisi{
+                        position: relative;
+                        
+                        height: 100%;
+                        cursor:default;
+                        background-color: rgb(8, 130, 112);
+
+
+
+                        /* background-color:white; */
+                        border:2px solid black;
+                        text-align: center;
+
+                        border-radius: 2px 2px;
+                    }
+                    #add_service{
+                        cursor:pointer;
+                    }
+                    .service_img{
+                        position:relative;
+                        cursor:pointer;
+                        top:0;
+                        left:0;
+                        height:50%;
+                        width:100%;
+                    }
+                    #add_img{
+                        position:relative;
+                        width:20%;
+                        margin-top:50%;
+                        transform:translateY(-50%);
+                        border-radius:50% 50%;
+
+                    }
+                    #create_new_service_p{
+                        position:relative;
+                        
+                    }
+                    .serv_data{
+                        background-color: white;
+                        position:absolute;
+                        width:100%;
+                        margin:0;
+                        top:100%;
+                        height:10%;
+                        transform:translateY(-100%);
+                    }
+                    .fasi{
+                        position:relative;
+                        top:50%;
+                        transform:translateY(-50%);
+                        margin-right:2%;
+                        float:right;
+                        
+                    }
+                    #dollar{
+                        color:green;
+                    }
+                    .rating{
+                        position:relative;
+                        float:left;
+                    }
+                    .points{
+                        
+                        position:absolute;
+                        font-size:18px;
+                        top:50%;
+                        left:50%;
+                        transform:translate(-50%,-50%);
+                        /* transform:translateY(-50%); */
+                        
+                    }
+                    .p{
+                        color:rgb(0, 34, 255);
+                    }
+                    .fasi{
+                        color:green;
+                    }
+                    .service_opt_btn{
+                        position:absolute;
+                        left:2%;
+                        top:2%;
+                        width:16%;
+                        height:14%;
+                        /* background-color: white; */
+                        background-image:url("static/options_btn.png");
+                        background-size: 100% 100%;
+                        border-radius: 50% 50%;
+                        cursor:pointer;
+                        transition:opacity 0.3s;
+                    }
+                    .service_opt_btn:hover{
+                        opacity:0.6;
+                    }
+                    .service_tit{
+                        cursor: pointer;
+                    }
+                    .service_tit:hover{
+                        color:aliceblue;
+                    }
+                    .service_options_dialog{
+                        position:absolute;
+                        left:0%;
+                        top:0%;
+                        transform: translate(-100%,-100%);
+                        width:70%;
+                        height:35%;
+                        background-color: white;
+                        z-index:40;
+                        
+                        
+                    }
+                    .service_optdialog_btnls{
+                        list-style: none;
+                        height:100%;
+                    }
+
+                    .service_optdialog_btn{
+                        border:1px solid black;   
+                        width:100%;
+                        border-width:1px 0px 1px 0px;
+                        /* font-size:16px; */
+                        cursor: pointer;
+                        font-size:14px;
+                        line-height:20px;
+
+
+                        height:32%;
+                        transition: opacity 0.3s;
+                    }
+                    .service_optdialog_btn:hover{
+                        opacity: 0.5;
+                    }
+                    .service_pause_btn{
+
+                    }
+                    .service_redaqt_btn{
+
+                    }
+                    .service_washla_btn{
+                        
+                        color:red;
+                        /* font-size:18px; */
+                        
+                    }
+                    #status_div{
+                        position:absolute;
+                        left:95%;
+                        top:95%;
+                        transform: translate(-100%,-100%);
+                        
+                        width:20px;
+                        height:20px;
+                        border-radius: 50% 50%;
+                        z-index:5;
+
+                    }
+                    .restricred_lb{
+                        z-index: 1;
+                    }
+
+
+
+                    #profile_lowersection{
+                        position: relative;
+                        display: flex;
+                        top: 40%;
+                        height: 700px;
+                        background-color: red;
+                        justify-content: space-around;
+
+                    }
+                    #orders_section{
+                        position: absolute;
+                        width: 509px;
+                        height: 202px;
+                        background-color: rgb(239, 232, 232);
+                        border: 1px solid black;
+                        top: 50%;
+                        left: 20%;
+                        transform: translate(-50%,-50%);
+                    }
+                    #comments_section{
+                        position: absolute;
+                        left: 70%;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 609px;
+                        height: 202px;
+                        background-color: rgb(239, 232, 232);
+                        border: 1px solid black;
+                    }
+                    
+                    
+
+
+               
+                
+
+
+                
+        </style>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script src = "static/geowarning.js"></script>
+        <script>
+            function main_info_update(){
+                document.getElementById("shenaxva_main_info_button").innerHTML = "ინახება...";
+                $.ajax({
+                    data : {
+                        "u_username" : "{{u_username}}",
+                        "saxeli" : document.getElementById("saxeli_input").value,
+                        "gvari" : document.getElementById("gvari_input").value,
+                        "sfero" : sfero.value
+                        
+
+                    },
+                    url : "/user_main_info_update",
+                    type : "POST",
+                    dataType : "text",
+                    
+                    success  : function(data){
+                        document.getElementById("shenaxva_main_info_button").innerHTML = "შენახვა";
+                        if(data == "success"){
+                            window.location.href = "/{{u_username}}";
+
+                        }  
+                        else{
+                            erori(data);
+                        }
+                    }
+
+                });
+            }
+
+            function wide_agwera_update(){
+                document.getElementById("shenaxva_wide_agwera_button").innerHTML = "ინახება...";
+
+
+                $.ajax({
+                    data :{
+                        "u_username" : "{{u_username}}",
+                        "aboutme" : about_me_input.value,
+                        "ganatleba" : ganatleba_input.value
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/user_wide_agwera_update",
+                    success : function(data){
+                        if(data == "success"){
+                            window.location.href = "/{{u_username}}";
+
+                        }  
+                        else{
+                            erori(data);
+                        }
+                    }
+                });
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+            
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+
+                    <input id = "search_input" type = "text" placeholder="სერვისები">
+
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "samushao_rad"> -->
+                    <!-- <label id = "samushao_lab" for ="samushao_rad">სამუშაო</label> -->
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "shemsrulebeli_rad" > -->
+                    <!-- <label id = "shemsrulebeli_lab" for = "shemsrulebeli_rad">შემსრულებელი</label> -->
+
+
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li id = "prom_li">პრომოკოდი</li></a>
+                    <li id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+
+
+        <div id = "main_info">
+            {{main_info_editbtn}}<!-- <img id = "edit_symbol_main_info" class = "edit_symbol" src = "static/edit_symbol.jpg"> -->
+            <!-- <a href = "/upload_pfp" id = "u_pfp_a"><div id = "u_pfp" ></div></a> -->
+            <div id = "u_pfp" >
+                <div id = "status_div" style = "background-color: {{activity_status_color}};"></div>
+            </div>
+            
+            
+            <h3 id = "saxeli_gvari">{{u_saxeli}} {{u_gvari}}</h3>  
+            <h4 id = "asaki">ასაკი : {{u_asaki}}</h4>
+            <h4 id = "sfero_h">სფერო : {{u_sfero}}</h4>
+            <h4 id = "subsfero_h">დათქმულ დროზე ჩაბარება : </h4>
+            <h4 id = "shefaseba">{{shefaseba}}</h4>
+            <!-- editingis -->
+                
+        </div>
+
+
+
+
+
+
+        <div id = "wide_agwera">
+            {{wide_agwera_editbtn}}<!-- <img id = "edit_symbol_wide_agwera" class = "edit_symbol" src = "static/edit_symbol.jpg"> -->
+            <div id = "selectors">
+                <h3 id = "aboutme_selector" class = "selector sel">ჩემს შესახებ</h3>
+                <h3 id = "ganatleba_selector" class = "selector">განათლება</h3>
+                <!-- <h3 id = "links_selector" class = "selector sel" >ექაუნთები</h3> -->
+            </div>
+            <div id = "selected_output">
+                <p id = "selected_output_p"></p>
+            </div>
+        </div>
+
+
+
+
+
+    
+        <div id = "servisebi">
+            <center><h3 id = "servisebi_heading">სერვისები</h3></center>
+
+            {{service}}
+
+
+
+
+
+
+            <!-- <div class = "service_row">
+                <div class = "servisi">
+                    
+                </div>
+                <div class = "servisi">
+
+                </div>
+            </div> -->
+
+        </div>
+
+        <div id = "profile_lowersection">
+            <div id = "orders_section">
+                <h3>შეკვეთები</h3>
+                <div id ="my_orders_section">
+                    <h4>ჩემი შეკვეთები</h4>
+                </div>
+                <div id = "others_orders_section">
+                    <h4>სხვისი შეკვეთები</h4>
+
+                </div>
+            </div>
+            <div id = "comments_section">
+                <h4>შეფასება</h4>
+
+            </div>
+        </div>
+
+        <!-- <hr style="margin-top: 20%;width:99%;text-align:left;margin-left:0"> -->
+        
+
+
+
+        <!-- <h2 id = "comments_heading">კომენტარები</h2> -->
+
+        <!-- 
+            chemi shekvetebi(read more)
+                                            komentarebi(load more)
+            sxvisi shekvetebi(read more)
+             -->
+        
+
+
+        <script src = "static/MyDropdown.js"></script>
+        <script src = "/static/socket.io.js"></script>
+        <script src = "/static/jquery.js"></script>
+        <script>
+            var straidi = "{{straidi}}";
+            var kukis = document.cookie;
+            var kuki = {}
+
+            for(let i of kukis.split(";")){
+            kuki[i.split("=")[0].trim()]  = i.split("=")[1].trim();
+
+            }
+        </script>
+
+        <script src = "static/logged_navbar.js"></script>
+
+
+        <script>
+
+
+            
+            
+            var sferoebi = ["მუსიკა/აუდიო","ცხოვრებისეული","წერა და თარგმანი","ვიდეო და ანიმირება","ტექნოლოგია","მონაცემები","ბიზნესი","ციფრული მარკეტინგი","გრაპიკა და დიზაინი"];
+            sfero = new MyDropdown("აირჩიეთ სპერო",sferoebi,master=document.getElementById("main_info"),pos=[20,50])
+            sfero.setValue("{{u_sfero}}");
+            saxeli_gvari_v = document.getElementById("saxeli_gvari");
+            var sg = saxeli_gvari_v.innerHTML.length;
+            if(sg > 13){
+
+                saxeli_gvari_v.style.left = "-10%";
+            }
+            else{
+                saxeli_gvari_v.style.left = "-28%";
+            }
+            //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            
+            var u_pfp = document.getElementById("u_pfp");
+            var wide_agwera = document.getElementById("wide_agwera");
+
+            var about_me_input = document.createElement("textarea");
+            var ganatleba_input = document.createElement("textarea");
+
+            about_me_input.id = "about_me_input";
+            ganatleba_input.id = "ganatleba_input";
+
+
+            
+            about_me_input_value = `{{u_chemshesaxeb}}`;
+
+            ganatleba_input_value = `{{u_ganatleba}}`;
+
+            if(about_me_input_value == `არ არის მითითებული`){
+                about_me_input.value = "";
+            }
+            else{
+                about_me_input.value = about_me_input_value;
+            }
+            if(ganatleba_input_value == `არ არის მითითებული`){
+
+                ganatleba_input.value = "";
+            }
+            else{
+
+                ganatleba_input.value = ganatleba_input_value;
+            }
+            
+
+            wide_agwera.status = "none";
+
+            var about_me = document.getElementById("aboutme_selector");
+            var ganatleba = document.getElementById("ganatleba_selector");
+
+
+            var wideagwera_p = document.getElementById("selected_output_p");
+            //var linke_accs  = document.getElementById("links_selector");
+
+            var about_me_value = `{{u_chemshesaxeb}}`;
+            var ganatleba_value = `{{u_ganatleba}}`;
+            
+
+            about_me.onclick = function(){
+                about_me.style.marginTop = "3%";
+                about_me.style.opacity = "0.7";
+
+
+                ganatleba.style.marginTop = "5%";
+                ganatleba.style.opacity = "1";
+
+                wideagwera_p.innerHTML = about_me_value;
+
+                wide_agwera.style.height = "30%";
+                
+
+                if(wide_agwera.editing == true){
+                    if(wide_agwera.status != "none"){
+                        selected_output.removeChild(ganatleba_input);
+                    }
+                    selected_output.append(about_me_input);
+
+                }
+                wide_agwera.status = "aboutme";
+
+
+
+
+                /*
+                linke_accs.style.marginTop = "5%";
+                linke_accs.style.opacity = "1";
+                */
+
+
+            }
+            ganatleba.onclick = function(){
+                ganatleba.style.marginTop = "3%";
+                ganatleba.style.opacity = "0.7";
+
+                about_me.style.marginTop = "5%";
+                about_me.style.opacity = "1";
+
+                wideagwera_p.innerHTML = ganatleba_value;
+
+                wide_agwera.style.height = "30%";
+                if(wide_agwera.editing == true){
+                    if(wide_agwera.status != "none"){
+                        selected_output.removeChild(about_me_input);
+                    }
+                    selected_output.append(ganatleba_input);
+
+                }
+                wide_agwera.status = "ganatleba";
+
+                /*
+                linke_accs.style.marginTop = "5%";
+                linke_accs.style.opacity = "1";
+                */
+            }
+
+
+
+            
+
+
+            u_pfp.onclick = function(){
+                    window.location.href = "/{{u_imgsrc}}";
+                }
+            
+            {{mainscript}}
+
+            function ser_linkdown(){
+
+            
+                for(let i of document.getElementsByClassName("servisi")){
+                    if(i.id != "add_service"){
+                        let aidi = i.id.split("_")[1];
+                        
+                        // let linki = "/create_new_service?num=1&service="+aidi;
+                        let linki = "/service/" + aidi;
+
+                        let surati = document.getElementById("service_"+ aidi +"_img")//"service_34_img"
+                        let title = document.getElementById("service_"+ aidi +"_tit") //service_34_tit
+                        function gadasvla(){
+                            window.location.href = linki;
+                        }
+                        surati.onclick = gadasvla;
+                        title.onclick = gadasvla;
+
+
+
+                    }
+                    
+
+                }
+            
+            }
+            ser_linkdown();
+
+            
+
+            function opt_add(){
+                if({{chemia_profili}}){
+                    
+                        var servisebi = document.getElementsByClassName("servisi");
+                    
+                        var serindex = 0;
+                    
+                        for(let i of servisebi){
+                            if(i.id != "add_service"){
+                            let service_opt_btn = document.createElement("div");
+
+                            let serindexi = serindex;
+                            service_opt_btn.className = "service_opt_btn service_opt_btn_" + serindexi ;
+                            // if(i.className.split(" ")[1] != "draft_servisi"){
+                                
+                            // }
+                            
+                            service_opt_btn.status = "closed";
+                            
+
+                            service_opt_btn.onmouseup = function(){
+                                    
+                                    let dialog = document.createElement("div");
+                                    dialog.className = "service_options_dialog dont_folow_event";
+                                    if((serindexi % 3) == 0){
+                                        dialog.style.transform = "translate(0%,-100%)";
+                                    }
+                                    i.append(dialog);
+
+                                    //i.className.split(" ")[1] != "draft_servisi"
+                                    // if(i.className.split(" ")[1] != "draft_servisi"){
+                                    if(true){ 
+                                        
+                                        let aradraftia = i.className.split(" ")[1] != "draft_servisi";
+                                        let pausashia = i.className.split(" ")[1] == "paused_servisi";
+
+                                        let pause_btn = document.createElement("li");
+                                        let redaqt_btn = document.createElement("li");
+                                        let washla_btn = document.createElement("li");
+
+                                        pause_btn.className = "service_optdialog_btn service_optdialog_btn_top service_pause_btn dont_folow_event";
+                                        redaqt_btn.className = "service_optdialog_btn service_optdialog_btn_top service_redaqt_btn dont_folow_event";
+                                        washla_btn.className = "service_optdialog_btn service_optdialog_btn_bot service_washla_btn dont_folow_event";
+
+                                        pause_btn.innerHTML = "პაუზა";
+                                        redaqt_btn.innerHTML = "რედაქტირება";
+                                        washla_btn.innerHTML = "წაშლა";
+
+
+                                        let aidi = i.id.split("_")[1];
+                                        
+                                        if(aradraftia){
+                                            if(pausashia){
+                                                pause_btn.innerHTML = "გახსნა";
+
+
+                                                pause_btn.onclick = function(){
+                                                    // let warning =  new GeoWarning("დარწმუნებული ხართ რომ გინდათ სერვისის გახსნა?",ara=arminda,ki=minda,maini=["main_info","wide_agwera","servisebi"],state="manual")
+                                                    // warning.rec_washla_kibutton.onclick = minda;
+                                                    // warning.rec_washla_arabutton.onclick = arminda;
+                                                    // function arminda(){
+                                                    //     warning.window_gauqmeba();
+                                                    // }
+                                                    function minda(){
+                                                        // warning.rec_washla_gafrtxileba_buttonsdiv.style.display = "flex";
+                                                        // warning.rec_washla_gafrtxileba_buttonsdiv.style.height = "200px";
+                                                        // warning.rec_washla_gafrtxileba_buttonsdiv.innerHTML = ` <div class="lds-circle"><div id = "burtula"></div></div> `;
+                                                        var servisebis_parent_div = document.getElementById("servisebi");
+                                                        servisebis_parent_div.style.display = "flex";
+                                                        servisebis_parent_div.style.height = "200px";
+                                                        servisebis_parent_div.innerHTML = ` <div class="lds-circle" style="left:50%;transform:translate(-50%,-50%);"><div id = "burtula"></div></div> `;
+
+
+                                                        $.ajax({
+                                                        data : {
+                                                            "serid" : aidi,
+                                                            "action" : "resume"
+
+                                                            ,"csrftk" : "{{csrftk}}"
+
+                                                            // ,"c_user" : kuki["c_user"],
+                                                            // "xs" : kuki["xs"]
+                                                        },
+                                                        type : "POST",
+                                                        dataType : "text",
+                                                        url : "/pause_service",
+                                                        success : function(data){
+
+                                                            console.log("davachire  : " + i);
+                                                            console.log(i);
+
+                                                            // warning.window_gauqmeba();
+                                                            servisebis_parent_div.style.display = "block";
+                                                            servisebis_parent_div.style.height = "50%";
+
+                                                            document.getElementById("servisebi").innerHTML = `<center><h3 id = "servisebi_heading">სერვისები</h3></center> \n ` + data;
+                                                            
+                                                            ser_linkdown();
+                                                            opt_add();
+
+                                                            
+
+
+                                                            
+
+                                                        }
+
+                                                    });
+                                                    }
+                                                    minda();
+                                                    
+                                                }
+                                            }
+                                            else{
+                                                pause_btn.onclick = function(){
+                                                    let warning =  new GeoWarning("დარწმუნებული ხართ რომ გინდათ სერვისის დაპაუზება?",ara=arminda,ki=minda,maini=["main_info","wide_agwera","servisebi"],state="manual")
+                                                    warning.rec_washla_kibutton.onclick = minda;
+                                                    warning.rec_washla_arabutton.onclick = arminda;
+                                                    function arminda(){
+                                                        warning.window_gauqmeba();
+                                                    }
+                                                    function minda(){
+                                                        warning.rec_washla_gafrtxileba_buttonsdiv.style.display = "flex";
+                                                        warning.rec_washla_gafrtxileba_buttonsdiv.style.height = "200px";
+                                                        warning.rec_washla_gafrtxileba_buttonsdiv.innerHTML = ` <div class="lds-circle"><div id = "burtula"></div></div> `;
+
+
+                                                        $.ajax({
+                                                        data : {
+                                                            "serid" : aidi,
+                                                            "action" : "pause"
+
+
+
+                                                            ,"csrftk" : "{{csrftk}}"
+
+
+
+                                                            // ,"c_user" : kuki["c_user"],
+                                                            // "xs" : kuki["xs"]
+                                                        },
+                                                        type : "POST",
+                                                        dataType : "text",
+                                                        url : "/pause_service",
+                                                        success : function(data){
+
+                                                            console.log("davachire  : " + i);
+                                                            console.log(i);
+
+                                                            warning.window_gauqmeba();
+
+                                                            document.getElementById("servisebi").innerHTML = `<center><h3 id = "servisebi_heading">სერვისები</h3></center> \n ` + data;
+                                                            
+                                                            ser_linkdown();
+                                                            opt_add();
+
+                                                            
+
+
+                                                            
+
+                                                        }
+
+                                                    });
+                                                    }
+                                                    
+                                                }
+                                            }
+                                            
+                                        }
+                                        
+
+                                        redaqt_btn.onclick = function(){
+                                            // /create_new_service?num=1&service=31
+
+                                            window.location.href = "/create_new_service?num=1&service=" + aidi;
+                                        }
+
+                                        washla_btn.onclick = function(){
+                                            let warning =  new GeoWarning("დარწმუნებული ხართ რომ გინდათ სერვისის წაშლა?",ara=arminda,ki=minda,maini=["main_info","wide_agwera","servisebi"],state="manual")
+                                            warning.rec_washla_kibutton.onclick = minda;
+                                            warning.rec_washla_arabutton.onclick = arminda;
+                                            function arminda(){
+                                                warning.window_gauqmeba();
+                                            }
+                                            function minda(){  
+                                                // let aidi = i.id.split("_")[1];
+
+                                                warning.rec_washla_gafrtxileba_buttonsdiv.style.display = "flex";
+                                                warning.rec_washla_gafrtxileba_buttonsdiv.style.height = "200px";
+                                                warning.rec_washla_gafrtxileba_buttonsdiv.innerHTML = ` <div class="lds-circle"><div id = "burtula"></div></div> `;
+
+                                                
+                                                $.ajax({
+                                                    data : {
+                                                        "serid" : aidi
+                                                    },
+                                                    type : "POST",
+                                                    dataType : "text",
+                                                    url : "/delete_service",
+                                                    success : function(data){
+
+                                                        warning.window_gauqmeba();
+
+                                                        document.getElementById("servisebi").innerHTML = `<center><h3 id = "servisebi_heading">სერვისები</h3></center> \n ` + data;
+                                                        
+                                                        ser_linkdown();
+                                                        opt_add();
+
+                                                    }
+
+                                                });
+                                                
+                                            }
+                                            
+                                        }
+
+
+                                        let btn_listi = document.createElement("ul");
+                                        btn_listi.className = "service_optdialog_btnls dont_folow_event";
+
+                                        if(aradraftia == false){
+                                            pause_btn.style.opacity = "0.3";
+                                        }
+
+                                        // if(aradraftia){
+                                        //     btn_listi.append(pause_btn);
+
+                                        // }
+                                        // else{
+                                        //     redaqt_btn.style.height = "50%";
+                                        //     washla_btn.style.height = "50%";
+
+                                        //     redaqt_btn.style.fontSize = "20px";
+                                        //     washla_btn.style.fontSize = "20px";
+
+                                        //     redaqt_btn.style.lineHeight = "35px";
+                                        //     washla_btn.style.lineHeight = "35px";
+                                        // }
+                                        
+                                        btn_listi.append(pause_btn);
+                                        btn_listi.append(redaqt_btn);
+                                        btn_listi.append(washla_btn);
+                                        
+                                        
+                                        dialog.append(btn_listi);
+                                        
+                                    }
+                                    
+
+                                    function quick_dialog_remove(e){
+                                        if ( !e.target.classList.contains('dont_folow_event') ) {
+
+                                            i.removeChild(dialog);
+                                            service_opt_btn.status = "closed";
+                                            document.body.removeEventListener("mousedown",quick_dialog_remove);
+                                        }
+                                    }
+                                    document.body.addEventListener("mousedown",quick_dialog_remove);
+
+
+                                    service_opt_btn.status = "open";
+                                    
+                                    
+                            }
+                            i.append(service_opt_btn);
+                            serindex+=1;
+                        }
+                    }
+                }
+            }
+            opt_add();
+
+
+            if({{chemia_profili}}){
+                document.getElementById("add_service").onclick = function(){
+                    window.location.href = "/create_new_service?service=new"
+                }
+            }
+            else{
+                var message_user_btn =document.getElementById("message_user_btn");
+                message_user_btn.onclick = function(){
+                    var u_aidi = message_user_btn.className.split(" ")[1];
+                    var u_saxeli = message_user_btn.className.split(" ")[2];
+                    
+                    // $.ajax({
+                    //     data : {
+                    //         "aidi" : u_aidi,
+                    //         "name" : u_saxeli
+                    //     },
+                    //     url : "/start_chat",
+                    //     type : "POST",
+                    //     dataType : "text",
+                    //     success : function(data){
+                    //         window.location.href = "/messenger/" + data;
+                    //     }
+
+                    // });
+                    soketi.emit("start_chat",data={"c_user" : kuki.c_user, "xs" : kuki.xs ,"aidi" : u_aidi,"name" : u_saxeli})
+                }
+            }
+
+        
+
+        //socketss
+        var status_div = document.getElementById("status_div");
+        if({{chemia_profili}} == false){
+            var soketi = status_update_socket; //io.connect("ws://localhost:5000");
+            var profile_user_id = document.getElementById("message_user_btn").className.split(" ")[1];
+
+            soketi.on("connect",function(){
+                soketi.emit("show_status",data={"user_id" : profile_user_id})
+            });
+            soketi.on("message",function(dat){
+                console.log("message recieved");
+
+                data = JSON.parse(dat);
+                console.log(data)
+                if(data["type"] == "status"){
+                    
+                    // if(data.split(" ")[1]+"" == profile_user_id+""){
+                    if(data["user"].split("_")[2]+"" == profile_user_id+""){
+                        
+                        if(data["status_type"] == "activated"){
+                            status_div.style.backgroundColor  = "green";
+                            
+                        }
+                        else if(data["status_type"] == "offline"){
+                            
+                            status_div.style.backgroundColor  = "grey";
+                            
+                        }
+                    }
+                        
+
+                }
+                else if(data["type"] == "start_chat"){
+                    if(data["starter_id"] == straidi){
+                        console.log("starting redirecting.....")
+                        window.location.href = "/messenger/" + data["chat_aidi"]
+                    }
+                }
+                
+
+                
+
+            })
+        }
+
+        </script>
+        
+
+        
+    </body>
+</html>

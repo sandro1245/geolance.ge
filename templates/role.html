@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>title</title>
+    <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+	<input id = "ranga" type="range">
+
+    <script>
+        var ranga = document.getElementById("ranga");
+        function func(){
+            console.log("changed")
+            // console.log(ranga.value)
+        }
+        // setInterval(func,1)
+        ranga.onmousedown = func;
+    </script>
+
+</body>
+</html>

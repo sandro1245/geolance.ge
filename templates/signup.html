@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | რეგისტრაცია</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            
+                #navbar{
+                    position:fixed;
+                    background-color:rgb(8, 130, 112);
+                    width:100%;
+                    height:14%;
+                }
+                #logo{
+                    position:absolute;
+                    width:12%;
+                    height:60%;
+                    top:20%;
+                    left:3%;
+
+                }
+                #signup_div{
+                    background-color:	rgb(140, 115, 115);
+                    position:absolute;
+                    width:50%;
+                    height:65%;
+                    top:20%;
+                    left:25%;
+                }
+                
+
+
+
+                input{
+                    position:absolute;
+                    width:80%;
+                    left:10%;
+                    height:10%;
+                    top:25%;
+                    font-size:20px;
+                    border-radius:10px;
+                    padding-left :5px;
+                    border: 2px solid black;
+                }
+                #name_input{
+                    width:40%;
+                    left:5%;
+                    top:10%;
+                }
+                #surname_input{
+                    top:10%;
+                    width:40%;
+                    left:55%;
+                }
+
+
+                #mail_input{
+                    top:40%;
+                }
+
+                #pass_input{
+                    top:55%;
+
+                }
+
+                #passcon_input{
+                    top:70%;
+                }
+                #btn{
+                    position:absolute;
+                    width:34%;
+                    background-color:skyblue;
+                    text-align:center;
+                    font-size:20px;
+                    border-radius: 8px;
+                    cursor:pointer;
+                    height:9%;
+                    left:33%;
+                    top:87%;
+                }
+                .loader {
+                position: relative;
+                top:200px;
+                border: 16px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 16px solid rgb(8, 130, 112);
+                border-bottom: 16px solid rgb(8, 130, 112);
+                width: 120px;
+                height: 120px;
+                -webkit-animation: spin 2s linear infinite;
+                animation: spin 2s linear infinite;
+                }
+
+                @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+                }
+
+                @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+                }
+                
+
+                
+
+
+
+
+
+
+            
+                
+                
+            
+        </style>
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            
+            
+
+            function func(){
+                //alert("yle");
+                document.getElementById("name_input").style.borderColor = "#000000";
+                document.getElementById("name_input").style.borderColor = "#000000";
+                document.getElementById("surname_input").style.borderColor = "#000000";
+                document.getElementById("username_input").style.borderColor = "#000000";
+                document.getElementById("mail_input").style.borderColor = "#000000";
+                document.getElementById("pass_input").style.borderColor = "#000000";
+                document.getElementById("passcon_input").style.borderColor = "#000000";
+
+
+                if(document.getElementById("name_input").value.length < 2){
+                    erori("გთხოვთ შეიყვანოთ თქვენი სახელი");
+                    
+                    document.getElementById("name_input").style.borderColor = "#CF0000";
+                }
+                else if(document.getElementById("surname_input").value.length < 2){
+
+                    erori("გთხოვთ შეიყვანოთ თქვენი გვარი");
+                    document.getElementById("surname_input").style.borderColor = "#CF0000";
+
+                }
+                else if(document.getElementById("username_input").value.length < 2){
+                    erori("გთხოვთ შეიყვანოთ მომხმარებლის სახელი");
+                    document.getElementById("username_input").style.borderColor = "#CF0000";
+                }
+
+
+                else if(document.getElementById("mail_input").value.length < 2 || document.getElementById("mail_input").value.indexOf("@") < 0){
+                    erori("გთხოვთ შეიყვანოთ ვალიდური  მეილი");
+                    document.getElementById("mail_input").style.borderColor = "#CF0000";
+                }
+                else if(document.getElementById("pass_input").value.length < 8){
+                    erori("პაროლი უნდა იყოს ყველაზე ცოტა 8 სიმბოლოიანი");
+                    document.getElementById("pass_input").style.borderColor = "#CF0000";
+                }
+                else if(document.getElementById("pass_input").value != document.getElementById("passcon_input").value){
+                    erori("პაროლები არ ემთხვევა ერთმანეთს");
+                    document.getElementById("pass_input").style.borderColor = "#CF0000";
+                    document.getElementById("passcon_input").style.borderColor = "#CF0000";
+                }
+
+                else{
+                    //warmatebitttttttttt
+                    document.getElementById("signup_div").style.opacity = "0.3";
+                    //triala.style.opacity= "0";
+
+                    document.getElementById("btn").disabled = true;
+
+                    
+                    $.ajax({
+                        data : {
+                            "saxeli" : document.getElementById("name_input").value,
+                            "gvari" : document.getElementById("surname_input").value,
+                            "c_user" : document.getElementById("username_input").value,
+                            "mail" : document.getElementById("mail_input").value,
+                            "xs" : document.getElementById("pass_input").value
+                        },
+                        url : "/signup_default",
+                        type : "POST",
+                        dataType : "text",
+                        success : function(data){
+                            console.log(data);
+                            
+                            if(data.split(" ")[0] == "success"){
+                                document.cookie = "c_user=" + document.getElementById("username_input").value;
+                                document.cookie= "xs="+data.split(" ")[1];
+                                document.cookie="saxeli=" +document.getElementById("name_input").value;
+                                document.cookie = "gvari="+document.getElementById("surname_input").value;
+                                document.cookie = "mail="+document.getElementById("mail_input").value;
+                                window.location.href = "/signup_extra";
+                                
+                            }
+                            else{
+                                erori(data);
+                            }
+                            //trialace.style.opacity = "0";
+                            document.getElementById("signup_div").style.opacity = "1";
+                            document.getElementById("btn").disabled = false;
+                        }
+                    });
+                    
+
+                    
+                   
+
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id = "navbar">
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+        </div>
+
+
+        <div id = "signup_div">
+            
+            <form>
+                <input id = "name_input" placeholder="სახელი">
+                <input id = "surname_input" placeholder="გვარი">
+
+
+
+
+                <input id = "username_input" type="text" placeholder="მომხმარებლის სახელი">
+                
+                <input id = "mail_input" type="text" placeholder="მეილი">
+
+                <input id = "pass_input" type="password" placeholder="პაროლი">
+
+                <input id = "passcon_input" type="password" placeholder="გაიმეორეთ პაროლი">
+
+
+
+                <button type = "button" id ="btn">
+                    დადასტურება
+                </button>
+            </form>
+
+           
+
+        </div>
+
+        
+
+        <script>
+            //alert(screen.width);
+            console.log(screen.width);
+            if(screen.width > 1000){
+                console.log("PC");
+            var btn = document.getElementById("btn");
+
+
+            btn.onclick = func;
+                
+
+                
+        }
+        else{
+            console.log("ki");
+            window.location.href = "/download";
+        }
+        </script>
+
+
+
+    </body>
+</html>

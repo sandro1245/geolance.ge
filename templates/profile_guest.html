@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | რეგისტრაცია</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+	</style>
+        <style>
+                #main_info{
+                    position:absolute;
+                    width:30%;
+                    height: {{main_info_div_simagle}}%;
+                    top:20%;
+                    left:5%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                    
+                }
+                #u_pfp{
+                    background-image:url("{{u_imgsrc}}");
+                    background-position: center;
+                    cursor:pointer;
+                    position:relative;
+                    left:10%;
+                    top:15%;
+                    width:25%;
+                    height:20%;
+                    transform:translateY(-50%);
+                    background-size:{{u_imgsize}}% {{u_imgsize}}%;
+
+
+                    border-radius:100% 100%;
+                }
+                #saxeli_gvari{
+                    position:relative;
+                    float:right;
+                    margin-left:5%;
+
+                    left:-20%;
+                    white-space: normal;
+                    top:-5%;
+                    max-width:50%;
+                    transform:translateY(-50%);
+                }
+                #asaki{
+                    margin-top:14%;
+
+                }
+                h4{
+                    margin-top:{{margacia}}%;
+                    margin-left:5%;
+                    font-size:20px;
+                }
+                #starati{
+                    width:5%;
+                }
+                #wide_agwera{
+                    padding:0;
+                    position:relative;
+                    width:50%;
+                    height: 15%;
+                    background-color: red;
+                    left:40%;
+                    top:20%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                }
+                #servisebi{
+                    padding:0;
+                    position:relative;
+                    width:50%;
+                    height: 50%;
+                    background-color: red;
+                    left:40%;
+                    top:30%;
+                    background-color:rgb(239, 232, 232);
+                    border:1px solid black;
+                    border-radius:5px;
+                    overflow-y:auto;
+                }
+                #selectors{
+                    width:100%;
+                    position:relative;
+
+
+                    justify-content: space-around;
+                    display:flex;
+                }
+                .selector{
+                    top:7%;
+                    margin-top:5%;
+                    cursor:pointer;
+                    transition:color 0.3s;
+                }
+                /*
+                .selector {
+                    display: inline-block;
+                    position: relative;
+
+                    }
+
+                    .selector:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    transform: scaleX(0);
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: rgb(8, 130, 112);
+                    transform-origin: bottom right;
+                    transition: transform 0.25s ease-out;
+                    }
+
+                    .selector:hover:after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                    }
+                */
+                .selector:hover{
+                    color:rgb(8, 130, 112);
+                }
+
+                    #selected_output{
+                        
+                        
+                        text-align: center;
+                        position:relative;
+                        height:60%;
+                        margin-top:3%;
+                        vertical-align: center;
+                        margin-bottom:0;
+
+                    }
+                    #selected_output_p{
+                        margin:4px;
+                        word-wrap:break-word;
+                    }
+                    #ganatleba_selector{
+                        text-align:center;
+                        word-wrap:break-word;
+
+                    }
+
+
+
+
+
+                    /* editing elements */
+                    .edit_symbol{
+                        position:absolute;
+                        width:8%;
+                        border-radius:50% 50%;
+                        cursor:pointer;
+                        top:0%;
+                        left:100%;
+                        transform:translateX(-100%);
+                        transition :opacity 0.3s;
+
+                    }
+                    .edit_symbol:hover{
+                        opacity:0.8;
+                    }
+
+
+                    #edit_symbol_main_info{
+                        
+                        
+                    }
+                        
+                    #message_user_btn{
+                        border-radius :50% 50%;
+                    }
+                    .editsave_bnt{
+                        position:absolute;
+                        left:50%;
+                        width:25%;
+                        height:5%;
+                        font-size:17px;
+                        border-radius: 7% 7%;
+                        cursor:pointer;
+                        border:None;
+                        background-color:cornflowerblue;
+                        transform:translateX(-50%);
+
+                        
+                        transition:opacity 0.3s;
+                        
+                    }
+                    .editsave_bnt:hover{
+                        opacity:0.8;
+                    }
+                    #u_pfp_a{
+                        /* cursor:default; */
+                    }
+                    .ident_input{
+                        position:absolute;
+                        border-radius: 4% 4%;
+                        border-width:1px;
+                        width:45%;
+                        height:5%;
+                        font-size: 15px;
+                        padding:3px;
+                        top:10%;
+                        left:44%;
+                    }
+                    .gvari_input{
+                        top:18%;
+
+                    }
+                    #sfero_select{
+                        position:relative;
+                        left:35%;
+                        top:35%;
+                        font-size: 20px;
+                        transform:translateX(-50%);
+                    }
+                    #edit_symbol_wide_agwera{
+                        width:5%;
+                        z-index:4;
+                        cursor:pointer;
+                    }
+                    .agwera_input{
+                        position:relative;
+                        width:75%;
+                        height:50%;
+                    }   
+                    #shenaxva_main_info_button{
+                        top:90%;
+                    }
+                    #shenaxva_wide_agwera_button{
+
+                        bottom:2%;
+                        height:20%;
+                    }
+                    #comments_heading{
+                        position: relative;
+
+                        margin-left:10%;
+                    }
+                    #servisebi_heading{
+                        margin-top:2%;
+                        font-size:25px;
+                    }
+                    .service_row{
+                        display:flex;
+                        
+                        margin-top:2%;
+                        margin-bottom: 2%;
+                        justify-content: space-around;
+                        height:75%;
+                        /* background-color:red;  */
+                        
+                    }
+                    .servisi{
+                        position: relative;
+                        
+                        height: 100%;
+                        cursor:pointer;
+                        background-color: rgb(8, 130, 112);
+
+
+
+                        /* background-color:white; */
+                        border:2px solid black;
+                        text-align: center;
+
+                        border-radius: 2px 2px;
+                    }
+                    #add_service{
+                        cursor:pointer;
+                    }
+                    .service_img{
+                        position:relative;
+                        top:0;
+                        left:0;
+                        height:50%;
+                        width:100%;
+                    }
+                    #add_img{
+                        position:relative;
+                        width:20%;
+                        margin-top:50%;
+                        transform:translateY(-50%);
+                        border-radius:50% 50%;
+
+                    }
+                    #create_new_service_p{
+                        position:relative;
+                        
+                    }
+                    .serv_data{
+                        background-color: white;
+                        position:absolute;
+                        width:100%;
+                        margin:0;
+                        top:100%;
+                        height:10%;
+                        transform:translateY(-100%);
+                    }
+                    #fasi{
+                        position:relative;
+                        top:50%;
+                        transform:translateY(-50%);
+                        margin-right:2%;
+                        float:right;
+                        
+                    }
+                    #dollar{
+                        color:green;
+                    }
+                    .rating{
+                        position:relative;
+                        float:left;
+                    }
+                    .points{
+                        
+                        position:absolute;
+                        font-size:18px;
+                        top:50%;
+                        left:50%;
+                        transform:translate(-50%,-50%);
+                        /* transform:translateY(-50%); */
+                        
+                    }
+                    .p{
+                        color:rgb(0, 34, 255);
+                    }
+                    .fasi{
+                        color:green;
+                    }
+                    
+
+                    
+                    
+
+
+               
+                
+
+
+                
+        </style>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function main_info_update(){
+                document.getElementById("shenaxva_main_info_button").innerHTML = "ინახება...";
+                $.ajax({
+                    data : {
+                        "u_username" : "{{u_username}}",
+                        "saxeli" : document.getElementById("saxeli_input").value,
+                        "gvari" : document.getElementById("gvari_input").value,
+                        "sfero" : sfero.value
+                        
+
+                    },
+                    url : "/user_main_info_update",
+                    type : "POST",
+                    dataType : "text",
+                    
+                    success  : function(data){
+                        document.getElementById("shenaxva_main_info_button").innerHTML = "შენახვა";
+                        if(data == "success"){
+                            window.location.href = "/{{u_username}}";
+
+                        }  
+                        else{
+                            erori(data);
+                        }
+                    }
+
+                });
+            }
+
+            function wide_agwera_update(){
+                document.getElementById("shenaxva_wide_agwera_button").innerHTML = "ინახება...";
+                //console.log(document.getElementById("about_me_input").value);
+                $.ajax({
+                    data :{
+                        "u_username" : "{{u_username}}",
+                        "aboutme" : about_me_input.value,
+                        "ganatleba" : ganatleba_input.value
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/user_wide_agwera_update",
+                    success : function(data){
+                        if(data == "success"){
+                            window.location.href = "/{{u_username}}";
+
+                        }  
+                        else{
+                            erori(data);
+                        }
+                    }
+                });
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+            
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+                <form>
+                    <input id = "search_input" type = "text" placeholder="სერვისები">
+
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "samushao_rad"> -->
+                    <!-- <label id = "samushao_lab" for ="samushao_rad">სამუშაო</label> -->
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "shemsrulebeli_rad" > -->
+                    <!-- <label id = "shemsrulebeli_lab" for = "shemsrulebeli_rad">შემსრულებელი</label> -->
+
+
+                </form>
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p">3+</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="inbox_btn_not_p">4+</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li id = "prom_li">პრომოკოდი</li></a>
+                    <li id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+
+
+        <div id = "main_info">
+            {{main_info_editbtn}}<!-- <img id = "edit_symbol_main_info" class = "edit_symbol" src = "static/edit_symbol.jpg"> -->
+            <!-- <a href = "/upload_pfp" id = "u_pfp_a"><div id = "u_pfp" ></div></a> -->
+            <div id = "u_pfp" ></div>
+             <h3 id = "saxeli_gvari">{{u_saxeli}} {{u_gvari}}</h3>  
+
+            <h4 id = "asaki">ასაკი : {{u_asaki}}</h4>
+            <h4 id = "sfero_h">სფერო : {{u_sfero}}</h4>
+            <h4 id = "subsfero_h">დათქმულ დროზე ჩაბარება : </h4>
+            <h4 id = "shefaseba">{{shefaseba}}</h4>
+            <!-- editingis -->
+                
+        </div>
+
+
+
+
+
+
+        <div id = "wide_agwera">
+            {{wide_agwera_editbtn}}<!-- <img id = "edit_symbol_wide_agwera" class = "edit_symbol" src = "static/edit_symbol.jpg"> -->
+            <div id = "selectors">
+                <h3 id = "aboutme_selector" class = "selector sel">ჩემს შესახებ</h3>
+                <h3 id = "ganatleba_selector" class = "selector">განათლება</h3>
+                <!-- <h3 id = "links_selector" class = "selector sel" >ექაუნთები</h3> -->
+            </div>
+            <div id = "selected_output">
+                <p id = "selected_output_p"></p>
+            </div>
+        </div>
+
+
+
+
+
+    
+        <div id = "servisebi">
+            <center><h3 id = "servisebi_heading">სერვისები</h3></center>
+
+            {{service}}
+
+
+
+
+
+
+            <!-- <div class = "service_row">
+                <div class = "servisi">
+                    
+                </div>
+                <div class = "servisi">
+
+                </div>
+            </div> -->
+
+        </div>
+
+        <hr style="margin-top: 20%;width:99%;text-align:left;margin-left:0">
+        
+
+
+
+        <h2 id = "comments_heading">კომენტარები</h2>
+
+
+        <script src = "static/MyDropdown.js"></script>
+        <script src = "/static/socket.io.js"></script>
+        <script src = "/static/jquery.js"></script>
+        <script>
+            var straidi = "{{straidi}}";
+        </script>
+        <script>
+            var sferoebi = ["მუსიკა/აუდიო","ცხოვრებისეული","წერა და თარგმანი","ვიდეო და ანიმირება","ტექნოლოგია","მონაცემები","ბიზნესი","ციფრული მარკეტინგი","გრაპიკა და დიზაინი"];
+            sfero = new MyDropdown("აირჩიეთ სპერო",sferoebi,master=document.getElementById("main_info"),pos=[20,50])
+            saxeli_gvari_v = document.getElementById("saxeli_gvari");
+            var sg = saxeli_gvari_v.innerHTML.length;
+            if(sg > 13){
+                saxeli_gvari_v.style.left = "-10%";
+            }
+            else{
+                saxeli_gvari_v.style.left = "-28%";
+            }
+            //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            
+
+            var wide_agwera = document.getElementById("wide_agwera");
+
+            var about_me_input = document.createElement("textarea");
+            var ganatleba_input = document.createElement("textarea");
+
+            about_me_input.id = "about_me_input";
+            ganatleba_input.id = "ganatleba_input";
+
+
+            
+            about_me_input_value = `{{u_chemshesaxeb}}`;
+
+            ganatleba_input_value = `{{u_ganatleba}}`;
+
+            if(about_me_input_value == `არ არის მითითებული`){
+                about_me_input.value = "";
+            }
+            else{
+                about_me_input.value = about_me_input_value;
+            }
+            if(ganatleba_input_value == `არ არის მითითებული`){
+
+                ganatleba_input.value = "";
+            }
+            else{
+
+                ganatleba_input.value = ganatleba_input_value;
+            }
+            
+
+            wide_agwera.status = "none";
+
+            var about_me = document.getElementById("aboutme_selector");
+            var ganatleba = document.getElementById("ganatleba_selector");
+
+
+            var wideagwera_p = document.getElementById("selected_output_p");
+            //var linke_accs  = document.getElementById("links_selector");
+
+            var about_me_value = `{{u_chemshesaxeb}}`;
+            var ganatleba_value = `{{u_ganatleba}}`;
+            
+
+            about_me.onclick = function(){
+                about_me.style.marginTop = "3%";
+                about_me.style.opacity = "0.7";
+
+
+                ganatleba.style.marginTop = "5%";
+                ganatleba.style.opacity = "1";
+
+                wideagwera_p.innerHTML = about_me_value;
+
+                wide_agwera.style.height = "30%";
+                
+
+                if(wide_agwera.editing == true){
+                    if(wide_agwera.status != "none"){
+                        selected_output.removeChild(ganatleba_input);
+                    }
+                    selected_output.append(about_me_input);
+
+                }
+                wide_agwera.status = "aboutme";
+
+
+
+
+                /*
+                linke_accs.style.marginTop = "5%";
+                linke_accs.style.opacity = "1";
+                */
+
+
+            }
+            ganatleba.onclick = function(){
+                ganatleba.style.marginTop = "3%";
+                ganatleba.style.opacity = "0.7";
+
+                about_me.style.marginTop = "5%";
+                about_me.style.opacity = "1";
+
+                wideagwera_p.innerHTML = ganatleba_value;
+
+                wide_agwera.style.height = "30%";
+                if(wide_agwera.editing == true){
+                    if(wide_agwera.status != "none"){
+                        selected_output.removeChild(about_me_input);
+                    }
+                    selected_output.append(ganatleba_input);
+
+                }
+                wide_agwera.status = "ganatleba";
+
+                /*
+                linke_accs.style.marginTop = "5%";
+                linke_accs.style.opacity = "1";
+                */
+            }
+            /*
+            linke_accs.onclick = function(){
+                linke_accs.style.marginTop = "3%";
+                linke_accs.style.opacity = "0.7";
+
+                ganatleba.style.marginTop = "5%";
+                ganatleba.style.opacity = "1";
+
+                about_me.style.marginTop = "5%";
+                about_me.style.opacity = "1";
+            }
+            */
+
+
+
+
+
+            // editingiii
+            var main_info_div = document.getElementById("main_info");
+            
+            
+            var main_info_editbtn = document.getElementById("edit_symbol_main_info");
+            var wide_agwera_editbtn = document.getElementById("edit_symbol_wide_agwera");
+            
+            var main_info_savebtn = document.createElement("button");
+            var wide_agwera_savebtn = document.createElement("button");
+
+            var u_pfp = document.getElementById("u_pfp");
+            var saxeli_gvari_h = document.getElementById("saxeli_gvari");
+            var asaki = document.getElementById("asaki");
+            var sfero_h = document.getElementById("sfero_h");
+            var subsfero_h = document.getElementById("subsfero_h");
+            var shefaseba = document.getElementById("shefaseba");
+
+                //axali elements
+                var saxeli_input = document.createElement("input");
+                var bra = document.createElement("br");
+                var gvari_input = document.createElement("input");
+
+
+                saxeli_input.placeholder = "სახელი";
+                gvari_input.placeholder = "გვარი";
+                saxeli_input.className = "ident_input saxeli_input";
+                gvari_input.className = "ident_input gvari_input";
+
+                saxeli_input.id = "saxeli_input";
+                gvari_input.id = "gvari_input";
+
+                    //sferos
+                    // var sfero_select =  document.getElementById("sfero_select"); //document.createElement("select")
+                    // main_info_div.removeChild(sfero_select)
+                        //sfero options
+
+
+
+
+
+                        
+
+
+
+
+            main_info_savebtn.id = "shenaxva_main_info_button";
+            main_info_savebtn.innerHTML = "შენახვა";
+            main_info_savebtn.className = "editsave_bnt";
+
+
+            wide_agwera_savebtn.id = "shenaxva_wide_agwera_button";
+            wide_agwera_savebtn.innerHTML = "შენახვა";
+            wide_agwera_savebtn.className = "editsave_bnt";
+
+
+            
+
+
+            u_pfp.onclick = function(){
+                    window.location.href = "/{{u_imgsrc}}";
+                }
+            main_info_editbtn.onclick = function(){
+                //editingis dawyeba
+                
+                main_info_div.removeChild(main_info_editbtn);
+                main_info_div.append(main_info_savebtn);
+
+                
+                //main_info_div.removeChild(u_pfp);
+                main_info_div.removeChild(saxeli_gvari_h);
+                main_info_div.removeChild(asaki);
+                main_info_div.removeChild(sfero_h);
+                
+                main_info_div.removeChild(subsfero_h);
+                main_info_div.removeChild(shefaseba);
+
+
+                main_info_div.append(saxeli_input);
+                main_info_div.append(bra);
+                main_info_div.append(gvari_input);
+                sfero.place(32,40);
+                sfero.setValue("{{u_sfero}}");
+
+                //main_info_div.append(sfero_select);
+
+                saxeli_input.value = saxeli_gvari_h.innerHTML.split(" ")[0];
+                gvari_input.value = saxeli_gvari_h.innerHTML.split(" ")[1];
+                //
+                    //sfero_select.append(sfero_option);
+
+                u_pfp.onclick = function(){
+                    window.location.href = "/upload_pfp";
+                }
+
+            }
+            main_info_savebtn.onclick = main_info_update;
+            
+            /*
+            main_info_savebtn.onclick = function(){
+                //editis dasaveba
+                main_info_div.append(main_info_editbtn);
+                main_info_div.removeChild(main_info_savebtn);
+
+                main_info_div.removeChild(saxeli_input);
+                main_info_div.removeChild(bra);
+                main_info_div.removeChild(gvari_input);
+
+                main_info_div.removeChild(sfero_select);
+
+                main_info_div.append(saxeli_gvari_h);
+                main_info_div.append(asaki);
+                main_info_div.append(sfero_h);
+                main_info_div.append(subsfero_h);
+                main_info_div.append(shefaseba);
+                u_pfp.onclick = function(){
+                    window.location.href = "/{{u_imgsrc}}";
+                }
+            }
+            */
+            
+            //var wide_agwera_editbtn = document.getElementById("edit_symbol_wide_agwera");
+
+            var selected_output = document.getElementById("selected_output");
+
+            
+            var selected_output_p = document.getElementById("selected_output_p");
+
+
+
+            about_me_input.placeholder = "ჩემს შესახებ";
+            ganatleba_input.placeholder = "განათლება";
+
+
+
+            about_me_input.className = "agwera_input";
+            ganatleba_input.className = "agwera_input";
+
+            wide_agwera.editing = false;
+            wide_agwera_editbtn.onclick = function(){
+                wide_agwera.style.height = "30%";
+                wide_agwera.editing = true;
+                selected_output.removeChild(selected_output_p);
+                wide_agwera.removeChild(wide_agwera_editbtn);
+
+                if(wide_agwera.status == "aboutme"){
+                    selected_output.append(about_me_input);
+                }
+                else if(wide_agwera.status == "ganatleba"){
+                    selected_output.append(ganatleba_input);
+                }
+                /*
+                else if(wide_agwera.status == "none"){
+
+                }
+                */
+               wide_agwera.append(wide_agwera_savebtn);
+                
+                
+
+            }
+            wide_agwera_savebtn.onclick = wide_agwera_update;
+
+
+
+            var create_new = document.getElementById("add_service");
+            create_new.onclick = function(){
+                window.location.href = "/create_new_service?num=1&service=new";
+            }
+            {{service_redirects_js}}
+        </script>
+        <script src = "static/logged_navbar.js"></script>
+
+        
+    </body>
+</html>

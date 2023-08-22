@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance</title>
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+                #pfp{
+                    background-image:url('{{imgsrc}}');
+                    background-size:{{imgsize}}% {{imgsize}}%;    
+                }
+        </style>
+        <link rel="icon" href="/static/sym.png">
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+
+
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "samushao_rad"> -->
+                    <!-- <label id = "samushao_lab" for ="samushao_rad">სამუშაო</label> -->
+
+                    <!-- <input name = "asd" type="radio" class = 'rad' id = "shemsrulebeli_rad" > -->
+                    <!-- <label id = "shemsrulebeli_lab" for = "shemsrulebeli_rad">შემსრულებელი</label> -->
+
+
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li id = "prom_li">პრომოკოდი</li></a>
+                    <li id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+
+            <script src = "/static/socket.io.js"></script>
+            <script src = "/static/jquery.js"></script>
+            <script>
+                var straidi = "{{straidi}}";
+            </script>
+ 
+
+
+        
+            <script src = "static/logged_navbar.js"></script>
+
+            
+
+        
+    </body>
+</html>

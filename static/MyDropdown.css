@@ -1,0 +1,105 @@
+.dropdown_main{
+    
+    position:absolute;
+    background-color: rgb(203, 193, 193);
+    
+    /* left:50%;
+    top:50%; */
+    width:220px;
+    font-size:20px;
+    padding:1% 1% 1% 1%;
+    
+    height:auto;
+    text-align: left;
+    /* transition: opacity 0.4s; */
+    border-radius:2px;
+    overflow:visible;
+    cursor: pointer;
+    transform:translate(-50%,-50%);
+    
+}
+.dropdown_main:hover{
+    color:#088270;
+}
+
+.chamoshashleli{
+    position:absolute;
+    transform:translateX(-50%);
+    margin-top:20px;
+    z-index: 10;
+    background-color: rgb(203, 193, 193);;
+    
+    
+    margin:auto;
+    margin-top:20px;
+    /* margin-left:-15px; */
+    width:250px;
+    /* margin-left:-15px; */
+    /* top:45%;
+    left:50%;
+     */
+    height:50px;
+    border-radius:2px;
+    
+    overflow-x:visible;
+    overflow-y:auto;
+    
+    
+   
+}
+.drop_opt{
+    position:relative;
+    word-break:break-all;
+    /* font-size:1.5em; */
+    z-index: 10;
+    
+    
+    
+    margin:auto;
+    
+    /* margin-left:-15px; */
+    width:220px;
+    font-size:20px;
+
+
+
+    height:auto;
+    padding:8px 0px 4px 3px;
+    text-align: left;
+    /* transition: opacity 0.4s; */
+    border-radius:2px;
+    
+    line-height: 30px;
+    border:1px solid black;
+    border-width:1px 0px 1px 0px;
+    cursor: pointer;
+    background-color: var(.chamoshashleli);
+
+
+    /* border:1px solid black; */
+}
+.drop_opt:hover{
+    color:blue;
+}
+
+ 
+
+.dropdown_main_disabled{
+    opacity:0.5;
+    position:absolute;
+    background-color: rgb(203, 193, 193);
+    /* left:50%;
+    top:50%; */
+    width:220px;
+    font-size:20px;
+    padding:1% 1% 1% 1%;
+    
+    height:auto;
+    text-align: left;
+    /* transition: opacity 0.4s; */
+    border-radius:2px;
+    overflow:visible;
+    cursor: default;
+    transform:translate(-50%,-50%);
+    
+}

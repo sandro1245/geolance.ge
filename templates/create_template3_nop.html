@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoLance | ფოინთები</title>
+        <link rel="stylesheet" href="/static/logged_navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" href="/static/sym.png">
+        <link rel="stylesheet" href="static/logged_navbar.css">
+        <style>
+            #pfp{
+                background-image:url('{{imgsrc}}');
+                background-size:{{imgsize}}% {{imgsize}}%;    
+            }
+        </style>
+        <style>
+           
+                
+                    body{
+                        
+                    }
+                    #main{
+                        position:absolute;
+                        width:70%;
+                        
+                        /* height: {{main_info_div_simagle}}%; */
+                        height:75%;
+                        top:20%;
+                        left:50%;
+                        transform:translateX(-50%);
+                        background-color:rgb(239, 232, 232);
+                        border:1px solid black;
+                        border-radius:5px;
+                    }
+                    .element_row{
+                        position:relative;
+                        width:100%;
+                        height:20%;
+                        /* display: flex;9 */
+                        justify-content: space-around;
+                        /* background-color: red; */
+                        display: -webkit-box;
+                        border:1px solid black;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: start;
+                        -ms-flex-align: start;
+                        align-items: flex-start;
+                        position: relative;
+                    }
+                    #satauri_input{
+                        resize:none;
+                        position:absolute;
+                        top:30%;
+                        left:45%;
+                        width:50%;
+                        height:16%;
+                        padding:4px;
+                        /* transform:translateX(-50%); */
+                        transform:translateY(-50%);
+                        font-size:30px;
+                        
+                    }
+                    #satauri_agwera{
+                        position:absolute;
+                        /* font-size:20px; */
+                        left:5%;
+                        top:30%;
+                        transform:translateY(-50%);
+                        
+                    }
+                    #sfero_agwera{
+                        position:absolute;
+                        top:50%;
+                        left:5%;
+                        transform:translate(0%,-25%);
+                    }
+
+
+                    #tab_parent{
+
+                        position:relative;
+                        left:0%;
+                        top:0%;
+                        width:100%;
+                        height:70px;
+                        margin:0;
+                        padding:0;
+                        background-color:rgb(40, 42, 42);
+                        border-radius:5px 5px 0px 0px;  
+                        display: flex;
+                        justify-content: space-around;
+                        
+                        border:none;
+
+                    }
+                    .nav_tab{
+                        background-color:rgb(70, 81, 81);;
+                        position:relative;
+                        height:70%;
+                        width:140px;
+                        text-align: center;
+                        line-height: 50px;
+                        top:100%;
+                        transform:translateY(-100%);
+                        /* border:none; */
+                        
+                        border-radius:10px 10px 0px 0px;
+                        color:white;
+                        cursor:default;
+                        /* transition:height 0.3s,opacity 0.3s; */
+                    }
+                    #points{
+                        height:90%;
+                    }
+/*                     
+                    .nav_tab:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+                     */
+                    .nav_tab_anim{
+                        cursor:pointer;
+                        transition:height 0.3s,opacity 0.3s;
+                    }
+                    .nav_tab_anim:hover{
+                        height:90%;
+                        opacity: 0.9;
+                    }
+
+                    #desc_and_exp{
+                        line-height:22px;
+                    }
+                    #sheqmna{
+                        position:absolute;
+                        top:85%;
+                        left:85%;
+                        width:15%;
+                        height:auto;
+                        font-size:18px;
+                        border:none;
+                        border-radius:5px;
+                        padding:4px 0px 5px 0px;
+                        color:white;
+                        transform:translateX(-50%);
+                        background:linear-gradient(rgb(115, 226, 115),rgb(31, 113, 57));
+                        cursor:pointer;
+                        transition:box-shadow 0.4s, margin-top 0.4s;
+                    }
+                    #sheqmna:hover{
+                        box-shadow:5px 5px 05px grey;
+                        margin-top:-10px;
+                    }
+                   
+
+                    .input_gare_div{
+                        position:absolute;
+                        left:50%;
+                        top:20%;
+                        transform:translate(-50%,-50%);
+                        width:300px;
+                        height:21px;
+                        
+                        
+                    }
+
+                    #dawyebis_fasi_input{
+                        position:absolute;
+
+
+                        left:50%;
+                        top:50%;
+                        transform:translate(-50%,-50%);
+
+
+
+
+                        text-align:right;
+                        padding-right:5px;
+                        font-size:20px;
+                        
+                    }
+                    .dollarsign_gareta_div{
+                        position:absolute;
+                        
+                        left:10%;
+                    }
+                    #dollarsign{
+                        position: relative;
+                        z-index:55;
+                        width: 20px;
+                        left:0px;
+                        
+                    }
+                    .chabarebis_dro_input{
+                        position:absolute;
+
+
+                        left:50%;
+                        top:30%;
+                        transform:translate(-50%,-50%);
+
+
+
+
+                        text-align:right;
+                        padding-right:5px;
+                        font-size:20px;
+                    }
+                    .net_h{
+                        text-align: center;
+                        position:relative;
+                    }
+                    .net_fasi{
+                        
+                        margin-top:200px;
+                        z-index: 20;
+                    }
+                    .net_dro{
+                        margin-top:10px;
+                    }
+                    #max_client_input{
+                        position:absolute;
+                        left:15%;
+                        top:50%;
+                        width:40px;
+                        height:40px;
+                        text-align: center;
+                        font-size: 20px;
+                        transform:translate(-50%,0);
+                        z-index: 900;
+                        border: 1px solid black;
+                    }
+                    #max_client_input_label{
+                        position:absolute;
+                        
+
+                        left:15%;
+                        top:43%;
+                        height:auto;
+                        font-size:14px;
+                        max-width:30%;
+                        transform:translate(-50%,0);
+                    }
+                    
+
+
+
+                    
+                    
+                    
+
+
+               
+                
+
+
+                
+        </style>
+        <script>
+
+        </script>
+        <link href="static/MyDropdown.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="static/style.css"> pointebis css -->
+        <link href="static/points.css" rel="stylesheet"> <!-- pointebis css -->
+
+
+
+        <script src = "static/jquery.js"></script>
+        <script src = "static/eror.js"></script>
+        <script>
+            function sheqmna(){
+                $.ajax({
+                    // data : {
+                    //     "satauri" : document.getElementById("satauri_input").value,
+                    //     "sfero" : sfero.value,
+                    //     "subsfero" : subsfero.value,
+                    //     "tags" : JSON.stringify(tags),
+                    //     "service_id" : '{{service_id}}'
+                    // },
+                    data : {
+                        "thedata" : JSON.stringify(record_list_array),
+                        "service_description" : document.getElementById("agwera_input").value,
+                        "service_id" : '{{service_id}}'
+                    },
+                    type : "POST",
+                    dataType : "text",
+                    url : "/save_new_service_2_ajax",
+                    success : function(data){
+                        
+                        if(data == "success"){
+                            window.location.href = "/create_new_service?num=3&service={{service_id}}" ;
+                        }
+                        
+                        
+                    }
+                });
+
+            }
+
+
+        </script>
+        <script>
+            function logout(){
+                document.cookie = "c_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "xs=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.href = "/";
+            }
+        </script>
+        
+       
+    </head>
+    <body>
+        <div id = "navbar">
+
+
+
+
+
+            <a href="/"><img  id = "logo" src = "static/logos.png"></a>
+
+                
+                <input id = "search_input" type = "text" placeholder="სერვისები">
+ 
+
+                    <div id = "search_btn">
+
+                    </div>
+            
+           
+
+
+
+            <img src ="static/arr.png" id="arr">
+
+            <a href = "/payment"><h3 id = "angarishi">{{fuli}}$</h3></a>
+            <h5 id = "saxeli">{{saxeli}}</h5>
+            <a href = '{{my_profile_link}}'><div  id = "pfp"></div></a>
+            <a href = "/messenger" ><div  id = "inbox_btn">
+                <div id = "inbox_btn_not">
+                    <p class="inbox_btn_not_p" value = "{{message_notification_value}}">{{message_notification_value_shortened}}</p>
+                </div>
+            </div></a>
+            <div  id = "notifications_btn">
+                <div id = "notifications_btn_not">
+                    <p class="notifications_btn_not_p" value = "{{not_count}}">{{not_count_markup}}</p>
+                </div>
+            </div>
+            
+        
+        
+        </div>
+            <div id = "nav_params_bar">
+                <ul>
+                    <a href = "/settings" ><li class = "menu_lis" id = "set_li">სეთინგები</li></a>
+                    <a href = "/promocodes"><li class = "menu_lis" id = "prom_li">პრომოკოდი</li></a>
+                    <li  class = "menu_lis" id = "logout_li">გასვლა</li>
+                </ul>
+            </div>
+
+
+
+            <div id = "main">
+                
+                <div id = "tab_parent">
+                    <div id = "general" class = "nav_tab">ძირითადი</div>
+                    <div id = "desc_and_exp"  class = "nav_tab">აღწწერა და  გამოცდილება</div>
+                    <!-- <div id = "packets" class = "nav_tab">პაკეტები</div> -->
+                    <div id = "points" class = "nav_tab">ფოინთები</div>
+                    <div id = "files" class = "nav_tab">ფაილები</div>
+
+                    
+                </div>
+
+
+                <div class = "input_gare_div">
+                    <div class = "dollarsign_gareta_div">
+                        <svg id = "dollarsign" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14 14" role="img"><path fill-rule="evenodd" d="M7.175 7.708v3.099c1.086-.11 1.7-.645 1.7-1.463v-.032c0-.739-.378-1.21-1.7-1.604zM5.917 5.553v-3.02c-1.07.11-1.668.676-1.651 1.415v.016c0 .723.314 1.18 1.651 1.59zm3.507-1.856c-.739-.535-1.494-.913-2.249-1.07v3.24c2.47.614 3.555 1.589 3.54 3.335v.032c0 1.793-1.4 2.973-3.476 3.162V14H5.854v-1.636A7.37 7.37 0 012 10.728l1.007-1.431c.929.77 1.825 1.274 2.91 1.447V7.409c-2.39-.613-3.491-1.494-3.491-3.319v-.03c0-1.747 1.384-2.942 3.428-3.1V0h1.385v.991c1.195.142 2.17.567 3.083 1.243l-.898 1.463z"></path></svg>
+                    </div>
+                    <input  value = "{{minfasi}}" id = "dawyebis_fasi_input" type="text" placeholder="0.00">
+                    
+                </div>
+                
+                <input value = "{{mindro}}" type="text" id = "chabarebis_dro_input" class = "chabarebis_dro_input" placeholder="ჩაბარების დრო(დღეებში)">
+                
+                
+                
+                <div for="max_client_input" id = "max_client_input_label">მაქსიმალური კლიენტების რაოდენობა</div><br>
+                <input type="text" maxlength = "2" value = "{{max_clients}}"  id = "max_client_input">
+                
+                
+
+               
+
+                <h3 class = "net_h net_fasi">ჯამური ფასი : <span style="color:green;" id = "net_fasi_sp"></span></h3>
+                <h3 class = "net_h net_fee_fasi" id = "net_fee_fasi">თქვენი თანხა : <span style="color:green;" id = "net_fee_fasi_sp"></span></h3>
+                <h3 class ="net_h net_dro">ჯამური დრო :  <span style="color:rgb(125, 107, 128);" id = "net_dro_sp"></span></h3>
+
+                 <button id = "sheqmna">შენახვა</button>
+            </div>
+
+        
+        <script src = "static/MyDropdown.js"></script>
+
+
+        <script src = "/static/socket.io.js"></script>
+        <script src = "/static/jquery.js"></script>
+        <script>
+            var straidi = "{{straidi}}";
+        </script>
+        
+        <script>
+            var points_ls = [];
+            var points_ls_names = [];
+
+            var net_fee_fasi = document.getElementById("net_fee_fasi");
+
+            var dawyebis_fasi_input = document.getElementById("dawyebis_fasi_input");
+            var dawyebis_dro_input = document.getElementById("chabarebis_dro_input");
+
+            var net_fasi_sp = document.getElementById("net_fasi_sp");
+            var net_fee_fasi_sp = document.getElementById("net_fee_fasi_sp");
+            var net_dro_sp = document.getElementById("net_dro_sp");
+
+            function asd(){
+                let fv = dawyebis_fasi_input.value;
+                if(fv.split(".").length > 1 || fv ==""){
+
+                }
+                else{
+                    dawyebis_fasi_input.value = fv + ".00";
+                }
+            }
+            document.body.addEventListener("click",asd);
+            
+
+            function gamotvla(){
+
+                let dawy_fasi = dawyebis_fasi_input.value;
+
+                let dawy_dro = dawyebis_dro_input.value;
+
+                
+                
+                
+
+                
+                if( dawy_fasi.split(" ").length  < 2 && dawy_fasi != ""){
+                    
+                    var jam_fasi = (parseFloat(dawy_fasi))+"";
+                }
+                else{
+                    
+                    var jam_fasi = "";
+                }
+
+                if( dawy_dro.split(" ").length  < 2 && dawy_dro != ""){
+                    var jam_dro= (parseFloat(dawy_dro)) + "";
+                }
+                else{
+                    var jam_dro = "";
+                }
+                
+                
+
+
+
+                if( jam_fasi.split(" ").length > 1 || jam_fasi+"" == "Nan"){
+                    net_fasi_sp.innerHTML = "0$";
+                    net_fasi_vl = "0";
+                }
+                else{
+                    net_fasi_sp.innerHTML = jam_fasi + "$";
+
+                    net_fasi_vl = jam_fasi + "";
+                }
+
+                if(jam_dro == "" || jam_dro.split(" ").length > 1){
+                    net_dro_sp.innerHTML = "";
+                    net_dro_vl = "";
+                }
+                else{
+                    net_dro_sp.innerHTML = jam_dro + " დღე";
+                    net_dro_vl = jam_dro + "";
+                }
+                
+                
+            }
+
+            function chamochrili_fasi(){
+                //თქვენი თანხა : <span style="color:green;" id = "net_fee_fasi_sp"></span>
+                //net_fee_fasi
+                let fwval = net_fasi_sp.innerHTML.split("$")[0];
+                
+                if(fwval != "0" && fwval != ""){
+                    let fval =  (fwval * 0.8) + "$" + "<span style='color:red; font-size:12px'>-20%</span>";
+                    net_fee_fasi.innerHTML = 'თქვენი თანხა : <span style="color:green;" id = "net_fee_fasi_sp">'+ fval +'</span>'
+                }
+                else{
+                    net_fee_fasi.innerHTML = "";
+                }
+            }
+            setInterval(gamotvla,1);
+
+            setInterval(chamochrili_fasi,1);
+            
+            
+
+
+
+            var maindivi = document.getElementById("main");
+
+
+
+            var general = document.getElementById("general");
+            var desc_and_exp = document.getElementById("desc_and_exp");
+            var points = document.getElementById("points");
+            var files = document.getElementById("files");
+
+
+
+            {{dziritadi_scr}}
+
+            {{agwera_da_gamocdileba_scr}}
+
+   
+
+            
+            {{pointebi_src}}
+
+
+            {{files_scr}}
+
+
+            
+
+
+
+            var sheqmna_btn = document.getElementById("sheqmna");
+            // sheqmna_btn.onclick = sheqmna;
+            sheqmna_btn.onclick = function(){
+                let fasi = net_fasi_sp.innerHTML.split("$")[0];
+                let dro = net_dro_sp.innerHTML.split(" დღე")[0];
+                if(fasi != ""){
+                    if(parseFloat(fasi) >= 5){
+                        //net_dro_sp
+                        if(dro != "" && parseFloat(dro) >= 1){
+                            $.ajax({
+                            data : {
+                                "points_ls" : JSON.stringify(points_ls),
+                                "hfasi" : dawyebis_fasi_input.value,
+                                "hdro" : dawyebis_dro_input.value,
+                                "fasi" : net_fasi_vl,
+                                "dro" : net_dro_vl,
+                                "max_clients" : document.getElementById("max_client_input").value,
+                                "service_id" : "{{service_id}}",
+                                "tipi" : "create"
+                            },
+                            url : "/save_new_service_3_ajax",
+                            type : "POST",
+                            dataType : "text",
+                            success : function(data){
+                                
+                                if(data == "success"){
+                                    window.location.href = "/create_new_service?num=4&service={{service_id}}" ;
+
+                                    }
+                                
+                                
+                                }
+                            
+                            
+                            })
+                        }
+                        else{
+                            erori("გთხოვთ მიუთითოთ ჩაბარების დრო")
+                        }
+
+                        
+                    }
+                    else{
+                        erori("მინიმალური ფასი არის 5$");
+                    }
+                }
+                else{
+                    erori("გთხოვთ მიუთითოთ ფასი");
+                }
+                
+            }
+
+            
+            
+           
+
+           
+
+            
+            
+            // setInterval(function(){console.log(points_ls)},1) 
+            // consoleshi
+                        
+
+
+
+           
+        </script>
+       <script src = "/static/logged_navbar.js"></script>
+
+        <!-- <script src = "static/script.js"></script> tagebis js -->
+        <script src = "/static/points.js"></script><!--  pointebis js  -->
+        
+    </body>
+</html>
